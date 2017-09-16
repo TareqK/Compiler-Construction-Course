@@ -76,7 +76,6 @@ Excecution of instructions. A programming Language that is based on this model i
 An example of a programming language designed with this paradigm is Pascal. This is an example function in pascal(Greatest Common Divisior):
 
 ```Pascal
-
 function gcd(x,y:integer):integer; //int gcd(int x, int y)
 Begin
         if(x = y) then//notice that its not ==
@@ -134,10 +133,11 @@ Lets write a small program in LISP:
 
 ```LISP
 
-(define f(x)
+>(define f(x)
 (+ x 1))
-
-(f 3)
+>f
+>(f 3)
+>4
 ```
 
 This outputs 4. 
@@ -145,11 +145,11 @@ This outputs 4.
 or another program:
 
 ```LISP
-
-(define ff(x y)
+>(define ff(x y)
 (+ x y))
-
-(ff 3 5)
+>ff
+>(ff 3 5)
+>5
 ```
 
 This outputs 5.
