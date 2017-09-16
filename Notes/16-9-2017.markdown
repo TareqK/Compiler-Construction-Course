@@ -49,7 +49,7 @@ This is very important for parsing.
 after the Scanner tokenizes the statement in the above section ,
 the Syntax analyzer first checks:
 
-> if(x!=0)
+> if(x!=10)
 
 if it is correct, then it checks
 
