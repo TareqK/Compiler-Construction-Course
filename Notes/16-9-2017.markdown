@@ -1,0 +1,51 @@
+# Programming Language Concepts
+
+## Syntax
+
+The Syntax is the grammer of the programming language. It describes the 
+different structures such as expressions, statements, and blocks. 
+
+The Syntax is formally described using a Context Free Grammar(CFG), which is a 
+set of staic algorithms and frameworks.
+
+
+## Semantics
+
+The Semantics describe or gives the Syntax structure a meaning. the Scanner 
+takes the statements and analyzes them, creating tokens, Then the Sytnax 
+analyzer takes the tokens and tries to create Syntax structures.
+If a group of tokens creates a valid expression, it moves to the next set of
+tokens.
+
+Related to the Syntax is the Lexical Structure(LS) which is more or less
+equivalent to the spelling in natural languages ie, the Lexical Structure
+deals with words or **tokens**.
+
+For example, lets look at this small segment of code:
+'''C
+
+if(x!=10 ){
+n++;
+}
+
+'''
+
+the tokens in this code would be "if","(","x","!=",")","{","n","++",";","}" .
+This is very important for parsing.  
+
+## The whole process
+
+Code -> Scanner(Lexical Structure) -> Tokens -> Syntax analyzer -> Object Code
+
+for example, after the Scanner tokenizes the statement in the above section ,
+the Syntax analyzer first checks:
+
+> if(x!=0)
+
+if it is correct, then it checks
+
+> n++;
+
+if it is correct, then it checks the whole statement to see if the whole
+if statement is correct. 
+ 

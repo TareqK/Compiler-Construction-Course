@@ -82,6 +82,6 @@ variable defenition, A Programming language can be divided into 2 parts:
 
 	1. Syntax, or the structure.
 
-	2. Symantics, or the meaning. 
+	2. Semantics, or the meaning. 
 
 This is considered a concrete defenition of a programming langauge.
