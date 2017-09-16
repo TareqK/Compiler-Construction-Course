@@ -22,12 +22,11 @@ equivalent to the spelling in natural languages ie, the Lexical Structure
 deals with words or **tokens**.
 
 For example, lets look at this small segment of code:
-'''C
 
+'''C
 if(x!=10 ){
 n++;
 }
-
 '''
 
 the tokens in this code would be "if","(","x","!=",")","{","n","++",";","}" .
