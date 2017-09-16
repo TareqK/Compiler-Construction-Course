@@ -114,5 +114,42 @@ or
 
 which means "if a is true, then the value is b. otherwise , the value is c".
 
+Lets write a small program in LISP:
 
+```LISP
 
+(define f(x)
+(+ x 1))
+
+(f 3)
+```
+
+This outputs 4. 
+
+or another program:
+
+```LISP
+
+(define ff(x y)
+(+ x y))
+
+(ff 3 5)
+```
+
+This outputs 5.
+
+Another Example of a Programmin Language, the Greatest Common divisor in Pascal function would be :
+
+```Pascal
+
+function gcd(x,y:integer):integer; //int gcd(int x, int y)
+Begin
+	if(x = y) then//notice that its not ==
+		gcd:=x
+	else
+		if(x > y) then
+			gcd:=gcd(x-y,y)
+		else
+			gcd:=gcd(x,y-x);
+End
+```
