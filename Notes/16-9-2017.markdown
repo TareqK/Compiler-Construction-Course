@@ -73,6 +73,22 @@ Excecution of instructions. A programming Language that is based on this model i
 
 3. Using Assignment Statements to Change the Value of a Variable.
 
+An example of a programming language designed with this paradigm is Pascal. This is an example function in pascal(Greatest Common Divisior):
+
+```Pascal
+
+function gcd(x,y:integer):integer; //int gcd(int x, int y)
+Begin
+        if(x = y) then//notice that its not ==
+                gcd:=x
+        else
+                if(x > y) then
+                        gcd:=gcd(x-y,y)
+                else
+                        gcd:=gcd(x,y-x);
+End
+```
+
 ### Functional Paradigm 
 
 Computation is based on the evaluation or calling functions or application of functions. That is why the language is sometimes called
@@ -138,18 +154,5 @@ or another program:
 
 This outputs 5.
 
-Another Example of a Programmin Language, the Greatest Common divisor in Pascal function would be :
 
-```Pascal
 
-function gcd(x,y:integer):integer; //int gcd(int x, int y)
-Begin
-	if(x = y) then//notice that its not ==
-		gcd:=x
-	else
-		if(x > y) then
-			gcd:=gcd(x-y,y)
-		else
-			gcd:=gcd(x,y-x);
-End
-```
