@@ -33,11 +33,15 @@ tokens.
 
 For example, lets look at this small segment of code:
 
-'''
+```C
+
 if(x!=10 ){
+
 n++;
+
 }
-'''
+
+```
 
 the tokens in this code would be "if","(","x","!=",")","{","n","++",";","}" .
 This is very important for parsing.
@@ -58,5 +62,57 @@ if statement is correct.
 
 There are 4 paradgims of programing languages
 
-1. Imperative or Procedural(Function) Languages. This is also called Von-Neuman model of computing which is based on Single Processor Sequential
-Excecution of instructions. 
+###  Imperative or Procedural Paradigm
+
+This is also called Von-Neuman model of computing which is based on Single Processor Sequential
+Excecution of instructions. A programming Language that is based on this model is characterized by:
+
+1. Sequential Excecution of Instructions.
+
+2. Using Variables to Represent Memory Locations.
+
+3. Using Assignment Statements to Change the Value of a Variable.
+
+### Functional Paradigm 
+
+Computation is based on the evaluation or calling functions or application of functions. That is why the language is sometimes called
+applicated language. A programming Language that is based on this model is characterized by:
+
+
+1. There is **NO** Notion of Variables or Assignment Statements in this Paradigm. 
+
+2. Repetition is not Expressed in Loops, but is Acheived by Recursive Calls.
+
+As an example, lets take the LISP (**LIS**t **P**rogramming) language.
+
+In LISP, everything is a list. In LISP, a list is defined as:
+
+> A List is a Sequence of Things Seperated by Blanks and Surrounded by Paranthesis.
+
+An example of lists
+
+```LISP
+
+(+ a b)
+``` 
+
+or
+
+```LISP
+
+(+ 2 3)
+
+````
+
+or
+
+```LISP
+
+(if a b c)
+
+```
+
+which means "if a is true, then the value is b. otherwise , the value is c".
+
+
+
