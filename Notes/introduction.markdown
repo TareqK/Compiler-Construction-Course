@@ -277,8 +277,8 @@ could be written in a Logical language called PROLOG(**PRO**gramming **LOG**ical
 ```PROLOG
 gcd(u,v,u) :- v = 0.
 gcd(u,v,x) :- v > 0,
-		y is u mod v,
-		gcd(v,y,x).
+	y is u mod v,
+	gcd(v,y,x).
 ```
 
 ### Object Oriented Paradigm
@@ -293,6 +293,8 @@ spread in the 90's. The main advantages of Objected Oriented Programming are:
 - Polymorphism
 
 ### The Chart of Language Evolution 
+
+TODO , get from ashjan or mohannad. 
 
 
 
