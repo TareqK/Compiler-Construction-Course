@@ -67,7 +67,7 @@ began with high-level languages. A Programming Language must provide
  - Simple : such as "integer" or "int" or "char" 
  - Structured : such as arrays or strings
    		
--Control Abstraction : Which means clarifying operations.
+- Control Abstraction : Which means clarifying operations.
  - Simple : Such as the Assignment Statement "=" or ":"
  - Structured : which is divided to a group of instruction or assignment statements Such as "if/else","for", "while", Block statements. 
 
