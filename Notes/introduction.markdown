@@ -1,11 +1,11 @@
-# Reaons to study Programming Language Concepts
+# Reasons to study Programming Language Concepts
 
 1. To increase the ability to learn new languages
 
 2. Knowing the structure of a programming language makes it easier to understand.
 
 3. To increase the ability to design new languages.for example it is known that
-the if...else structure is ambigious. This means that the compiler does not 
+the if...else structure is ambiguous. This means that the compiler does not 
 know which direction to take when parsing it. In a case like this, the designer
 must take into consideration ambiguity when putting down production rules
 
@@ -13,7 +13,7 @@ must take into consideration ambiguity when putting down production rules
 
 # What is a Programming Language?
 
-A language is a system of signs used to commuincate.(This definition also 
+A language is a system of signs used to communicate.(This definition also 
 includes spoken language). All languages have grammar and vocabulary. Grammar
 is how we express a language. It is a specific set of rules(with some 
 exceptions in some cases). 
@@ -23,34 +23,34 @@ rules, which are its grammar. The main difference between spoken languages
 and written languages is that the rules are hard ie there are no exceptions
 to rules.
 
-This leads us to a general defenition:
+This leads us to a general definition:
 
-	A Programming language is 
-	a system of signs used 
-	by a person to communicate
-	with the computer machine.  
+>A Programming language is 
+a system of signs used 
+by a person to communicate
+with the computer machine.  
 
-Or a more specific defenition:
+Or a more specific definition:
 
-	A Programming language is
-	a notational system  for 
-	describing **COMPUTATION**
-	in **MACHINE READABLE** and
-	**HUMAN READABLE** form.
+>A Programming language is
+a notational system  for 
+describing **COMPUTATION**
+in **MACHINE READABLE** and
+**HUMAN READABLE** form.
 
-There are three Key concepts in this defenition:
+There are three Key concepts in this definition:
 
 1. Computation 
 
 All what computers about. This is everything that happens
 in a computer on a low level regardless of the application. Everything we 
 know in programming is eventually simplified into small computational 
-operations(Arithematic operations).
+operations(Arithmetic operations).
 
 2. Machine Readable 
 
 There must be an algorithm to translate the programming 
-language code in an *unambigous* and *finite* way. The algorithm must be 
+language code in an *unambiguous* and *finite* way. The algorithm must be 
 simple and straight-forward, and usually  takes time proportional to the size
 of the program. Machine Readability is ensured by restricting the structure of
 the programming language(syntax) to a *context-free grammar*(CFG) which is a 
@@ -63,39 +63,33 @@ something machine readable.
 A Very important aspect of a program is to be readable. This
 began with high-level languages. A Programming Language must provide
 *abstraction* as 
-Data Abstraction :
-	Which means giving variables and such names.
-	
-	A.Simple : such as "iteger" or "int" or "char" 
-	B.Structured : such as arrays or strings
+-Data Abstraction : Which means giving variables and such names.
+ - Simple : such as "integer" or "int" or "char" 
+ - Structured : such as arrays or strings
    		
-Control Abstraction :
-	Which means clarifying operations.
-		
-	A.Simple : Such as the Assignment Statement "=" or ":"
-	B.Structured : which is divided to a group of instruction
-		     or assignment statementsSuch as "if/else",
-   		     "for", "while", Block statements. 
+-Control Abstraction : Which means clarifying operations.
+ - Simple : Such as the Assignment Statement "=" or ":"
+ - Structured : which is divided to a group of instruction or assignment statements Such as "if/else","for", "while", Block statements. 
 
-For a  more percise and complete defenition of programming languages, instead of a
-variable defenition, A Programming language can be divided into 2 parts:
+For a  more precise and complete definition of programming languages, instead of a
+variable definition, A Programming language can be divided into 2 parts:
 
-	1. Syntax, or the structure.
+1. Syntax, or the structure.
 
-	2. Semantics, or the meaning. 
+2. Semantics, or the meaning. 
 
-This is considered a concrete defenition of a programming langauge.
+This is considered a concrete definition of a programming language.
 
 
 # Programming Language Concepts
 
 ## Syntax
 
-The Syntax is the grammer of the programming language. It describes the 
+The Syntax is the grammar of the programming language. It describes the 
 different structures such as expressions, statements, and blocks. 
 
 The Syntax is formally described using a Context Free Grammar(CFG), which is a 
-set of staic algorithms and frameworks.
+set of static algorithms and frameworks.
 
 
 ## Semantics
@@ -115,7 +109,7 @@ which is used to express the semantic analysis.
 Code -> Scanner(Lexical Structure) -> Tokens -> Syntax analyzer -> Object Code
 
 the Scanner takes the statements and analyzes them, creating tokens,
-Then the Sytnax analyzer takes the tokens and tries to create Syntax structures.
+Then the Syntax analyzer takes the tokens and tries to create Syntax structures.
 If a group of tokens creates a valid expression, it moves to the next set of
 tokens.
 
@@ -135,7 +129,7 @@ n++;
 the tokens in this code would be "if","(","x","!=",")","{","n","++",";","}" .
 This is very important for parsing.
 
-after the Scanner tokenizes the statement in the above section ,
+after the Scanner has tokenized the statement in the above section ,
 the Syntax analyzer first checks:
 
 > if(x!=10)
@@ -147,16 +141,16 @@ if it is correct, then it checks
 if it is correct, then it checks the whole statement to see if the whole
 if statement is correct. 
  
-## Paradgims of Programming Languages
+## Paradigms of Programming Languages
 
-There are 4 paradgims of programing languages
+There are 4 paradigms of programing languages
 
 ###  Imperative or Procedural Paradigm
 
-This is also called Von-Neuman model of computing which is based on Single Processor Sequential
-Excecution of instructions. A programming Language that is based on this model is characterized by:
+This is also called Von-Neumann model of computing which is based on Single Processor Sequential
+Execution of instructions. A programming Language that is based on this model is characterized by:
 
-1. Sequential Excecution of Instructions.
+1. Sequential Execution of Instructions.
 
 2. Using Variables to Represent Memory Locations.
 
@@ -201,13 +195,13 @@ applicated language. A programming Language that is based on this model is chara
 
 1. There is **NO** Notion of Variables or Assignment Statements in this Paradigm. 
 
-2. Repetition is not Expressed in Loops, but is Acheived by Recursive Calls.
+2. Repetition is not Expressed in Loops, but is Achieved by Recursive Calls.
 
 As an example, lets take the LISP (**LIS**t **P**rogramming) language.
 
 In LISP, everything is a list. In LISP, a list is defined as:
 
-> A List is a Sequence of Things Seperated by Blanks and Surrounded by Paranthesis.
+> A List is a Sequence of Things Separated by Blanks and Surrounded by Parenthesis.
 
 An example of lists
 
@@ -277,15 +271,28 @@ Lets Write a LISP program to simulate the function power x^n(where x belongs to 
 ### Logical Paradigm
 
 This Paradigm is based on symbolic logic. The Program consists of a set of 
-statements that describe what is true about these statements. For example, the Greatest Common Divisior function
+statements that describe what is true about these statements. For example, the Greatest Common Divisor function
 could be written in a Logical language called PROLOG(**PRO**gramming **LOG**ical):
 
 ```PROLOG
 gcd(u,v,u) :- v = 0.
 gcd(u,v,x) :- v > 0,
-			y is u mod v,
-			gcd(v,y,x).
+		y is u mod v,
+		gcd(v,y,x).
 ```
+
+### Object Oriented Paradigm
+
+In This Paradigm, the notions of **Object** and **Class** are introduced. It widely
+spread in the 90's. The main advantages of Objected Oriented Programming are:
+
+- Encapsulation of **Data** and **Function**
+
+- Inheritance
+
+- Polymorphism
+
+### The Chart of Language Evolution 
 
 
 
