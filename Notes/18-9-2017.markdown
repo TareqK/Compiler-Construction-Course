@@ -26,7 +26,8 @@ STO 4,Z
 in Assembly. Assuming 4 is a certain register, the above code means
 
 >Load the contents of memory location 63 whose name is X into register 4.
-
 >Add the value stored in memory location 46 whose name is Y to the value in register 4.
-
 >Store the value stored in register 4 to the memory location 57 whose name is Z. 
+
+This was still difficult. After Assembly, we created **High Level Languages** such as Pascal, Basic, ADA, C, etc. And with 
+the creation of High Level Languages, there was now a need for **Translators**.
