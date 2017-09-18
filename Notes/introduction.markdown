@@ -175,15 +175,16 @@ The Same program in C is:
 
 ```C
 int gcd(int n, int m)
-{if(n==m){
-	return m;
+{
+	if(n==m){
+		return m;
+		}
+	else{
+		if(n>m)
+			return gcd(n-m,m);
+		else
+			return gcd(n,m-n);
 	}
- else{
-	if(n>m)
-		return gcd(n-m,m);
-	else
-	return gcd(n,m-n);
-}
 }
 ```
 
