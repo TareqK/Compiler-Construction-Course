@@ -281,7 +281,7 @@ statements that describe what is true about these statements. For example, the G
 could be written in a Logical language called PROLOG(**PRO**gramming **LOG**ical):
 
 ```PROLOG
-gcd(u,v,u) :- v = 0
+gcd(u,v,u) :- v = 0.
 gcd(u,v,x) :- v > 0,
 			y is u mod v,
 			gcd(v,y,x).
