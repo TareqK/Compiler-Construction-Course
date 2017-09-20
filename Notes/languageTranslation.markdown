@@ -53,15 +53,32 @@ If the source code is a high-level language program, and the target
 code is assembly or machine language, the translator is called a **Compiler**.
 
 
-
+### Compilers 
 given the above, a compiler is defined as :
 
 > An Algorithm that Translates High Level Language Program
 > to an Assembly Program or a Machine Language Program.
 
-The Process of compilation and excecution, for say, C code is :
+The Process of compilation and execution, for say, C code is :
 
->       	    	                         Library Linking             Input Data
+>       	    	                     Library Linking             Input Data
 >           	    	                            V                         V
 > 		Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin) -> Output Data
+>
+
+A Compiler **generates** Object Code(Machine Code). This is in contrast with an **Interpreter**
+
+### Interpreters
+
+A Simple definition of an interpreter is:
+
+> An Interpreter is an Algorithm that Translates the Source Code to 
+> an Intermediate Code which is Executed by Another Algorithm(Program)
+> with the Input Data to Produce the Output Data. 
+
+The General process of interpretation is :
+
+>       	    	                    				     Input Data
+>           	    	                                              V
+> 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
 >
