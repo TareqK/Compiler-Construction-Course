@@ -41,12 +41,6 @@ The Most general definition of a translator is:
 > A Translator is an Algorithm Which Translates the Source Code Into 
 > a Target Code. 
 
-so basically, The process is : 
-
-> Source Code -> Translator -> Target Code.
-
-In Reality, the process is more nuanced, but that is the basic flow. 
-
 If the source code is an assembly language program, and the target code
 is a machine language program, the translator is called an **Assembler**.
 If the source code is a high-level language program, and the target
@@ -54,6 +48,7 @@ code is assembly or machine language, the translator is called a **Compiler**.
 
 
 ### Compilers 
+
 given the above, a compiler is defined as :
 
 > An Algorithm that Translates High Level Language Program
@@ -78,7 +73,13 @@ A Simple definition of an interpreter is:
 
 The General process of interpretation is :
 
->       	    	                    			Input Data
+>       	    	                    			 Input Data
 >           	    	                                              V
 > 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
 >
+
+A simple interpretation would be changing an equation from infix to postfix and calculation it.
+
+>       	    	                    			 Input Data
+>           	    	                                              V
+>		infix Code -> Translator Converter -> postfix Code -> Some Program -> Result
