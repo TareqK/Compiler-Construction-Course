@@ -293,7 +293,7 @@ spread in the 90's. The main advantages of Objected Oriented Programming are:
 
 - Polymorphism
 
-### The Chart of Language Evolution 
+## The Chart of Language Evolution 
 
 ![History Of Programming Languages](./images/History_of_prorgramming_languages.png )
 
