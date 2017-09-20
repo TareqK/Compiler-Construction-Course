@@ -61,7 +61,17 @@ The Process of compilation and execution, for say, C code is :
 > 		Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin) -> Output Data
 >
 
-A Compiler **generates** Object Code(Machine Code). This is in contrast with an **Interpreter**
+A Compiler **generates Object Code(Machine Code)**. This is in contrast with an **Interpreter**
+
+### Advantages 
+
+- Generate Object Code
+
+- Faster Programs
+
+#### Disadvantages
+
+- Harder to Implement
 
 ### Interpreters
 
@@ -72,25 +82,41 @@ A Simple definition of an interpreter is:
 > with the Input Data to Produce the Output Data. 
 
 The General process of interpretation is :
-
->       	    	                    			 Input Data
->           	    	                                              V
-> 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
-
+```
+															Input Data
+																 V
+ 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
+```
 
 A simple interpretation would be changing an equation from infix to postfix and calculation it.
-
->       	    	                    			 Input Data
->           	    	                                              V
->		infix Code -> Translator Converter -> postfix Code -> Some Program -> Result
+```
+															 Input Data
+           	    	                                              V
+		infix Code -> Translator Converter -> postfix Code -> Some Program -> Result
+```
 
 in Java : 
+```
+										   Input Data
+												V
+		*Java -> Java Compiler -> Byte Code -> JVM -> Result
+```
+#### Advantages
 
->       	    	            	 	Input Data
->           	    	                        V
->		*Java -> Java Compiler -> Byte Code -> JVM -> Result
-
-#### Why use Interpreters?
-
-Interpreters generate a **Portable** intermediate code. This means we can 
+- Interpreters generate a **Portable** intermediate code. This means we can 
 **Write Once Run Everywhere**.
+
+- Easier to Implement
+
+#### Disadvantages
+
+- Slower
+
+
+Both Compilers and Interpreters Perform the Following Steps :
+
+- Lexical Analysis(scanner) : Which simply groups the characters of the
+source code to form what is called the **Tokens**.
+
+- Syntax Analysis : Groups the set of tokens from the scanner to form 
+**Syntax Structures**
