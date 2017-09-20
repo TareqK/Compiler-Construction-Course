@@ -61,7 +61,7 @@ given the above, a compiler is defined as :
 
 The Process of compilation and excecution, for say, C code is :
 
->                                    Library Linking             Input Data
->                                           V                         V
-> Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin) -> Output Data
+>       	    	                         Library Linking             Input Data
+>           	    	                            V                         V
+> 		Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin) -> Output Data
 >
