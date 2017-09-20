@@ -62,7 +62,7 @@ Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin
 ```
 A Compiler **generates Object Code(Machine Code)**. This is in contrast with an **Interpreter**
 
-### Advantages 
+#### Advantages 
 
 - Generate Object Code
 
@@ -111,11 +111,14 @@ in Java :
 
 - Slower
 
-
 Both Compilers and Interpreters Perform the Following Steps :
 
 - Lexical Analysis(scanner) : Which simply groups the characters of the
-source code to form what is called the **Tokens**.
+source code to form what is called the **Tokens**. This Only detects
+legal character errors.
 
 - Syntax Analysis : Groups the set of tokens from the scanner to form 
-**Syntax Structures**
+**Syntax Structures**. This Catches syntax errors.
+
+- Semantic Analysis : Gives the syntax structures meaning. This is 
+the hardest task.
