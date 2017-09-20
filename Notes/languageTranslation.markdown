@@ -76,10 +76,21 @@ The General process of interpretation is :
 >       	    	                    			 Input Data
 >           	    	                                              V
 > 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
->
+
 
 A simple interpretation would be changing an equation from infix to postfix and calculation it.
 
 >       	    	                    			 Input Data
 >           	    	                                              V
 >		infix Code -> Translator Converter -> postfix Code -> Some Program -> Result
+
+in Java : 
+
+>       	    	             Input Data
+>           	    	                        V
+>		*Java -> Java Compiler -> Byte Code -> JVM -> Result
+
+#### Why use Interpreters?
+
+Interpreters generate a **Portable** intermediate code. This means we can 
+**Write Once Run Everywhere**.
