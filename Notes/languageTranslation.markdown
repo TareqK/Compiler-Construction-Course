@@ -78,7 +78,7 @@ A Simple definition of an interpreter is:
 
 The General process of interpretation is :
 
->       	    	                    				     Input Data
+>       	    	                    			Input Data
 >           	    	                                              V
 > 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
 >
