@@ -55,12 +55,11 @@ given the above, a compiler is defined as :
 > to an Assembly Program or a Machine Language Program.
 
 The Process of compilation and execution, for say, C code is :
-
->       	    	                     Library Linking             Input Data
->           	    	                            V                         V
-> 		Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin) -> Output Data
->
-
+```
+                                    Library Linking             Input Data
+                                           V                         V
+Source Code(*.c) -> Compiler(gcc) -> Object Code(*.obj) -> Executable Code(*.bin) -> Output Data
+```
 A Compiler **generates Object Code(Machine Code)**. This is in contrast with an **Interpreter**
 
 ### Advantages 
