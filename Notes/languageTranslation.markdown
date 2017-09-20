@@ -83,23 +83,23 @@ A Simple definition of an interpreter is:
 
 The General process of interpretation is :
 ```
-															Input Data
-																 V
- 		Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
+                                                     Input Data
+                                                          V
+Source Code -> Interpreter -> Intermediate Code -> Another Algorithm -> Output Data
 ```
 
 A simple interpretation would be changing an equation from infix to postfix and calculation it.
 ```
-															 Input Data
-           	    	                                              V
-		infix Code -> Translator Converter -> postfix Code -> Some Program -> Result
+                                                     Input Data
+                                                          V
+infix Code -> Translator Converter -> postfix Code -> Some Program -> Result
 ```
 
 in Java : 
 ```
-										   Input Data
-												V
-		*Java -> Java Compiler -> Byte Code -> JVM -> Result
+                                    Input Data
+                                         V
+*.java -> Java Compiler -> Byte Code -> JVM -> Result
 ```
 #### Advantages
 
