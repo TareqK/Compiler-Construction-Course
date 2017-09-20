@@ -86,7 +86,7 @@ A simple interpretation would be changing an equation from infix to postfix and 
 
 in Java : 
 
->       	    	             Input Data
+>       	    	            	 Input Data
 >           	    	                        V
 >		*Java -> Java Compiler -> Byte Code -> JVM -> Result
 
