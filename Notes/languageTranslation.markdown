@@ -186,6 +186,50 @@ ie, generally, functional and logical languages are interpreted.
 
 ## Error Detection and Recovery
 
+During any point or place in the translation process,
+errors can arise. Generally, efficiency is a trade-off with 
+complexity in error handling. The Faster we handle errors, the 
+less robust our error handling will be. More complex error handling 
+routines, while they do make using the language and fixing bugs
+easier, they take more processing power and time.
 
+There are 4 types of errors that can arise in the compilation process:
 
+1. Lexical Errors : Lexical Errors arise when an illegal *character* is detected. an 
+   example of this is the number symbol in C. they are easiest to find and fix and 
+   are detected during Lexcical Analysis.
 
+2. Syntax errors : Syntax Errors arise when  grammatical errors are detected.
+ This happens when the source code does not follow the grammar of the syntax 
+ language, ie, the *Production Rules*. An example of this is missing semicolons
+ in C and Java. They are the a little harder but still easy to find and fix. They 
+ are detected during Syntax Analysis
+
+3. Semantic Errors :
+Semantic Errors are detected either during Semantic Analysis or During Execution.
+There are 2 types of Semantic Errors :
+
+   - Static : And these are pre-excecution. An example of these
+	 are type mismatch errors.
+	 
+   - Dynamic : And these are detected **only** during execution. An example
+     of these is division by zero.
+     
+4. Logical Errors :
+These are errors that are related to the logic the code was written in, and 
+what the programmer thinks he means with a statement vs what the compiler
+actually understands it as. This is completely human error, and is the 
+hardest to fix.
+
+## Programming Languages Domain
+
+Programming Languages are divided into several domains
+
+1. Scientific Domain : This Domain includes all applications with 
+a computational base. Languages in this domain include FORTRAN, C, and 
+ALGOL60 .
+
+2. Business Domain : This Domain includes all applications used for 
+commercial purposes. Languages in this domain include COBOL and JAVA.
+
+3. Educational Domain 
