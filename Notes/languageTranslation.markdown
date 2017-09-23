@@ -47,7 +47,7 @@ If the source code is a high-level language program, and the target
 code is assembly or machine language, the translator is called a **Compiler**.
 
 
-### Compilers 
+## Compilers 
 
 given the above, a compiler is defined as :
 
@@ -72,7 +72,7 @@ A Compiler **generates Object Code(Machine Code)**. This is in contrast with an 
 
 - Harder to Implement
 
-### Interpreters
+## Interpreters
 
 A Simple definition of an interpreter is:
 
@@ -122,3 +122,70 @@ legal character errors.
 
 - Semantic Analysis : Gives the syntax structures meaning. This is 
 the hardest task.
+
+- Code Generation : Both Compilers and Interpreters do code generation, 
+but they differ in how. While the Compiler generates *Object Code*, the 
+interpreter generates *Intermediate Code*. 
+
+These similarities and differences are highlighted in the following diagram:
+
+
+** TODO INSERT DIAGRAM OF THIS PROCESS. TAKE IT FROM ASHJAN**
+
+## Runtime Environment
+
+A Runtime Environment is defined as :
+
+> The Space Allocation for Programs and Data in Memory During Execution.
+
+There are 3 types of Runtime Environment :
+
+1. Fully-Static Environment.
+
+2. Fully-Dynamic Environment.
+
+3. Stack-Based Environment.
+
+### Fully-Static Environments
+
+In this type of environment, **all** properties of the programming language are predetermined before 
+execution. This means that all the **address allocation is performed when the 
+code is loaded**, not when it is run.
+
+
+FORTRAN for example, uses this scheme.
+In FORTRAN, all memory locations of all variables are fixed during
+program execution. In Addition, FORTRAN has only one type of procedure/function
+called **subroutine**. In Subroutines, there are **no nested subroutines**, ie, 
+you cannot define a subroutine in a subroutine.
+This also means that there is **no recursion**. Thus, the original FORTRAN is suitable
+for a fully-static environment. 
+
+### Fully-Dynamic Environments
+
+This Scheme is more suitable for dynamically computed 
+procedures such as LISP. It is best with functional and logical programming. This is because
+it allows us to do recursive function calls, as the allocation is done dynamically. 
+
+### Stack Based Environments 
+
+It Is A Hybrid of the above 2 schemes. In This Kind of environment, the static allocation is used
+for the variables and other data structures, while a stack is used for recursion, 
+nested functions, and procedures during execution.  This scheme is best used with block structured
+languages (Imperative/Procedural languages) such as all ALGOL-like languages including 
+Pascal, C, Modula, Ada, etc. 
+
+**TODO ADD DIAGRAM OF THIS ENVIRONMENT MEMORY MAP. TAKE IT FROM ASHJAN**
+
+Indeed, most languages today use this scheme. 
+
+Languages with strong static structures are more likely to be compiled. 
+ie, generally, imperative languages are compiled. Conversely, 
+Languages with more dynamic structures are more likely to be interpreted, 
+ie, generally, functional and logical languages are interpreted. 
+
+## Error Detection and Recovery
+
+
+
+
