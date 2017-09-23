@@ -173,11 +173,7 @@ It Is A Hybrid of the above 2 schemes. In This Kind of environment, the static a
 for the variables and other data structures, while a stack is used for recursion, 
 nested functions, and procedures during execution.  This scheme is best used with block structured
 languages (Imperative/Procedural languages) such as all ALGOL-like languages including 
-Pascal, C, Modula, Ada, etc. 
-
-**TODO ADD DIAGRAM OF THIS ENVIRONMENT MEMORY MAP. TAKE IT FROM ASHJAN**
-
-Indeed, most languages today use this scheme. 
+Pascal, C, Modula, Ada, etc. Most languages today use this scheme. 
 
 Languages with strong static structures are more likely to be compiled. 
 ie, generally, imperative languages are compiled. Conversely, 
