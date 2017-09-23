@@ -130,7 +130,7 @@ interpreter generates *Intermediate Code*.
 These similarities and differences are highlighted in the following diagram:
 
 
-** TODO INSERT DIAGRAM OF THIS PROCESS. TAKE IT FROM ASHJAN**
+![Translation Workflow](./images/Translation-Workflow.png)
 
 ## Runtime Environment
 
