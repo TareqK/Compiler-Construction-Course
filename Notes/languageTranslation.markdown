@@ -270,8 +270,8 @@ There are several things that contribute to the readability of a language :
 - Orthogonality : Orthogonality means the symmetry of relationships
   among primitives combined to form the constructs/controls ie, the 
   language should not behave differently in different contexts. An example
-  of this  is in Pascal, the block statement in loops **must** start
-  begin and end with end like this:
+  of this  is in Pascal, the block statement in loops **must** start with
+  ```BEGIN``` and end with ```END``` like this :
   
 	```PASCAL
 	for(....)
@@ -299,9 +299,10 @@ There are several things that contribute to the readability of a language :
 	```
  
 	or in VAX(an OS for mainframe digital corporation), where
-	there is only 1 add instructuion
+	there is only 1 add instruction for all types of memory(memory locations
+	and registers) :
  
-	```VAX
+	```ASSEMBLY
 	Add op1,op2
 	```
  
