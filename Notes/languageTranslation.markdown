@@ -223,9 +223,155 @@ Programming Languages are divided into several domains
 
 1. Scientific Domain : This Domain includes all applications with 
 a computational base. Languages in this domain include FORTRAN, C, and 
-ALGOL60 .
+ALGOL60. This is where programming started originally. 
 
 2. Business Domain : This Domain includes all applications used for 
-commercial purposes. Languages in this domain include COBOL and JAVA.
+commercial purposes. Languages in this domain include COBOL(and Database
+languages) and JAVA. This came afterwards when businesses, especially 
+banks, found use for programming.
 
-3. Educational Domain 
+3. Artificial Intelligence Domain : This Domain includes languages 
+used for AI. Languages in this domain are LISP and PROLOG. 
+
+4. Systems Programming : Which is programming all aspects of the computer
+(including hardware). Languages in this domain include Machine Language, 
+Assembly Language, and C.
+
+5. Very High Level Languages : These are essentially scripting languages.
+Languages in this domain include python and bash.
+
+## Language Evaluation Criteria : Which Language is the Best?
+
+There is no "best" general programming language. However, we can say that
+a programming language is *more suitable for a certain application*. There
+are a lot of factors to consider when we want to choose a programming language.
+
+However, we can compare similar programming languages on certain benchmarks
+such as speed, space usage, ease of use, libraries available, etc.
+
+### Factors that Effect Programming Languages
+
+#### Readability 
+
+It is the most important criteria of programing languages
+(we made programming languages to be able to understand code after all).
+It is judging the language by simplicity of which programs can be read 
+and understood, ie, how hard it is to understand a segment of source code.
+There are several things that contribute to the readability of a language :
+   
+- Simplicity : a language with a large number of basic components 
+  is difficult to learn. Users generally tend to use only some of those
+  features(according to personal preferences).  An example of this 
+  is how there are many types of loops available(while, for,recursion),
+  but each person has a different affinity to them, or multiplicity
+  (x=x+1,x+=1,x++,++x), where there is more than one way to increment or decrement a variable, and a user
+  only likes to use one of them. 
+   
+- Orthogonality : Orthogonality means the symmetry of relationships
+  among primitives combined to form the constructs/controls ie, the 
+  language should not behave differently in different contexts. An example
+  of this  is in Pascal, the block statement in loops **must** start
+  begin and end with end like this:
+  
+	```PASCAL
+	for(....)
+	BEGIN
+	...
+	END
+	```
+	**except** in the ```repeat``` statement,
+	which uses 
+  
+	```PASCAL
+	REPEAT
+	...
+	UNTIL
+	```
+	or in IBM maiframe, where :
+ 
+	```ASSEMBLY
+	A Reg1,mem
+	```
+	but :
+ 
+	```ASSEMBLY
+	AR Reg1,Reg2
+	```
+ 
+	or in VAX(an OS for mainframe digital corporation), where
+	there is only 1 add instructuion
+ 
+	```VAX
+	Add op1,op2
+	```
+ 
+	In this case, VAX is said to be more **Orthogonal**.
+
+	in short: 
+
+	> The Less the Orthogonality, The More Instructions There are.
+
+	However:
+
+	> The Higher the Orthogonality, The More Problems There are to the Compiler.
+
+- Control Structures : Early Languages such as FORTRAN and COBOL had
+  a limited number of control structures(COBOL had 1 type of loop, the for loop)
+  . As such, the use of the```goto``` statement was more prevalent. This caused
+  the language to be less readable. In the 70's, block structured programming
+  languages were introduced as a solution to poor readability.
+  
+- Data Types and Structures : Sometimes, the use of a datatype can be confusing.
+  Pascal, for example, solved this issue. say we want to have a flag. In 
+  pascal, we have the ```Boolean``` type :
+  
+  ```PASCAL
+  flag:Boolean;
+  ...
+  flag:=true;
+  if flag then
+  ...
+  ```
+  However, In C, we don't have a boolean type, so if we want to define a
+  flag, we have to use the ```int``` datatype :
+  
+  ```C
+  int flag;
+  flag = 1;
+  ...
+  if(flag)
+  ...
+  ```
+  
+- Syntax Consideration :
+  - Identifier length(eg ```int```,```for```), separators.
+  - Using Keywords(eg ```BEGIN```,```END```) in compound statements.
+
+#### Writability 
+
+Writability is the ability to write programs in a certain language. It 
+is not separated from the readability issue. 
+We can say that the writability issue is the same as the readability issue.
+Generally, if a programming language is easy to read, it is easy to write
+and vice versa. The Factors which effect readability also effect writability.
+
+
+We should compare writability of the programming language in the **same domain**. COBOL is no good for
+writing a scientific programs, while ALGOL60 is. In the same way, its not
+a good idea to do AI in ALGOL60 compared, to say, PROLOG.
+
+#### Reliability
+
+Reliability is how much we "trust" a programming language. A Program is 
+said to be reliable if it performs well under all conditions. 
+
+The Reliability issue is effected by the following factors :
+
+- Type Checking : That is, to check that the operands of a certain operation
+  are of a compatible data type. 
+ 
+- Exception Handling : That is, the ability to *detect the error*,
+  *report the error*, and *recover from it*. 
+
+
+ 
