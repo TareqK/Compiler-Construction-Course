@@ -362,8 +362,8 @@ a good idea to do AI in ALGOL60 compared, to say, PROLOG.
 
 #### Reliability
 
-Reliability is how much we "trust" a programming language. A Program is 
-said to be reliable if it performs well under all conditions. 
+Reliability is how much we "trust" a programming language. A Programing language
+is said to be reliable if it performs well under all conditions. 
 
 The Reliability issue is effected by the following factors :
 
