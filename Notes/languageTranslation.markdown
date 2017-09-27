@@ -373,6 +373,40 @@ The Reliability issue is effected by the following factors :
  
 - Exception Handling : That is, the ability to *detect the error*,
   *report the error*, and *recover from it*. 
+  
+- Aliasing : That is, Having 2 or more distinct referencing methods , ie, having
+2 different names for the same memory location.
 
-
+#### Cost
  
+Cost is divided into categories :
+
+- Programmer Training. Programmer Training is a function of simplicity
+and orthogonality. 
+
+- Software Creation. Software Creation is a function of writability.
+
+- Cost of Compilation. This means how much time/processing power and space
+we need to compile the source and create an executable.
+
+- Cost of Execution. This means how much time/processing power and space
+we need to run a program. 
+
+- Cost of Compiler Development.  
+
+- Cost of Maintenance. This is also a function of readability.
+
+#### Other Factors 
+
+There are also other factors to consider when comparing languages :
+
+- Portability : The Ability to move the program and run it on a different 
+  platform. This is a huge plus.
+
+- Generality : That is, is the programming language a general purpose
+  programming language? Can we use it for everything?
+
+- Efficiency : This includes :
+  - Efficiency in Translation.
+  - Efficiency in Execution.
+  - Efficiency in Writing Programs.
