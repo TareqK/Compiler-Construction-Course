@@ -101,7 +101,7 @@ type. If the operation being performed on the variable is not compatible
 with the type of the variable, it returns that the operation is not 
 compatible( type error ).
 
-**TODO MAKE AND INSERT STATECHART FOR THIS**
+![Type Checking FLowchart](./images/type-checking-flowchart.png)
 
 ## Regular Languages(Regular Expressions)
 
