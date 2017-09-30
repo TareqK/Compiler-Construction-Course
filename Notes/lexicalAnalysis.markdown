@@ -41,9 +41,9 @@ Referencing these tokens against a certain keywords table like this one :
 index | Symbol 
 --|--
 .. | ..
-33 | While
+33 | ```While```
 .. | ..
-67 | >=
+67 | ```>=```
 .. | .. 
 .. | ..
 
