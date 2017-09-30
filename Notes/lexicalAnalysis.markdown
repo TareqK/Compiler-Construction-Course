@@ -36,7 +36,7 @@ This results in this set of tokens :
 ```While```, ```(```, ```x```, ```>=```, ```100```, ```)```,
  ```{```, ```n```, ```+=```, ```x```, ```;```, ```x```, ```++```, ```}```.
 
-Referencing this against this keywords table
+Referencing these tokens against a certain keywords table like this one :
 
 index | Symbol 
 --|--
@@ -77,11 +77,16 @@ During this process of analysis, The Compiler builds what is called the
 **Symbol Table**. The Symbol Table is a table of the name of each user
 defined name(mostly variables), its type, and its values. The Symbol table 
 for this segment of code would be:
-```
+
+```C
+....
+....
 int compute(int,int);
 int n;
 float x,y;
 const int m=10;
+....
+....
 ```
 
 Name | Type | Value |
