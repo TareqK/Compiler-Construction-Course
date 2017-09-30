@@ -92,7 +92,7 @@ const int m=10;
 ```
 
 Name | Type | Value |
---|--|--|--
+--|--|--
 compute | function-name | 0 
 n | Integer | 0
 x | float | 0
