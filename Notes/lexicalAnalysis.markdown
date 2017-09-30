@@ -51,7 +51,7 @@ Leads us to these ID's :
 
 Token | Internal Representation Number
 --|--
-While | 33
+```While``` | 33
 ```(``` | 84
 ```x``` | 100
 ```>=``` | 67
@@ -93,11 +93,11 @@ const int m=10;
 
 Name | Type | Value |
 --|--|--
-compute | function-name | 0 
-n | Integer | 0
-x | float | 0
-y | float | 0
-m | const-int | 10
+```compute``` | function-name | 0 
+```n``` | Integer | 0
+```x``` | float | 0
+```y``` | float | 0
+```m``` | const-int | 10
 
 To perform type checking, the compiler takes the name, and checks the keywords table.
 If it is not in the keywords table, it is a user defined variable. if it
