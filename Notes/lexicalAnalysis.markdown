@@ -112,6 +112,8 @@ The First thing we need to know to understand what regular languages are :
 
 > An Alphabet is a Set of Symbols. 
 
+For example, our alphabet is the set ```{a,b,...,y,z}```.
+
 The Second thing we need to know to understand what regular languages are :
 
 > A String is a Sequence of Symbols Taken From the Alphabet.
