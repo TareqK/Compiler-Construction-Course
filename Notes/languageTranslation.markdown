@@ -132,6 +132,11 @@ These similarities and differences are highlighted in the following diagram:
 
 ![Translation Workflow](./images/Translation-Workflow.png)
 
+Even though this flowchart makes it seem that these processes take place
+one after the other, these processes(lexical analysis, syntax analysis,
+semantic analysis, etc) are not done independent from each other. Today, almost 
+all compilers are [One-Pass Compilers](https://en.wikipedia.org/wiki/One-pass_compiler).
+
 ## Runtime Environment
 
 A Runtime Environment is defined as :
@@ -406,7 +411,7 @@ There are also other factors to consider when comparing languages :
 - Generality : That is, is the programming language a general purpose
   programming language? Can we use it for everything?
 
-- Efficiency : This includes :
+- Efficiency : And This includes 3 types of efficiency 
   - Efficiency in Translation.
   - Efficiency in Execution.
   - Efficiency in Writing Programs.
