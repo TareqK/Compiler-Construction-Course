@@ -79,14 +79,16 @@ defined name(mostly variables), its type, and its values. The Symbol table
 for this segment of code would be:
 
 ```C
-....
-....
+.
+.
+.
 int compute(int,int);
 int n;
 float x,y;
 const int m=10;
-....
-....
+.
+.
+.
 ```
 
 Name | Type | Value |
