@@ -134,7 +134,6 @@ abcd
 dsda
 qweaf
 asasd
-
 ```
 Are all strings defined on V. we can define **an infinite number of 
 strings on an alphabet**.
@@ -177,7 +176,6 @@ By this definition, these sets :
 L1={a, b, c}
 L2={asdasd, qwe, asd}
 L2={abb}
-
 ```
 Are *all* languages.
 
