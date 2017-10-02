@@ -215,7 +215,7 @@ Note that :
 
 2. L{&lambda;} = {&lambda;}L = L. (&lambda; is the identity for concatenation).
 
-3. L{} = {}L = {}.
+3. L{ } = { }L = { }.
 
 #### The OR "|" Operation
 OR is &cup; operation in set theory
