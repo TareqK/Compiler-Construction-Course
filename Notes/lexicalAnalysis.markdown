@@ -227,7 +227,7 @@ Note that :
 
 1. L|M = M|L. (OR on language is commutative)
 
-2. L|{} = {}|L = L. (The empty set is the identity element for the 
+2. L|{ } = { }|L = L. (The empty set is the identity element for the 
 OR operation)
 
 #### The Closure "*" Operation (A Unary Operation)
