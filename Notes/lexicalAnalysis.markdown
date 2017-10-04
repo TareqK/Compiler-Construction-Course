@@ -264,7 +264,9 @@ Given R and S are regular languages denoting the regular languages
 L<sub>R</sub> and L<sub>S</sub> respectively, then :
 
 > a. RS is a regular language denoting L<sub>R</sub>L<sub>S</sub>
+>
 > b. R|S is a regular language denoting L<sub>R</sub>|L<sub>S</sub>
+>
 > c. R\* is a regular language denoting L<sub>R</sub>\*
 
 say that R={a} and S={b}, then : 
