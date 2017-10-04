@@ -179,6 +179,7 @@ By this definition, these sets :
 > L<sub>2</sub>={asdasd, qwe, asd}
 >
 >L<sub>3</sub>={abb}
+
 Are *all* languages.
 
 This definition also leads us to the conclusion :
@@ -334,8 +335,6 @@ letters or digits. The regular language for names
 is :
 
 > Letter(Letter|digit)\* = L(L|d)*
-
-**TODO insert state chart for names**
 
 #### Values 
 
