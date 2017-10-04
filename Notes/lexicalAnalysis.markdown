@@ -129,13 +129,14 @@ Expanding on the definition above, we say that :
 > A String is a Sequence of Symbols Taken From the Alphabet.
 
 So if V is our alphabet, then :
+>abcd
+>
+>dsda
+>
+>qweaf
+>
+>asasd
 
-```
-abcd
-dsda
-qweaf
-asasd
-```
 Are all strings defined on V. we can define **an infinite number of 
 strings on an alphabet**.
 
