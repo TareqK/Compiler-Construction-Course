@@ -130,13 +130,13 @@ Expanding on the definition above, we say that :
 
 So if V is our alphabet, then :
 
-abcd
+**abcd**
 
-dsda
+**dsda**
 
-qweaf
+**qweaz**
 
-asasd
+**asasd**
 
 Are all strings defined on V. we can define **an infinite number of 
 strings on an alphabet**.
@@ -173,16 +173,16 @@ Putting all of this together, We can define a language as :
 > Given an alphabet V, a language L over V is a set of strings formed 
 > from V.
 
-By this definition, these sets :
+By this definition, these sets Are *all* languages:
 
 
-L<sub>1</sub>={a, b, c}
+**L<sub>1</sub>={a, b, c}**
 
-L<sub>2</sub>={asdasd, qwe, asd}
+**L<sub>2</sub>={asdasd, qwe, asd}**
 
-L<sub>3</sub>={abb}
+**L<sub>3</sub>={abb}**
 
-Are *all* languages.
+
 
 This definition also leads us to the conclusion :
 
@@ -206,9 +206,9 @@ Given that L, M are languages over an alphabet V, then
 
 For Example let L={a,b,c} and M={aa,bb}, then : 
 
-LM={aaa,abb,baa,bbb,caa,cbb}
+**LM={aaa,abb,baa,bbb,caa,cbb}**
 
-ML={aaa,aab,aac,bba,bbb,bbc}
+**ML={aaa,aab,aac,bba,bbb,bbc}**
 
 
 Note that :
@@ -266,32 +266,32 @@ regular languages
 > b. R|S is a regular language denoting L<sub>R</sub>|L<sub>S</sub>
 > c. R\* is a regular language denoting L<sub>R</sub>\*
 
-say that R={a} and S={b} : then 
+say that R={a} and S={b}, then : 
 
-RS={ab},
+**RS={ab},**
 
-R|S={ab},
+**R|S={ab},**
 
-R*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....
+**R\*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....**
 
-  = {&lambda;,a,aa,aaa,....}
+  **= {&lambda;,a,aa,aaa,....}**
 
-  = A string that consists of any number of a's
+  **= A string that consists of any number of a's**
 
 Lets say we took RS* then
 
-RS* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....
+**RS* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....**
 
- = {&lambda;,a,b,ab,aa,bb,ab,ba,aab,bba....}
+ **= {&lambda;,a,b,ab,aa,bb,ab,ba,aab,bba....}**
 
- = A string that consists of any number of a's and b's
+ **= A string that consists of any number of a's and b's**
  
 
 Lets say we took  (a|b)\* , then : 
 
-(a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\*
+**(a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\***
 
-= ({a,b})\* = A string of a's and b's
+**= ({a,b})\* = A string of a's and b's**
 
 Lets say we took (0|1)\*00, then By the definitions above,  this results in  any binary
 string followed by 00, such as {100,000,1100,0000,...} 
