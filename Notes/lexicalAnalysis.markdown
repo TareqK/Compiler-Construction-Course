@@ -328,7 +328,7 @@ they can all be defined using a regular language
 by a set of digits. the regular language for them is
 > [+|-]digit(digit)\* = [+|-]dd\* = [+|-]d<sup>+</sup>
 
-	Note : [x] means we take x zero or one time **only**
+   Note : [x] means we take x zero or one time **only**
 	
 2. Floating Point Numbers :
 
