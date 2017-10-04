@@ -129,13 +129,14 @@ Expanding on the definition above, we say that :
 > A String is a Sequence of Symbols Taken From the Alphabet.
 
 So if V is our alphabet, then :
->abcd
->
->dsda
->
->qweaf
->
->asasd
+
+abcd
+
+dsda
+
+qweaf
+
+asasd
 
 Are all strings defined on V. we can define **an infinite number of 
 strings on an alphabet**.
@@ -175,11 +176,11 @@ Putting all of this together, We can define a language as :
 By this definition, these sets :
 
 
-> L<sub>1</sub>={a, b, c}
->
-> L<sub>2</sub>={asdasd, qwe, asd}
->
->L<sub>3</sub>={abb}
+L<sub>1</sub>={a, b, c}
+
+L<sub>2</sub>={asdasd, qwe, asd}
+
+L<sub>3</sub>={abb}
 
 Are *all* languages.
 
@@ -190,11 +191,9 @@ This definition also leads us to the conclusion :
 ### Set Operations On Languages 
 Given an Alphabet V, assume that :
 
-> L = {set of all languages defined on V}
+1 .L = {set of all languages defined on V}
 
-also :
-
-> L = {L1, L2, L3,....Ln}
+2. L = {L1, L2, L3,....Ln}
 
 We will define a 3 operations on L , ie, the operands are languages
 belonging to L. 
@@ -202,18 +201,14 @@ belonging to L.
 #### Concatenation Operation 
 
 Given that L, M are languages over an alphabet V, then
+
 > LM = "L concatenated with M" = {xy | x &isin; l, y &isin; m}. 
 
-For Example, 
+For Example let L={a,b,c} and M={aa,bb}, then : 
 
+LM={aaa,abb,baa,bbb,caa,cbb}
 
->L={a,b,c}
->
->M={aa,bb}
->
->LM={aaa,abb,baa,bbb,caa,cbb}
->
->ML={aaa,aab,aac,bba,bbb,bbc}
+ML={aaa,aab,aac,bba,bbb,bbc}
 
 
 Note that :
@@ -264,62 +259,46 @@ Given an alphabet V then :
 lets say that V  = {a, b, c}, then according to 1, 2, 3, 
 **&empty;**={  },**&lambda;**={&lambda;},**a**={a},**b**={b},**c**={c}, are all 
 regular languages
->Given **R** and **S** are regular languages denoting the regular languages
+> Given **R** and **S** are regular languages denoting the regular languages
 > L<sub>R</sub> and L<sub>S</sub> respectively, then 
 >
 > a. RS is a regular language denoting L<sub>R</sub>L<sub>S</sub>
 > b. R|S is a regular language denoting L<sub>R</sub>|L<sub>S</sub>
 > c. R\* is a regular language denoting L<sub>R</sub>\*
 
-say that 
+say that R={a} and S={b} : then 
 
->R={a} and S={b}, 
+RS={ab},
 
-then 
+R|S={ab},
 
-> RS={ab},
->
-> R|S={ab},
->
-> R*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....
->
-> = {&lambda;,a,aa,aaa,....}
->
-> = A string that consists of any number of a's
+R*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....
 
-Lets say we took 
-> RS*
-then
+  = {&lambda;,a,aa,aaa,....}
 
-> RS* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....
->
-> = {&lambda;,a,b,ab,aa,bb,ab,ba,aab,bba....}
->
-> = A string that consists of any number of a's and b's
-> 
+  = A string that consists of any number of a's
 
-Lets say we took 
->(a|b)\*
+Lets say we took RS* then
 
-then 
+RS* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....
 
-> (a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\*
->
-> = ({a,b})\* = A string of a's and b's
+ = {&lambda;,a,b,ab,aa,bb,ab,ba,aab,bba....}
 
-Lets say we took (0|1)\*00. 
-> By the definitions above,  this results in  any binary
-> string followed by 00, such as {100,000,1100,0000,...} 
+ = A string that consists of any number of a's and b's
+ 
 
-Lets say we took
+Lets say we took  (a|b)\* , then : 
 
->(a|b)\*bbb(a|b)\*
+(a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\*
 
-then
+= ({a,b})\* = A string of a's and b's
 
-> By the definitions above, this results in any string of
-> a's and b's that contains at least 3 b's such as
-> {bbb,abbb,bbba,bbbbb,...}
+Lets say we took (0|1)\*00, then By the definitions above,  this results in  any binary
+string followed by 00, such as {100,000,1100,0000,...} 
+
+Lets say we took (a|b)\*bbb(a|b)\*, then By the definitions above, this results in any string of
+a's and b's that contains at least 3 b's such as
+{bbb,abbb,bbba,bbbbb,...}
 
 ### Defining Tokens using Regular Languages
 
