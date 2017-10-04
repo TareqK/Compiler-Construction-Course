@@ -110,10 +110,11 @@ compatible( type error ).
 
 ![Type Checking Flowchart](./images/type-checking-flowchart.png)
 
-## Regular Languages(Regular Expressions)
+## Regular Languages(Regular Expressions) in Lexical Analysis
 
 Regular Languages are a class of language that are important 
-for lexical analysis.
+for lexical analysis, since we use them to 
+define and generate tokens. This Class of languages is defined recursively.
 
 ### Defining a Language as a Set
 
@@ -172,11 +173,12 @@ Putting all of this together, We can define a language as :
 
 By this definition, these sets :
 
-```
-L1={a, b, c}
-L2={asdasd, qwe, asd}
-L2={abb}
-```
+
+> L<sub>1</sub>={a, b, c}
+>
+> L<sub>2</sub>={asdasd, qwe, asd}
+>
+>L<sub>3</sub>={abb}
 Are *all* languages.
 
 This definition also leads us to the conclusion :
@@ -202,12 +204,15 @@ Given that L, M are languages over an alphabet V, then
 
 For Example, 
 
-```
-L={a,b,c}
-M={aa,bb}
-LM={aaa,abb,baa,bbb,caa,cbb}
-ML={aaa,aab,aac,bba,bbb,bbc}
-```
+
+>L={a,b,c}
+>
+>M={aa,bb}
+>
+>LM={aaa,abb,baa,bbb,caa,cbb}
+>
+>ML={aaa,aab,aac,bba,bbb,bbc}
+
 
 Note that :
  
@@ -215,7 +220,7 @@ Note that :
 
 2. L{&lambda;} = {&lambda;}L = L. (&lambda; is the identity for concatenation).
 
-3. L{ } = { }L = { }.
+3. L{  } = {  }L = {  }.
 
 #### The OR "|" Operation
 OR is &cup; operation in set theory
@@ -227,7 +232,7 @@ Note that :
 
 1. L|M = M|L. (OR on language is commutative)
 
-2. L|{ } = { }|L = L. (The empty set is the identity element for the 
+2. L|{  } = {  }|L = L. (The empty set is the identity element for the 
 OR operation)
 
 #### The Closure "*" Operation (A Unary Operation)
@@ -235,11 +240,146 @@ OR operation)
 The Closure Operation is the "NOT" Operation in Logic.
 
 Given that L is a language over an alphabet V then L* is: 
-> L* = L^0 &cup; L^1 &cup; L^2 &cup; ..... &cup; L&infin;
+> L\* = L^0 &cup; L<sup>1</sup> &cup; L<sup>2</sup> &cup; ..... &cup; L<sup>&infin;</sup>
 
-L+ is given by
+L<sup>+</sup> is given by
 
-> L+ = L* - {&lambda;}
+> L<sup>+</sup> = L\* - {&lambda;}
 
+### The Recursive Definition of Regular Languages
 
+Given an alphabet V then :
 
+> 1. **&empty;** = {  } = empty language is a regular language denoting 
+> the language {  }
+>
+> 2. **&lambda;** = {&lambda;} is a regular language denoting the 
+> language &lambda;
+>
+> 3. For every element a &isin; V , **a**= {a} is a regular language 
+> denoting the language {a}
+
+lets say that V  = {a, b, c}, then according to 1, 2, 3, 
+**&empty;**={  },**&lambda;**={&lambda;},**a**={a},**b**={b},**c**={c}, are all 
+regular languages
+>Given **R** and **S** are regular languages denoting the regular languages
+> L<sub>R</sub> and L<sub>S</sub> respectively, then 
+>
+> a. RS is a regular language denoting L<sub>R</sub>L<sub>S</sub>
+> b. R|S is a regular language denoting L<sub>R</sub>|L<sub>S</sub>
+> c. R\* is a regular language denoting L<sub>R</sub>\*
+
+say that 
+
+>R={a} and S={b}, 
+
+then 
+
+> RS={ab},
+>
+> R|S={ab},
+>
+> R*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....
+>
+> = {&lambda;,a,aa,aaa,....}
+>
+> = A string that consists of any number of a's
+
+Lets say we took 
+> RS*
+then
+
+> RS* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....
+>
+> = {&lambda;,a,b,ab,aa,bb,ab,ba,aab,bba....}
+>
+> = A string that consists of any number of a's and b's
+> 
+
+Lets say we took 
+>(a|b)\*
+
+then 
+
+> (a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\*
+>
+> = ({a,b})\* = A string of a's and b's
+
+Lets say we took (0|1)\*00. 
+> By the definitions above,  this results in  any binary
+> string followed by 00, such as {100,000,1100,0000,...} 
+
+Lets say we took
+
+>(a|b)\*bbb(a|b)\*
+
+then
+
+> By the definitions above, this results in any string of
+> a's and b's that contains at least 3 b's such as
+> {bbb,abbb,bbba,bbbbb,...}
+
+### Defining Tokens using Regular Languages
+
+Remember that we have 3 types of tokens:
+1. Names
+2. Values
+3. Special Symbols
+
+The scanner must recognize these and be able to distinguish them.
+
+#### Names 
+In programming languages, names are letters followed by 
+letters or digits. The regular language for names 
+is :
+
+> Letter(Letter|digit)\* = L(L|d)*
+
+**TODO insert state chart for names**
+
+#### Values 
+
+In programming languages, there are multiple types of values, and 
+they can all be defined using a regular language
+
+1. Integers : Integers consist of a + or - followed by a digit followed
+by a set of digits. the regular language for them is
+> [+|-]digit(digit)\* = [+|-]dd\* = [+|-]d<sup>+</sup>
+
+	Note : [x] means we take x zero or one time **only**
+	
+2. Floating Point Numbers :
+
+   a. Fixed Floating Point : Fixed Floating Point Numbers consist of a+ or more followed by 1 or more digits
+    followed by a . followed by 1 or more digits. They are given by the regular
+    language :
+	> [+|-]d<sup>+</sup>.d<sup>+</sup>
+	
+   b. Exponential Notation : Exponential Floating Point Numbers consist 
+   of a + or - followed by 1 or more digits followed by a . followed by
+   one or more digits followed by an E followed by a + or - followed  by 
+   1 or more digits. They are given by the regular language :
+   >  [+|-]d<sup>+</sup>.d<sup>+</sup>E[+|-]d<sup>+</sup>
+
+#### Special Symbols
+
+The Set of special symbols {\+,-,<=,....} are each given 
+by its own regular languages. For example, the symbol
+\+ has its own regular languages given by :
+
+> \+ = {+}
+
+or the \* symbol is given by 
+
+> \* = {\*}
+
+or the <= symbol is given by
+
+> <= = {<}{=} = {<=}
+
+or \+\+ , which is given by 
+
+> ++ = {+}{+} = {++}
+
+The Question remains: How do we build an algorithm to recognize(accept)strings
+whose languages are regular languages?   
