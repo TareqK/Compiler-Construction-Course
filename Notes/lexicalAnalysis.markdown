@@ -283,7 +283,7 @@ say that R={a} and S={b}, then :
 
 Lets say we took RS* then
 
-**RS* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....**
+**RS\* = {a,b}<sup>0</sup > &cup;{a,b}<sup>1</sup> &cup;.....**
 
  **= {&lambda;,a,b,ab,aa,bb,ab,ba,aab,bba....}**
 
