@@ -196,9 +196,7 @@ Automated Theorem Proving, also known as ATP or automated deduction, is a sub
 A Prolog technology theorem prover (PTTP) is an extension of Prolog that is complete for the full first-order predicate calculus. It differs from Prolog in its use of unification with the occurs check for soundness, the model-elimination reduction rule that is added to Prolog inferences to make the inference system complete, and depth-first iterative-deepening search instead of unbounded depth-first search to make the search strategy complete. A Prolog technology theorem prover has been implemented by an extended Prolog-to-LISP compiler that supports these additional features. It is capable of proving theorems in the full first-order predicate calculus at a rate of thousands of inferences per second.
 
 \subsection{Expert Systems}
- 
 In Artificial Intelligence, an expert system is a computer system that emulates the decision-making ability of a human expert. Expert systems are designed to solve complex problems by reasoning about knowledge, represented mainly as if–then rules rather than through conventional procedural code. 
-
 Features useful for expert systems:
 \begin{itemize}
 \item Inputs and updates   
@@ -206,8 +204,8 @@ During a query evaluation data can be input from a user, and assertions
 and rules can be added to the program, using special primitive 
 relations. The evaluation of read(x) will cause x to be bound to the next term typed at the input terminal. The evaluation of assert(x) will cause the term which is the current binding of x to be added as a new rule. Thus, the rule :
 \begin{verbatim}
-	Ask-about(c) if print (c, "?") \& read (ans)
-		      \& ans = Yes \& assert (c),
+	Ask-about(c) if print (c, "?") & read (ans)
+		      & ans = Yes & assert (c),
 \end{verbatim}
 used to try to answer the query :
 \begin{verbatim}
@@ -221,12 +219,11 @@ read the next term, and if it is the constant Yes it will add :
 \begin{verbatim}
 	Dirt is-fault-with Carburettor
 \end{verbatim}
- as a new assertion about the is-fault-with relation. Where this assertion is added is important. It can be added at the beginning of the list of clauses for the relation, or the end, or at some intermediate position. In this situation we would like it added at the beginning. Where it is added is an option that can be specified by the programmer. We shall not go into the details of this. 
-
+as a new assertion about the is-fault-with relation. Where this assertion is added is important. It can be added at the beginning of the list of clauses for the relation, or the end, or at some intermediate position. In this situation we would like it added at the beginning. Where it is added is an option that can be specified by the programmer. We shall not go into the details of this. 
 \item Dynamic data base 
 The rule :
 \begin{verbatim}
-	u my is-fault-with x if y is-part-of x \& u is-fault-with y 
+	u my is-fault-with x if y is-part-of x & u is-fault-with y 
 \end{verbatim}
 must access assertions giving components and assertions about faults with components. We can use the Ask-about rule to allow the assertions about faults to be added dynamically as we try to solve the problem of finding a fault. 
 
@@ -234,7 +231,7 @@ Instead of assertions about known faults with components we include in
 the initial data base only assertions about possible faults, knowledge 
 that expert should have. We then include the rule :
 \begin{verbatim}
-	 u is-a-fault-with y if u is-a-poss-fault-with y \& Ask-about (u is-a-fault-with y) 
+	 u is-a-fault-with y if u is-a-poss-fault-with y & Ask-about (u is-a-fault-with y) 
 \end{verbatim}
 Let us pause for a moment to consider the behaviour of our fault finder. When asked to find a fault with some device with a query
 \begin{verbatim}
@@ -246,27 +243,27 @@ the use of the first rule for faults will cause the fault finder to walk over th
 Sometimes it is useful to record the successful evaluation of an atomic 
 query B by adding its derived substitution instance as a new assertion. Thus, suppose we have a rule :
 \begin{verbatim}
-	R(tL.. ,tn) if Al\& . .\&Ak 
+	R(tL.. ,tn) if Al& . .&Ak 
 \end{verbatim}
 and we want to generate a lemma each time it is successfully used to 
 answer a query R(t' 1, , en). We add an extra assert condition at the 
 end of the list of preconditions of the rule :
 \begin{verbatim}
-	R (tl, . . ,tn) if Al\& . .\&Ak \& assert (R(tl, . . , tn))
+	R (tl, . . ,tn) if Al& . .&Ak & assert (R(tl, . . , tn))
 \end{verbatim}
 If this solves the atomic query with answer substitution s then [R , en* will be added as new assertion. It will be added at the front of the sequence of clauses for R.
 
 By adding asserts we can also simulate the use of rules with 
 conjunctive consequences. Suppose that we know that both B and B' are implied by the conjunction Al\& . . \&An. Normally we would just include the two rules : 
 \begin{verbatim}
-	B if Al\& . .\&An
-	B' if Al\& . . \&An 
+	B if Al& . .&An
+	B' if Al& . . &An 
 \end{verbatim}
 in the program. The drawback is that we need to solve Al\&..\&An twice in 
 derivations where both B and B' are needed. We can avoid the duplication by writing the two rules as :
 \begin{verbatim}
-	B if Al\& ..\&An\&assert(B') 
-	B' if Al\& . . \&An \&assert (B) 
+	B if Al& ..&An&assert(B') 
+	B' if Al& . . &An &assert (B) 
 \end{verbatim}
 The successful use of either rule will add the other consequent as a lemma. 
 
@@ -276,7 +273,7 @@ By developing a suitable front end to PROLOG we can shield the programmer from t
 
 Sometimes we want to find all the answers to a query, not just one answer. This is an option in some of the PROLOGs. Where it is not we can make use of a meta-rule such as 
 \begin{verbatim}
-	All (query, term) if query \& print (term) \& fail.
+	All (query, term) if query & print (term) & fail.
 \end{verbatim}
 This will print out [term]s for each answer substitution s to query. 
 The "fail" is a condition for which we assume there are no clauses. 
@@ -293,8 +290,8 @@ The use of this rule will result in 1 being bound to a list of all the
 faults with x. We can now consider a very simple extension to our fault 
 finder. Instead of asking for a single fault we can ask for a list of all the reported faults with corrective actions. We do this with a query of the form : 
 \begin{verbatim}
- is-all [u a] such-that 
-	u is-fault-with D \&a is-action-for u. 
+	is-all [u a] such-that 
+		u is-fault-with D &a is-action-for u. 
 \end{verbatim}
 
 To handle this query we must also include in our database a set of assertions giving actions for faults, information supplied by the expert. An evaluation of this new query will guide the user through the structure of device D, asking about faults in components. Each reported fault will be paired with its corrective action. Finally the list of pairs [reported-fault corrective-action] will be printed.
@@ -309,7 +306,8 @@ Type inference refers to the automatic deduction of the data type of an expre
 
 \subsection{Automated Planning and scheduling}
 
-Automated planning and scheduling, sometimes denoted as simply AI Planning,[1] is a branch of artificial intelligence that concerns the realization of strategies or action sequences, typically for execution by intelligent agents, autonomous robots and unmanned vehicles. Unlike classical control and classification problems, the solutions are complex and must be discovered and optimized in multidimensional space. Planning is also related to decision theory.
+Automated planning and scheduling, sometimes denoted as simply AI 
+Planning, is a branch of artificial intelligence that concerns the realization of strategies or action sequences, typically for execution by intelligent agents, autonomous robots and unmanned vehicles. Unlike classical control and classification problems, the solutions are complex and must be discovered and optimized in multidimensional space. Planning is also related to decision theory.
 
 
 \subsection{Natural language processing}
