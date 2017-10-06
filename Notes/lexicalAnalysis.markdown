@@ -191,7 +191,7 @@ This definition also leads us to the conclusion :
 ### Set Operations On Languages 
 Given an Alphabet V, assume that :
 
-1 .L = {set of all languages defined on V}
+1. L = {set of all languages defined on V}
 
 2. L = {L1, L2, L3,....Ln}
 
@@ -328,7 +328,7 @@ they can all be defined using a regular language
 by a set of digits. the regular language for them is
 > [+|-]digit(digit)\* = [+|-]dd\* = [+|-]d<sup>+</sup>
 
-   Note : [x] means we take x zero or one time **only**
+   Note : [x] means we take x zero or one time **only**.
 	
 2. Floating Point Numbers :
 
