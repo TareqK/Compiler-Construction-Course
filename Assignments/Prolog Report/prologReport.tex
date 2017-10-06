@@ -44,7 +44,146 @@ To this day Prolog has grown in use throughout North America and Europe. Prolog 
 
 Prolog became even more pervasive when Borland's Turbo Prolog was released in the 1980's. The language has continued to develop and be used by many scientists and industry experts. Now there is even and ISO Prolog standardisation (1995) where all of its individual parts have been defined to ensure that the core of the language remains fixed. 
 \newpage 
-\section{Uses of Prolog}
+\section{Language Syntax and Sematics}
+\subsection{Data Types}
+Prolog's single data type is the term. Terms are either atoms, numbers, variables or compound terms.
+\begin{itemize}
+\item An atom is a general-purpose name with no inherent meaning. Examples of atoms include x, red, 'Taco', and 'some atom'.
+
+\item Numbers can be floats or integers. ISO standard compatible Prolog systems can check the Prolog flag "bounded". Most of the major Prolog systems support arbitrary precision integer numbers.
+
+\item Variables are denoted by a string consisting of letters, numbers and underscore characters, and beginning with an upper-case letter or underscore. Variables closely resemble variables in logic in that they are placeholders for arbitrary terms.
+
+\item A compound term is composed of an atom called a "functor" and a 
+number of "arguments", which are again terms. Compound terms are 
+ordinarily written as a functor followed by a comma-separated list of 
+argument terms, which is contained in parentheses. The number of arguments is called the term's arity. An atom can be regarded as a compound term with arity zero. Examples of compound terms are truck\_year 
+\begin{verbatim}('Mazda', 1986)\end{verbatim} and 
+'Person\_Friends' \begin{verbatim}(zelda,[tom,jim]).\end{verbatim}
+Special cases of compound terms:
+\begin{itemize}
+\item Lists: A List is an ordered collection of terms. It is denoted by square brackets with the terms separated by commas or in the case of the empty list, []. For example, [1,2,3] or [red,green,blue].
+
+\item Strings: A sequence of characters surrounded by quotes is equivalent to a list of (numeric) character codes, generally in the local character encoding, or Unicode if the system supports Unicode. For example, "to be, or not to be".
+\end{itemize}
+\end{itemize}
+\subsection{Rules and Facts}
+Prolog programs describe relations, defined by means of clauses. Pure Prolog is restricted to Horn clauses. There are two types of clauses: facts and rules. A rule is of the form
+\begin{verbatim}Head :- Body.\end{verbatim}
+and is read as "Head is true if Body is true". A rule's body consists 
+of calls to predicates, which are called the rule's goals. The built-in predicate ,/2 (meaning a 2-arity operator with name ,) denotes conjunction of goals, and ;/2 denotes disjunction. Conjunctions and disjunctions can only appear in the body, not in the head of a rule.
+
+\newpage
+\section{Examples}
+\subsection{Simple Facts in a Knowledge Base}
+Lets say we have this knowledge base:
+\begin{verbatim}
+	woman(mia).
+	woman(jody).
+	woman(yolanda).
+	playsAirGuitar(jody).
+	party.
+\end{verbatim}
+by posing the query :
+\begin{verbatim}
+	woman(mia).
+\end{verbatim}
+we will get
+\begin{verbatim}	yes\end{verbatim}
+This is because we 
+explicitly recorded in the knowldege base above. Similarly, if we 
+pose this query :
+\begin{verbatim}
+	playsAirGuitar(jody).
+\end{verbatim} 
+we will, again, get
+\begin{verbatim}	yes\end{verbatim}
+Because once more, this is a fact we stated in the knowledge base we are 
+querying.
+Say we pose this query :
+\begin{verbatim}
+	tatooed(jody).
+\end{verbatim}
+We will get the answer
+\begin{verbatim}	no\end{verbatim}
+This is 
+because we do not have this statement in our knowledge base, so Prolog
+will return no, since it doesn't know if it is true or not.
+\newpage 
+\subsection{Simple Rules in a Knowledge Base}
+Say we have this Knowledge Base :
+\begin{verbatim}
+	happy(yolanda).
+	listens2Music(mia).
+	listens2Music(yolanda):- happy(yolanda).
+	playsAirGuitar(mia):- listens2Music(mia).
+	playsAirGuitar(yolanda):- listens2Music(yolanda).
+\end{verbatim}
+The First 2 statements are facts, the last 3 statements are 
+rules. Suppose we pose this query :
+\begin{verbatim}
+	playsAirGuitar(mia).
+\end{verbatim}
+Prolog will respond yes. Why? Well, although it can’t find 
+playsAirGuitar(mia) as a fact explicitly recorded in KB2, 
+it can find the rule
+\begin{verbatim}
+playsAirGuitar(mia):- listens2Music(mia).
+\end{verbatim}
+Moreover, KB2 also contains the fact listens2Music(mia) . Hence Prolog can  deduce that playsAirGuitar(mia) . 
+lets pose this query :
+\begin{verbatim}
+	playsAirGuitar(yolanda).
+\end{verbatim}
+Prolog would respond yes. Why? Well, first of all, by using the fact happy(yolanda) and the rule
+\begin{verbatim}
+listens2Music(yolanda):- happy(yolanda).
+\end{verbatim}
+Prolog can deduce the new fact listens2Music(yolanda) . This new fact is not explicitly recorded in the knowledge base — it is only implicitly present (it is inferred knowledge). Nonetheless, Prolog can then use it just like an explicitly recorded fact. In particular, from this inferred fact and the rule
+\begin{verbatim}
+playsAirGuitar(yolanda):- listens2Music(yolanda).
+\end{verbatim}
+it can deduce playsAirGuitar(yolanda) , which is what we asked it. Summing up: any fact produced by an application of modus ponens can be used as input to further rules. By chaining together applications of modus ponens in this way, Prolog is able to retrieve information that logically follows from the rules and facts recorded in the knowledge base.
+\newpage 
+\subsection{Defining a Concept with a Knowledge Base}
+Say we have this knowledge base :
+\begin{verbatim}
+	loves(vincent,mia).
+	loves(marsellus,mia).
+	loves(pumpkin,honey_bunny).
+	loves(honey_bunny,pumpkin).
+
+	jealous(X,Y):- loves(X,Z), loves(Y,Z).
+\end{verbatim}
+In effect, it is defining a concept of jealousy. It says that an 
+individual X will be jealous of an individual Y if there is some 
+individual Z that X loves, and Y loves that same individual Z too. The 
+key thing to note is that this is a general statement: it is not stated 
+in terms of mia , or pumpkin , or anyone in particular — it’s a 
+conditional statement about everybody in our little world. Lets pose 
+this query :
+\begin{verbatim}
+	jealous(marsellus,W).
+\end{verbatim}
+This query asks: can you find an individual W such that Marsellus is 
+jealous of W ? Vincent is such an individual. If you check the definition of jealousy, you’ll see that Marsellus must be jealous of Vincent, because they both love the same woman, namely Mia. So Prolog will return the value :
+\begin{verbatim}
+	W = vincent
+\end{verbatim}
+\newpage 
+\subsection{Recursive Definitions in a Knowledge Base}
+Say we have this definition in a knowledge base :
+\begin{verbatim}
+	gcd(u,v,u) :- v = 0.
+		gcd(u,v,x) :- v > 0,
+		y is u mod v,
+		gcd(v,y,x).
+\end{verbatim}
+What this effectively does is express, using first order logic, the 
+states we go through in order to find the greatest common divisor 
+for a number recursively. 
+\newpage
+\section{Modern Uses of Prolog}
 \subsection{Artificial intelligence}
 
 Artificial intelligence is the branch of computer science concerned with making computers behave like humans. Prolog is a programming language centred around a small set of basic mechanisms, including pattern matching, tree-based data structuring and automatic backtracking. This small set constitutes a surprisingly powerful and flexible programming framework. Prolog is especially well suited for problems that involve objects - in particular, structured objects - and relations between them. Features like this make Prolog a powerful language for artificial intelligence (AI) and non-numerical programming in general.
@@ -179,7 +318,8 @@ Automated planning and scheduling, sometimes denoted as simply AI Planning,[1]�
 Natural language processing (NLP) is a field of computer science, artificial intelligence and computational linguistics concerned with the interactions between computers and human (natural) languages, and, in particular, concerned with programming computers to fruitfully process large natural language corpora.
 
 \end{itemize}
-\newpage
+\newpage 
+
 \section{References} 
 \begin{verbatim}
 	
@@ -193,7 +333,8 @@ https://calhoun.nps.edu/bitstream/handle/10945/36984/Rowe_book_AI_thr_Prolog_pre
 https://en.wikipedia.org/wiki/Expert_system
 https://en.wikipedia.org/wiki/Natural_language_processing 
 https://en.wikipedia.org/wiki/Automated_planning_and_scheduling 
-https://en.wikipedia.org/wiki/Type_inference https://pdfs.semanticscholar.org/1dba/24320c41fa5eae94c51fd971085bc8176dd7.pdf 
-
+https://en.wikipedia.org/wiki/Type_inference https://pdfs.semanticscholar.org/1dba/24320c41fa5eae94c51fd971085bc8176dd7.pdfhttps://en.wikipedia.org/wiki/Prolog
+lpn.swi-prolog.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse1
+https://github.com/TareqK/Compiler-Construction-Course/blob/master/Notes/introduction.markdown
 \end{verbatim}
 \end{document}
