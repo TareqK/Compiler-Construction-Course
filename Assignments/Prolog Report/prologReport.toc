@@ -13,4 +13,5 @@
 \contentsline {subsection}{\numberline {4.3}Expert Systems}{8}
 \contentsline {subsection}{\numberline {4.4}Automated Planning and scheduling}{10}
 \contentsline {subsection}{\numberline {4.5}Natural language processing}{11}
-\contentsline {section}{\numberline {5}References}{12}
+\contentsline {section}{\numberline {5}Conclusion}{12}
+\contentsline {section}{\numberline {6}References}{13}
