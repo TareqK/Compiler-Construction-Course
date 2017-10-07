@@ -303,7 +303,7 @@ Lets say we took (a|b)\*bbb(a|b)\*, then By the definitions above, this results 
 a's and b's that contains at least 3 b's such as
 {bbb,abbb,bbba,bbbbb,...}
 
-### Defining Tokens using Regular Languages
+### Defining Tokens Using Regular Languages
 
 Remember that we have 3 types of tokens:
 1. Names
@@ -363,5 +363,44 @@ or \+\+ , which is given by
 
 > ++ = {+}{+} = {++}
 
-The Question remains: How do we build an algorithm to recognize(accept)strings
-whose languages are regular languages?   
+The Question remains: How do we build an algorithm to recognize(accept)
+strings whose languages are regular languages?   
+
+### Finite State Automata
+
+As Stated above, Tokens in source codes are strings of regular 
+languages. The algorithm that recognises these strings is called the
+**Finite State Automata** or the **Finite State Machine** or the 
+**Finite State System**. The Finite State Automata contains :
+
+a. A Set of states.
+b. Transitions between states.
+c. Input string to be examined.
+
+Given that we have this Finite State Automata(FSA) :
+
+**TODO INSERT DRAWING FROM ASHJAN**
+
+
+- The set of states Q={S,A,B,G,H}
+  - S is called the **Starting State**.
+  - H is called the **Final State**.
+- The transitions between the states are given by{\+, \-, d, .}
+- Lets Say that the input string is "-ddd.dd" eg "-511.32".
+
+Tracking through the states on this string, we start at state S :
+
+```
+  -    d    d    d    .    d    d
+S--->A--->B--->B--->B--->H--->H--->H
+
+```
+
+Since H is the final state, we say that the **string is accepted**, or 
+more formally. A string is accepted or recognized if after scanning the string we 
+end up with a final state.
+
+The Regular Language(expression) generated(accepted) by this machine
+L(M) is given by :
+
+<L(M)=[\+|\-]{d<sup>+</sup>., .d<sup>+</sup>, d<sup>+</sup>.d<sup>+</sup>}
