@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}History}{3}
-\contentsline {section}{\numberline {2}Language Syntax and Sematics}{4}
+\contentsline {section}{\numberline {2}Language Syntax and Semantics}{4}
 \contentsline {subsection}{\numberline {2.1}Data Types}{4}
 \contentsline {subsection}{\numberline {2.2}Rules and Facts}{4}
 \contentsline {section}{\numberline {3}Examples}{5}
