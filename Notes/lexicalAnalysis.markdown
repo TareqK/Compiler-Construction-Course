@@ -366,16 +366,16 @@ or \+\+ , which is given by
 The Question remains: How do we build an algorithm to recognize(accept)
 strings whose languages are regular languages?   
 
-### Finite State Automata
+### Finite State Automata(FSA)
 
-As Stated above, Tokens in source codes are strings of regular 
+Tokens in source codes are strings of regular 
 languages. The algorithm that recognises these strings is called the
 **Finite State Automata** or the **Finite State Machine** or the 
 **Finite State System**. The Finite State Automata contains :
 
-a. A Set of states.
-b. Transitions between states.
-c. Input string to be examined.
+1. A Set of states.
+2. Transitions between states.
+3. Input string to be examined.
 
 Given that we have this Finite State Automata(FSA) :
 
@@ -403,4 +403,75 @@ end up with a final state.
 The Regular Language(expression) generated(accepted) by this machine
 L(M) is given by :
 
-<L(M)=[\+|\-]{d<sup>+</sup>., .d<sup>+</sup>, d<sup>+</sup>.d<sup>+</sup>}
+> L(M)=[\+|\-]{d<sup>+</sup>., .d<sup>+</sup>, d<sup>+</sup>.d<sup>+</sup>}
+
+Other examples of finite state machines are :
+
+1. Names **INSERT HERE**
+
+2. Integers **INSERT HERE**
+
+3. Greater Or Equal **INSERT HERE**
+
+#### Types of Finite State Automata 
+
+there are 2 types of Finite State Automata
+
+##### Deterministic Finite State Automata 
+
+If A Machine is not non-deterministic, we call it a Deterministic Finite
+State Automata ie :
+
+1. There are **NO** &lambda;-states.
+
+2. **AND** There is **NO** more than one transition from the same state
+on the same input.
+
+Only Deterministic Finite State Automata are used for compilers.
+
+
+##### Non-Deterministic Finite State Automata
+
+An algorithm is non-deterministic or fuzzy if there are 
+options in the algorithm. An example of a non-deterministic algorithm
+is the solution of the 
+[Knight Tour Problem](https://en.wikipedia.org/wiki/Knight%27s_tour),
+which is based on [Backtracking Techniques](https://en.wikipedia.org/wiki/Backtracking).
+
+
+A Finite State Automate is non-deterministic if :
+
+1. There are &lambda;-transitions(moves) in the FSA :
+	
+	**INSERT LAMBDA DRAWINGS**
+
+	Notice here how we can move from A to D or from A to C if we have a d.
+	There is now a choice that must be taken, and there is no way beforehand
+	to know the right path.
+
+2. **Or** There is more than one transition from the same state on the same 
+input : 
+   
+   **INSERT SAME STATE DRAWING**
+   
+   Notice That if we do arrive at an a, we can go both to B and C, and
+   once more, there is now way before hand to know the right path.
+   
+In Both cases, There is a choice(trial and error) to make. The only 
+way to solve non-deterministic machines unless we use backtracking. 
+This wont do in a compiler, because backtracking is a very compute-heavy
+resource and is extremely slow. 
+
+Fortunately, There are algorithms to transform any NDFSA to 
+a DFSA. Therefore, we can assume always in the assumption that 
+our machine is deterministic  
+
+#### Transformation of NDFSA to DFSA
+
+The Algorithm that transforms an NDFSA to a DFSA consists of the following
+steps :
+
+1. Removal of &lambda; transitions. 
+2. Removal of non-determinism.
+3. Removal of inaccessible states. 
+4. Merging equivalent states.
