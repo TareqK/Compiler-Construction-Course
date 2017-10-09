@@ -502,7 +502,7 @@ And we want to transform it into a DFSA. Lets follow through the steps :
 
 Lets Break down the Finite state machine into a transition diagram
 
-**State**<sup>V<sub>T</sub></sup> \| \+| \-| . | d |&lambda;
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d |&lambda;
 --- | --- | --- | --- | --- | ---
 S    | A | A |   |   | A
 A    |   |   |   | B,C | E
@@ -529,7 +529,7 @@ State. Mark it as the final State
 
 This results in this table 
 
-**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d  
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d 
 --- | --- | --- | --- | ---
 S    | A | A | G | B,C,E 
 A    |   |   | F | B,C,E
@@ -556,7 +556,7 @@ we make it a final state.
 4. The Machine is now deterministic 
 
 
-**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d  
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d 
 --- | --- | --- | --- | ---
 S    	 | A | A | G | B,C,E 
 A    	 |   |   | F | B,C,E
@@ -581,7 +581,7 @@ G	 	 |   |   |   | H
    
    This results in this table
 
- **State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
@@ -598,7 +598,7 @@ E	 	 |   |   | G | E
 
 4. Delete all non-marked states
 
-**State**\V<sub>T</sub> \| \+| \-| . | d
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
@@ -613,7 +613,7 @@ as the original NDFSA . For Clarity, Lets
 rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 
   
-**State**\ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
