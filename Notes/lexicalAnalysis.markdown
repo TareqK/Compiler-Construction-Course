@@ -502,7 +502,7 @@ And we want to transform it into a DFSA. Lets follow through the steps :
 
 Lets Break down the Finite state machine into a transition diagram
 
-**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d |&lambda;
+**State**<sup>V<sub>T</sub></sup> \| \+| \-| . | d |&lambda;
 --- | --- | --- | --- | --- | ---
 S    | A | A |   |   | A
 A    |   |   |   | B,C | E
@@ -598,9 +598,8 @@ E	 	 |   |   | G | E
 
 4. Delete all non-marked states
 
-**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d
+**State**\V<sub>T</sub> \| \+| \-| . | d
 --- | --- | --- | --- | ---
-**State**| \+| \-| . | d
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
 &#10003;G	 	 |   |   |   | H 
@@ -614,7 +613,7 @@ as the original NDFSA . For Clarity, Lets
 rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 
   
-**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d
+**State**\<sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
