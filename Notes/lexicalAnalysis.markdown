@@ -613,7 +613,7 @@ as the original NDFSA . For Clarity, Lets
 rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 
   
-**State**\<sup>V<sub>T</sub></sup>| \+| \-| . | d
+**State**\ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
