@@ -512,7 +512,7 @@ D	 |   |   |   | D | F
 E	 |   |   | G | E | 
 G	 |   |   |   | H | 
 H	 |   |   |   | H | F 
-*F*	 |   |   |   |   | 
+**F**	 |   |   |   |   | 
 
 ##### Remove Lambda Transitions
 1. Consider
@@ -533,13 +533,13 @@ This results in this table :
 --- | --- | --- | --- | ---
 S    | A | A | G | B,C,E 
 A    |   |   | F | B,C,E
-*B*	 |   |   |   | B 
+**B**	 |   |   |   | B 
 C	 |   |   | D | C 
-*D*	 |   |   |   | D 
+**D**	 |   |   |   | D 
 E	 |   |   | G | E 
 G	 |   |   |   | H 
-*H*	 |   |   |   | H 
-*F*	 |   |   |   |  
+**H**	 |   |   |   | H 
+**F**	 |   |   |   |  
 
 ##### Removal Of Non-Determinism
 
@@ -561,16 +561,16 @@ This results in this table :
 --- | --- | --- | --- | ---
 S    	 | A | A | G | B,C,E 
 A    	 |   |   | F | B,C,E
-*B*	 	 |   |   |   | B 
+**B**	 	 |   |   |   | B 
 C	 	 |   |   | D | C 
-*D*	 	 |   |   |   | D 
+**D**	 	 |   |   |   | D 
 E	 	 |   |   | G | E 
 G	 	 |   |   |   | H 
-*H*	 	 |   |   |   | H 
-*F*	 	 |   |   |   | 
-*B,C,E*  |   |   |D,G| B,C,E
-*D,G*    |   |   |   | D,H
-*D,H*    |   |   |   | D,H
+**H**	 	 |   |   |   | H 
+**F**	 	 |   |   |   | 
+**B,C,E**  |   |   |D,G| B,C,E
+**D,G**    |   |   |   | D,H
+**D,H**    |   |   |   | D,H
 
 ##### Removal of Non-Accessible States
 
@@ -586,16 +586,16 @@ G	 	 |   |   |   | H
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
-*B*	 	 |   |   |   | B 
+**B**	 	 |   |   |   | B 
 C	 	 |   |   | D | C 
-*D*	 	 |   |   |   | D 
+**D**	 	 |   |   |   | D 
 E	 	 |   |   | G | E 
 &#10003;G	 	 |   |   |   | H 
-&#10003;*H*	 	 |   |   |   | H 
-*F*	 	 |   |   |   | 
-&#10003;*B,C,E*  |   |   |D,G| B,C,E
-&#10003;*D,G*    |   |   |   | D,H
-&#10003;*D,H*    |   |   |   | D,H
+&#10003;**H**	 	 |   |   |   | H 
+**F**	 	 |   |   |   | 
+&#10003;**B,C,E**  |   |   |D,G| B,C,E
+&#10003;**D,G**    |   |   |   | D,H
+&#10003;**D,H**    |   |   |   | D,H
 
 4. Delete all non-marked states . This results
 in this simplified Table :
@@ -605,10 +605,10 @@ in this simplified Table :
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
 &#10003;G	 	 |   |   |   | H 
-&#10003;*H*	 	 |   |   |   | H 
-&#10003;*B,C,E*  |   |   |D,G| B,C,E
-&#10003;*D,G*    |   |   |   | D,H
-&#10003;*D,H*    |   |   |   | D,H
+&#10003;**H**	 	 |   |   |   | H 
+&#10003;**B,C,E**  |   |   |D,G| B,C,E
+&#10003;**D,G**    |   |   |   | D,H
+&#10003;**D,H**    |   |   |   | D,H
 
 This is now a Deterministic Machine That accepts the same languages
 as the original NDFSA . For Clarity, Lets
@@ -620,10 +620,10 @@ rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
 &#10003;G	 	 |   |   |   | H 
-&#10003;*H*	 	 |   |   |   | H 
-&#10003;*X*      |   |   | Y | X
-&#10003;*Y*      |   |   |   | Z
-&#10003;*Z*      |   |   |   | Z
+&#10003;**H**	 	 |   |   |   | H 
+&#10003;**X**      |   |   | Y | X
+&#10003;**Y**      |   |   |   | Z
+&#10003;**Z**      |   |   |   | Z
 
 And the graph now looks like
 
