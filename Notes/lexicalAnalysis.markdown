@@ -520,9 +520,9 @@ H	 |   |   |   | H | F
    
    Add all transition in Row A to S.
 
-2. Repeat Step(1) for all States with &lambda Transitions 
+2. Repeat Step(1) for all States with &lambda; Transitions 
 
-3. Mark all states from which there is a &lambda Transition to a final 
+3. Mark all states from which there is a &lambda; Transition to a final 
 State. Mark it as the final State 
 
 4. Delete the &lambda; Column
