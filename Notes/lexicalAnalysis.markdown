@@ -417,19 +417,6 @@ Other examples of finite state machines are :
 
 there are 2 types of Finite State Automata
 
-##### Deterministic Finite State Automata 
-
-If A Machine is not non-deterministic, we call it a Deterministic Finite
-State Automata ie :
-
-1. There are **NO** &lambda;-states.
-
-2. **AND** There is **NO** more than one transition from the same state
-on the same input.
-
-Only Deterministic Finite State Automata are used for compilers.
-
-
 ##### Non-Deterministic Finite State Automata
 
 An algorithm is non-deterministic or fuzzy if there are 
@@ -439,7 +426,7 @@ is the solution of the
 which is based on [Backtracking Techniques](https://en.wikipedia.org/wiki/Backtracking).
 
 
-A Finite State Automate is non-deterministic if :
+A Finite State Automata is non-deterministic if :
 
 1. There are &lambda;-transitions(moves) in the FSA :
 	
@@ -458,13 +445,26 @@ input :
    once more, there is now way before hand to know the right path.
    
 In Both cases, There is a choice(trial and error) to make. The only 
-way to solve non-deterministic machines unless we use backtracking. 
+way to solve non-deterministic machines is to use backtracking. 
 This wont do in a compiler, because backtracking is a very compute-heavy
 resource and is extremely slow. 
 
 Fortunately, There are algorithms to transform any NDFSA to 
 a DFSA. Therefore, we can assume always in the assumption that 
 our machine is deterministic  
+
+
+##### Deterministic Finite State Automata 
+
+If A Machine is **not** non-deterministic, we call it a **Deterministic Finite
+State Automata**, ie :
+
+1. There are **NO** &lambda;-states.
+
+2. **AND** There is **NO** more than one transition from the same state
+on the same input.
+
+Only Deterministic Finite State Automata are used for compilers.
 
 #### Transformation of NDFSA to DFSA
 
@@ -475,3 +475,76 @@ steps :
 2. Removal of non-determinism.
 3. Removal of inaccessible states. 
 4. Merging equivalent states.
+
+Lets Say we have this NDFSA :
+
+** INSERT DRAWING OF NDFSA** 
+
+
+Which has this language:
+
+> L(G)=\[\+|\-\]{
+>	ddddddd,
+>
+>	dddd.ddd,
+>
+>	dddddd.,
+>
+>	.dddd
+>	
+> }
+
+Or in short
+
+> L(G)=\[\+|\-\](d<sup>\+</sup>|d<sup>\+</sup>.d<sup>\+</sup>|d<sup>\+</sup>.|.d<sup>\+</sup>)
+
+And we want to transform it into a DFSA. Lets follow through the steps :
+
+Lets Break down the Finite state machine into a transition diagram
+
+ \\\| V<sub>T</sub> | | | | | |
+--|--|--|--|--|--|--
+**State**| \+| \-| . | d |&lambda;
+S    | A | A |   |   | A
+A    |   |   |   | B,C | E
+B	 |   |   |   | B | F
+C	 |   |   | D | C | 
+D	 |   |   |   | D | F 
+E	 |   |   | G | E | 
+G	 |   |   |   | H | 
+H	 |   |   |   | H | F 
+*F*	 |   |   |   |   | 
+
+##### Remove Lambda Transitions
+1. Consider
+   S-<sup>&lambda;</sup>->A
+   
+   Add all transition in Row A to S.
+
+2. Repeat Step(1) for all States with &lambda Transitions 
+
+3. Mark all states from which there is a &lambda Transition to a final 
+State. Mark it as the final State 
+
+4. Delete the &lambda; Column
+
+This results in this table 
+
+ \\\| V<sub>T</sub> | | | | |  
+--|--|--|--|--|--|--
+**State**| \+| \-| . | d
+S    | A | A | G | B,C,E 
+A    |   |   | F | B,C,E
+*B*	 |   |   |   | B 
+C	 |   |   | D | C 
+*D*	 |   |   |   | D 
+E	 |   |   | G | E 
+G	 |   |   |   | H 
+H	 |   |   |   | H 
+*F*	 |   |   |   |  
+
+##### Removal Of Non-Determinism
+
+Which means having more than 1 transition on 1 input.
+
+
