@@ -502,7 +502,7 @@ And we want to transform it into a DFSA. Lets follow through the steps :
 
 Lets Break down the Finite state machine into a transition diagram
 
- \\\ | V<sub>T</sub> | / | / | / | /  
+ \\ | V<sub>T</sub> | --- | ---| --- | ---  
 --- | --- | --- | --- | --- | ---
 **State**| \+| \-| . | d |&lambda;
 S    | A | A |   |   | A
@@ -530,7 +530,7 @@ State. Mark it as the final State
 
 This results in this table 
 
- \\\ | V<sub>T</sub> | / | / | /   
+ \\ | V<sub>T</sub> | --- | --- | ---   
 --- | --- | --- | --- | ---
 **State**| \+| \-| . | d
 S    | A | A | G | B,C,E 
@@ -558,7 +558,7 @@ we make it a final state.
 4. The Machine is now deterministic 
 
 
- \\\ | V<sub>T</sub> | / | / | /   
+ \\ | V<sub>T</sub> | --- | --- | ---   
 --- | --- | --- | --- | ---
 **State**| \+| \-| . | d
 S    	 | A | A | G | B,C,E 
@@ -584,7 +584,7 @@ G	 	 |   |   |   | H
    
    This results in this table
 
- \\\ | V<sub>T</sub> | / | / | /   
+ \\ | V<sub>T</sub> | --- | --- | ---  
 --- | --- | --- | --- | ---
 **State**| \+| \-| . | d
 &#10003;S    	 | A | A | G | B,C,E 
@@ -602,7 +602,7 @@ E	 	 |   |   | G | E
 
 4. Delete all non-marked states
 
- \\\ | V<sub>T</sub> | / | / | /   
+ \\ | V<sub>T</sub> | --- | --- | ---   
 --- | --- | --- | --- | ---
 **State**| \+| \-| . | d
 &#10003;S    	 | A | A | G | B,C,E 
@@ -612,3 +612,22 @@ E	 	 |   |   | G | E
 &#10003;*B,C,E*  |   |   |D,G| B,C,E
 &#10003;*D,G*    |   |   |   | D,H
 &#10003;*D,H*    |   |   |   | D,H
+
+This is now a Deterministic Machine That accepts the same languages
+as the original NDFSA . For Clarity, Lets
+rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
+
+ \\\ | V<sub>T</sub> | / | / | /   
+--- | --- | --- | --- | ---
+**State**| \+| \-| . | d
+&#10003;S    	 | A | A | G | B,C,E 
+&#10003;A    	 |   |   | F | B,C,E
+&#10003;G	 	 |   |   |   | H 
+&#10003;*H*	 	 |   |   |   | H 
+&#10003;*X*      |   |   | Y | X
+&#10003;*Y*      |   |   |   | Z
+&#10003;*Z*      |   |   |   | Z
+
+And the graph now looks like
+
+**INSERT NEW CHART**
