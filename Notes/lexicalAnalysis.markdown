@@ -502,8 +502,8 @@ And we want to transform it into a DFSA. Lets follow through the steps :
 
 Lets Break down the Finite state machine into a transition diagram
 
- \\\| V<sub>T</sub> | | | | | |
---|--|--|--|--|--|--
+ \\\| V<sub>T</sub> | | | | |
+--|--|--|--|--|--
 **State**| \+| \-| . | d |&lambda;
 S    | A | A |   |   | A
 A    |   |   |   | B,C | E
@@ -530,8 +530,8 @@ State. Mark it as the final State
 
 This results in this table 
 
- \\\| V<sub>T</sub> | | | | |  
---|--|--|--|--|--|--
+ \\\| V<sub>T</sub> | | | 
+--|--|--|--|--
 **State**| \+| \-| . | d
 S    | A | A | G | B,C,E 
 A    |   |   | F | B,C,E
@@ -540,7 +540,7 @@ C	 |   |   | D | C
 *D*	 |   |   |   | D 
 E	 |   |   | G | E 
 G	 |   |   |   | H 
-H	 |   |   |   | H 
+*H*	 |   |   |   | H 
 *F*	 |   |   |   |  
 
 ##### Removal Of Non-Determinism
@@ -555,11 +555,11 @@ we make it a final state.
 
 3. Repeat steps (1) and (2) for all non-deterministic states
 
-4. The Machine Is now Deterministic 
+4. The Machine is now deterministic 
 
 
- \\\| V<sub>T</sub> | | | | |  
---|--|--|--|--|--|--
+ \\\| V<sub>T</sub> | | |   
+--|--|--|--|--
 **State**| \+| \-| . | d
 S    	 | A | A | G | B,C,E 
 A    	 |   |   | F | B,C,E
@@ -568,9 +568,34 @@ C	 	 |   |   | D | C
 *D*	 	 |   |   |   | D 
 E	 	 |   |   | G | E 
 G	 	 |   |   |   | H 
-H	 	 |   |   |   | H 
+*H*	 	 |   |   |   | H 
 *F*	 	 |   |   |   | 
 *B,C,E*  |   |   |D,G| B,C,E
 *D,G*    |   |   |   | D,H
 *D,H*    |   |   |   | D,H
 
+##### Removal of Non-Accessible States
+
+1. Mark the Initial State
+
+2. Mark all states for which there is a transition from S
+
+3. Repeat step (2) for all marked states
+
+
+
+ \\\| V<sub>T</sub> | | |   
+--|--|--|--|--
+**State**| \+| \-| . | d
+&#10003;S    	 | A | A | G | B,C,E 
+&#10003;A    	 |   |   | F | B,C,E
+*B*	 	 |   |   |   | B 
+C	 	 |   |   | D | C 
+*D*	 	 |   |   |   | D 
+E	 	 |   |   | G | E 
+&#10003;G	 	 |   |   |   | H 
+&#10003;*H*	 	 |   |   |   | H 
+*F*	 	 |   |   |   | 
+&#10003;*B,C,E*  |   |   |D,G| B,C,E
+&#10003;*D,G*    |   |   |   | D,H
+&#10003;*D,H*    |   |   |   | D,H
