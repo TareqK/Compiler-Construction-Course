@@ -502,9 +502,8 @@ And we want to transform it into a DFSA. Lets follow through the steps :
 
 Lets Break down the Finite state machine into a transition diagram
 
- \\ | V<sub>T</sub> | --- | ---| --- | ---  
+**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d |&lambda;
 --- | --- | --- | --- | --- | ---
-**State**| \+| \-| . | d |&lambda;
 S    | A | A |   |   | A
 A    |   |   |   | B,C | E
 B	 |   |   |   | B | F
@@ -530,9 +529,8 @@ State. Mark it as the final State
 
 This results in this table 
 
- \\ | V<sub>T</sub> | --- | --- | ---   
+**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d  
 --- | --- | --- | --- | ---
-**State**| \+| \-| . | d
 S    | A | A | G | B,C,E 
 A    |   |   | F | B,C,E
 *B*	 |   |   |   | B 
@@ -558,9 +556,8 @@ we make it a final state.
 4. The Machine is now deterministic 
 
 
- \\ | V<sub>T</sub> | --- | --- | ---   
+**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d  
 --- | --- | --- | --- | ---
-**State**| \+| \-| . | d
 S    	 | A | A | G | B,C,E 
 A    	 |   |   | F | B,C,E
 *B*	 	 |   |   |   | B 
@@ -584,9 +581,8 @@ G	 	 |   |   |   | H
    
    This results in this table
 
- \\ | V<sub>T</sub> | --- | --- | ---  
+ **State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d
 --- | --- | --- | --- | ---
-**State**| \+| \-| . | d
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
 *B*	 	 |   |   |   | B 
@@ -602,7 +598,7 @@ E	 	 |   |   | G | E
 
 4. Delete all non-marked states
 
- \\ | V<sub>T</sub> | --- | --- | ---   
+**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d
 --- | --- | --- | --- | ---
 **State**| \+| \-| . | d
 &#10003;S    	 | A | A | G | B,C,E 
@@ -617,9 +613,9 @@ This is now a Deterministic Machine That accepts the same languages
 as the original NDFSA . For Clarity, Lets
 rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 
- \\\ | V<sub>T</sub> | / | / | /   
+  
+**State**\<sup>V<sub>T</sub></sup> \| \+| \-| . | d
 --- | --- | --- | --- | ---
-**State**| \+| \-| . | d
 &#10003;S    	 | A | A | G | B,C,E 
 &#10003;A    	 |   |   | F | B,C,E
 &#10003;G	 	 |   |   |   | H 
@@ -631,3 +627,7 @@ rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 And the graph now looks like
 
 **INSERT NEW CHART**
+
+But this machine is not in its fewest state.
+
+##### Merging Equivalent States
