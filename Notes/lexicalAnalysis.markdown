@@ -500,7 +500,7 @@ Or in short
 
 And we want to transform it into a DFSA. Lets follow through the steps :
 
-Lets Break down the Finite state machine into a transition diagram
+Lets Break down the Finite state machine into a transition diagram :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d |&lambda;
 --- | --- | --- | --- | --- | ---
@@ -527,7 +527,7 @@ State. Mark it as the final State
 
 4. Delete the &lambda; Column
 
-This results in this table 
+This results in this table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d 
 --- | --- | --- | --- | ---
@@ -555,6 +555,7 @@ we make it a final state.
 
 4. The Machine is now deterministic 
 
+This results in this table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d 
 --- | --- | --- | --- | ---
@@ -579,7 +580,7 @@ G	 	 |   |   |   | H
 
 3. Repeat step (2) for all marked states.
    
-   This results in this table
+   This results in this table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
@@ -596,7 +597,8 @@ E	 	 |   |   | G | E
 &#10003;*D,G*    |   |   |   | D,H
 &#10003;*D,H*    |   |   |   | D,H
 
-4. Delete all non-marked states
+4. Delete all non-marked states . This results
+in this simplified Table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
