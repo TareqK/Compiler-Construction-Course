@@ -547,4 +547,30 @@ H	 |   |   |   | H
 
 Which means having more than 1 transition on 1 input.
 
+1. Consider \[B,C,E\]. Lets add this and treat it as a new 
+state in the table.
+
+2. If at least one of the states \[B,C,E\] is a final state, then 
+we make it a final state.
+
+3. Repeat steps (1) and (2) for all non-deterministic states
+
+4. The Machine Is now Deterministic 
+
+
+ \\\| V<sub>T</sub> | | | | |  
+--|--|--|--|--|--|--
+**State**| \+| \-| . | d
+S    	 | A | A | G | B,C,E 
+A    	 |   |   | F | B,C,E
+*B*	 	 |   |   |   | B 
+C	 	 |   |   | D | C 
+*D*	 	 |   |   |   | D 
+E	 	 |   |   | G | E 
+G	 	 |   |   |   | H 
+H	 	 |   |   |   | H 
+*F*	 	 |   |   |   | 
+*B,C,E*  |   |   |D,G| B,C,E
+*D,G*    |   |   |   | D,H
+*D,H*    |   |   |   | D,H
 
