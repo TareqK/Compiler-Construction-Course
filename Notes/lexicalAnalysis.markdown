@@ -379,8 +379,7 @@ languages. The algorithm that recognises these strings is called the
 
 Given that we have this Finite State Automata(FSA) :
 
-**TODO INSERT DRAWING FROM ASHJAN**
-
+![FSA1](./images/FSA.png)
 
 - The set of states Q={S,A,B,G,H}
   - S is called the **Starting State**.
@@ -407,11 +406,11 @@ L(M) is given by :
 
 Other examples of finite state machines are :
 
-1. Names **INSERT HERE**
+1. Names.
 
-2. Integers **INSERT HERE**
+2. Integers.
 
-3. Greater Or Equal **INSERT HERE**
+3. Greater Or Equal.
 
 #### Types of Finite State Automata 
 
@@ -430,24 +429,13 @@ A Finite State Automata is non-deterministic if :
 
 1. There are &lambda;-transitions(moves) in the FSA :
 	
-	**INSERT LAMBDA DRAWINGS**
-
-	Notice here how we can move from A to D or from A to C if we have a d.
-	There is now a choice that must be taken, and there is no way beforehand
-	to know the right path.
-
 2. **Or** There is more than one transition from the same state on the same 
 input : 
-   
-   **INSERT SAME STATE DRAWING**
-   
-   Notice That if we do arrive at an a, we can go both to B and C, and
-   once more, there is now way before hand to know the right path.
    
 In Both cases, There is a choice(trial and error) to make. The only 
 way to solve non-deterministic machines is to use backtracking. 
 This wont do in a compiler, because backtracking is a very compute-heavy
-resource and is extremely slow. 
+method and is extremely slow. 
 
 Fortunately, There are algorithms to transform any NDFSA to 
 a DFSA. Therefore, we can assume always in the assumption that 
@@ -478,7 +466,7 @@ steps :
 
 Lets Say we have this NDFSA :
 
-** INSERT DRAWING OF NDFSA** 
+![FSA2](./images/FSA2.png)
 
 
 Which has this language:
@@ -627,7 +615,7 @@ rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 
 And the graph now looks like
 
-**INSERT NEW CHART**
+![FSA3](./images/FSA3.png)
 
 But this machine is not in its fewest state.
 
