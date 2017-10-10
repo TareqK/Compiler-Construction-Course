@@ -379,7 +379,7 @@ languages. The algorithm that recognises these strings is called the
 
 Given that we have this Finite State Automata(FSA) :
 
-![FSA1](./images/FSA1.png)
+![FSA1](./images/FSA.png)
 
 - The set of states Q={S,A,B,G,H}
   - S is called the **Starting State**.
