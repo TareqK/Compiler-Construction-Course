@@ -273,7 +273,7 @@ say that R={a} and S={b}, then :
 
 **RS={ab},**
 
-**R|S={ab},**
+**R|S={a,b},**
 
 **R\*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....**
 
