@@ -520,7 +520,7 @@ This results in this table :
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d 
 --- | --- | --- | --- | ---
 S    | A | A | G | B,C,E 
-A    |   |   | F | B,C,E
+A    |   |   | G | B,C,E
 **B**	 |   |   |   | B 
 C	 |   |   | D | C 
 **D**	 |   |   |   | D 
@@ -548,7 +548,7 @@ This results in this table :
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d 
 --- | --- | --- | --- | ---
 S    	 | A | A | G | B,C,E 
-A    	 |   |   | F | B,C,E
+A    	 |   |   | G | B,C,E
 **B**	 	 |   |   |   | B 
 C	 	 |   |   | D | C 
 **D**	 	 |   |   |   | D 
@@ -573,7 +573,7 @@ G	 	 |   |   |   | H
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
-&#10003;A    	 |   |   | F | B,C,E
+&#10003;A    	 |   |   | G | B,C,E
 **B**	 	 |   |   |   | B 
 C	 	 |   |   | D | C 
 **D**	 	 |   |   |   | D 
@@ -591,7 +591,7 @@ in this simplified Table :
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | B,C,E 
-&#10003;A    	 |   |   | F | B,C,E
+&#10003;A    	 |   |   | G | B,C,E
 &#10003;G	 	 |   |   |   | H 
 &#10003;**H**	 	 |   |   |   | H 
 &#10003;**B,C,E**  |   |   |D,G| B,C,E
@@ -606,7 +606,7 @@ rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 --- | --- | --- | --- | ---
 &#10003;S    	 | A | A | G | X
-&#10003;A    	 |   |   | F | X
+&#10003;A    	 |   |   | G | X
 &#10003;G	 	 |   |   |   | H 
 &#10003;**H**	 	 |   |   |   | H 
 &#10003;**X**      |   |   | Y | X
