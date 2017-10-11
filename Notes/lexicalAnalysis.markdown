@@ -471,7 +471,7 @@ Lets Say we have this NDFSA :
 
 Which has this language:
 
-> L(G)=\[\+|\-\]{
+> L(G)=\[\+|\-\]\{
 >	ddddddd,
 >
 >	dddd.ddd,
@@ -480,7 +480,7 @@ Which has this language:
 >
 >	.dddd
 >	
-> }
+> \}
 
 Or in short
 
@@ -613,7 +613,7 @@ rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 &#10003;**Y**      |   |   |   | Z
 &#10003;**Z**      |   |   |   | Z
 
-And the graph now looks like
+And the graph now looks like this : 
 
 ![FSA3](./images/FSA3.png)
 
