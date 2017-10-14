@@ -503,6 +503,7 @@ H	 |   |   |   | H | F
 **F**	 |   |   |   |   | 
 
 ##### Remove Lambda Transitions
+
 1. Consider
    S-<sup>&lambda;</sup>->A
    
@@ -531,7 +532,7 @@ G	 |   |   |   | H
 
 ##### Removal Of Non-Determinism
 
-Which means having more than 1 transition on 1 input.
+Which means not having more than 1 transition on 1 input.
 
 1. Consider \[B,C,E\]. Lets add this and treat it as a new 
 state in the table.
@@ -617,6 +618,166 @@ And the graph now looks like this :
 
 ![FSA3](./images/FSA3.png)
 
-But this machine is not in its fewest state.
+But this machine is not in its simplest state.
 
 ##### Merging Equivalent States
+
+We will use the **feasible-pairs table** method in merging 
+equivalent states.
+
+A state pair (p,q) is a feasible pair if:
+
+1. {p,q}&sub;F OR {p,q}&sub;Q-F ie, either both {p,q} are final states
+or both {p,q} are **not** final states.
+
+2. for every token(symbol) a&isin;V<sub>T</sub>, either both {p,q} have
+transitions on "a", or both {p,q} don't have transitions on "a".
+
+3. p &ne; q ;
+
+Note that (p,q) &equiv; (q,p).
+
+for example, given the following NDFSA, represented by the following transition
+table :
+
+**State** \ <sup>V<sub>T</sub></sup>| a | b | c 
+--- | --- | --- | --- 
+1    | 2 | 5 |   
+2    | 3 | 4 | 1  
+3	 | 5 | 2 |   
+**4**	 | 6 |   | 1 
+5	 | 1 | 4 | 1  
+**6**	 | 4 |   | 1  
+7	 | 3 | 5 | 3  
+
+
+To find the feasible pairs, first we must separate the set of final states
+from the set of non-final states. therefore, we have these 2 sets :
+
+> Q-F = {1,2,3,5,7}
+>
+> F = {4,6}
+
+this results in this feasible-pairs table :
+
+**feasible pairs** \ <sup>V<sub>T</sub></sup>| a | b | c 
+--- | --- | --- | --- 
+ (1,3) | 2,5 | 5,2 |
+ (2,5) | 3,1 | 4,4 | 1,1
+ (2,7) | 3,3 | 4,5 | 1,3
+ (5,7) | 1,3 | 4,5 | 1,3
+ (4,6) | 6,4 |     | 1,1  
+ 
+We then mark all feasible pairs (p,q) where There is a transition to a 
+pair (r,s) such that :
+
+1. r &ne; s.
+
+2. (r,s) is either marked OR not among the feasible pairs.
+
+This results in this feasible-pairs table :
+
+**feasible pairs** \ <sup>V<sub>T</sub></sup>| a | b | c 
+--- | --- | --- | --- 
+ (1,3) | 2,5 | 5,2 |
+ (2,5) | 3,1 | 4,4 | 1,1
+&#10003;(2,7) | 3,3 | 4,5 | 1,3
+&#10003;(5,7) | 1,3 | 4,5 | 1,3
+ (4,6) | 6,4 |     | 1,1  
+
+We go through the table once more, in case we marked something later 
+on in the table that would effect the pairs in the top of the table.
+
+if a pair (p,q) remains unmarked, that means that p is equivalent to q.
+therefore, we merge p and q, choosing one of them :
+
+1. 1 &equiv; 3 ---> 1
+2. 2 &equiv; 5 ---> 2
+3. 4 &equiv; 7 ---> 4
+
+We then merge, replacing every 3 with a 1, every 5 with a 2, and every
+7 with a 4, resulting in this state table :
+
+**State** \ <sup>V<sub>T</sub></sup>| a | b | c 
+--- | --- | --- | --- 
+1    | 2 | 2 |   
+2    | 1 | 4 | 1  
+**4**| 4 |   | 1 
+7	 | 1 | 2 | 1  
+
+This is the machine with the minimum number of states.
+
+Lets go back to our example(the FNDSA we were already working on). Last 
+time, we reached this state table :
+
+**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+--- | --- | --- | --- | ---
+&#10003;S    	 | A | A | G | X
+&#10003;A    	 |   |   | G | X
+&#10003;G	 	 |   |   |   | H 
+&#10003;**H**	 	 |   |   |   | H 
+&#10003;**X**      |   |   | Y | X
+&#10003;**Y**      |   |   |   | Z
+&#10003;**Z**      |   |   |   | Z
+
+Lets quickly apply what we learned on this table.
+
+1. Separate the final from the non-final states :
+
+	> Q-F ={S,A,G}
+	>
+	> F = {H,X,Y,Z}
+
+	Constructing the feasible pairs table :
+
+	**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+	--- | --- | --- | --- | ---
+	(H,Y)| | | | H,Z
+	(H,Z)| | | | H,Z
+	(Y,Z)| | | | Z,Z
+
+
+2. Marking feasible pairs 
+
+	**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+	--- | --- | --- | --- | ---
+	(H,Y)| | | | H,Z
+	(H,Z)| | | | H,Z
+	(Y,Z)| | | | Z,Z
+
+3. Merge and Replace
+
+	H &equiv; Y &equiv Z---> H
+
+	Resulting in this state table :
+	
+	**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+	--- | --- | --- | --- | ---
+	&#10003;S    	 | A | A | G | X
+	&#10003;A    	 |   |   | G | X
+	&#10003;G	 	 |   |   |   | H 
+	&#10003;**H**	 	 |   |   |   | H 
+	&#10003;**X**      |   |   | H | X
+	
+	This is the simplest form of the machine.
+	
+Now we must check if the machine accepts the same language as our
+original machine. 
+
+*** INSERT DRAWING OF THIS MACHINE ***
+
+This macchine accepts the language L(G) where :
+
+> L(G)=\[\+|\-\]\{
+>	ddddddd,
+>
+>	dddd.ddd,
+>
+>	dddddd.,
+>
+>	.dddd
+>	
+> \}
+
+Which is the same language of our original machine.
+
