@@ -764,7 +764,7 @@ Lets quickly apply what we learned on this table.
 Now we must check if the machine accepts the same language as our
 original machine. 
 
-![FSA4](../images/FSA4.png)
+![FSA4](./images/FSA4.png)
 
 This macchine accepts the language L(G) where :
 
