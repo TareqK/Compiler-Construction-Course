@@ -730,7 +730,7 @@ Lets quickly apply what we learned on this table.
 
 	Constructing the feasible pairs table :
 
-	**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 	--- | --- | --- | --- | ---
 	(H,Y)| | | | H,Z
 	(H,Z)| | | | H,Z
@@ -739,7 +739,7 @@ Lets quickly apply what we learned on this table.
 
 2. Marking feasible pairs 
 
-	**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
+	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 	--- | --- | --- | --- | ---
 	(H,Y)| | | | H,Z
 	(H,Z)| | | | H,Z
@@ -764,7 +764,7 @@ Lets quickly apply what we learned on this table.
 Now we must check if the machine accepts the same language as our
 original machine. 
 
-*** INSERT DRAWING OF THIS MACHINE ***
+![FSA4](../images/FSA4.png)
 
 This macchine accepts the language L(G) where :
 
