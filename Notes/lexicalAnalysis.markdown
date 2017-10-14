@@ -747,7 +747,7 @@ Lets quickly apply what we learned on this table.
 
 3. Merge and Replace
 
-	H &equiv; Y &equiv Z---> H
+	H &equiv; Y &equiv; Z---> H
 
 	Resulting in this state table :
 	
