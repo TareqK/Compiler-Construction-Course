@@ -396,8 +396,10 @@ S--->A--->B--->B--->B--->H--->H--->H
 ```
 
 Since H is the final state, we say that the **string is accepted**, or 
-more formally. A string is accepted or recognized if after scanning the string we 
-end up with a final state.
+more formally :
+
+>A string is accepted or recognized if after scanning the string we 
+>end up with a final state.
 
 The Regular Language(expression) generated(accepted) by this machine
 L(M) is given by :
@@ -406,11 +408,11 @@ L(M) is given by :
 
 Other examples of finite state machines are :
 
-1. Names.
+1. Names : L(N) = {l<sup>+</sup>}.
 
-2. Integers.
+2. Integers : L(I) = {d<sup>+</sup>}.
 
-3. Greater Or Equal.
+3. Greater Or Equal : L(G<sub>e</sub>) = {>=}.
 
 #### Types of Finite State Automata 
 
@@ -781,3 +783,119 @@ This macchine accepts the language L(G) where :
 
 Which is the same language of our original machine.
 
+
+#### Creating a NDFSA From a Regular Expression
+
+1. Decompose the regular expression to its primitive components :
+   a. for &lambda;, X-<sup>&lambda;</sup>->Y.
+   b. for a, X-<sup>a</sup>->Y.
+
+2. Supposed that N<sub>1</sub>, N<sub>2</sub> are transition diagrams 
+for the regular expressions  R<sub>1</sub>, R<sub>2</sub> respectively,
+N<sub>1</sub> accepts R<sub>1</sub> & N<sub>2</sub> accepts R<sub>2</sub>,
+then :
+   a. N<sub>12</sub> which represents R<sub>1</sub>R<sub>2</sub> is :
+     
+      ***INESRT CONCATINATION DRWAING***
+      
+   b. N<sub>1|2</sub> which represents R<sub>1</sub>|R<sub>2</sub> is :
+      
+      ***INESRT OR DRWAING***
+      
+   c.  N<sub>x</sub>\* which represents R<sub>x</sub>\* is :
+   
+		***INESRT CLOSURE DRWAING***
+		
+   d.  N<sub>x</sub><sup>+</sup> which represents R<sub>x</sub><sup>+</sup> is :
+   
+		***INESRT + DRWAING***
+		
+		Note that this is the same as  R<sub>x</sub>\* except we removed 
+		all the states that result in a &lambda;
+      
+      
+for example, lets say we have the regular expression
+
+> L(L|d)*
+
+which gives us this NDFSA
+
+**INSERT DRAWING**
+
+Whch has this transition table
+
+**State** \ <sup>V<sub>T</sub></sup>| L| d |&lambda;
+--- | --- | --- | ---
+1    | 2 |   |   
+2    |   |   |3,9   
+3	 |   |   |4,6
+4	 | 5 |   |  
+5	 |   |   | 8   
+6	 |   |7  |  
+7	 |   |   | 8   
+8	 |   |   | 3,9   
+**9**|	 |   |  
+
+Turning this into an DFSA :
+
+1.
+**State** \ <sup>V<sub>T</sub></sup>| L| d |&lambda;
+--- | --- | --- | ---
+1    | 2 |   |   
+**2**    |  5 |  7 |3,9,8,6   
+**3**	 | 5  | 7  |4,6,8,3,9
+4	 | 5 |   |  
+**5**	 |  5 | 7  | 8,3,9,4,6   
+6	 |   |7  |  
+**7**	 | 5  | 7  | 8,3,9,4,6   
+**8**	 |  5 |  7 | 3,9,8,4,6   
+**9**|	 |   |  
+
+2.
+**State** \ <sup>V<sub>T</sub></sup>| L| d 
+--- | --- | --- 
+&#10003;1    | 2 |   |   
+&#10003;**2**    |  5 |  7    
+**3**	 |  5 |7   
+4	 | 5 |   |  
+&#10003;**5**	 |  5 | 7     
+6	 |   |7  |  
+&#10003;**7**	 | 5  | 7     
+8	 |  5 |  7    
+**9**|	 |   |  
+
+3.
+**State** \ <sup>V<sub>T</sub></sup>| L| d 
+--- | --- | --- 
+1|2|
+2|5|7
+5|5|7
+7|7|7
+
+	**feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
+--- | --- | --- 
+(2,5)|(5,5)|(7,7)
+(7,7)|(5,5)|(7,7)
+(5,7)|(5,5)|(7,7)
+
+4.
+**State** \ <sup>V<sub>T</sub></sup>| L| d 
+--- | --- | --- 
+1|2|
+2|5|7
+ 
+ **INSERT DRAWING**
+
+programatically, this results int
+
+```C
+
+getchar(ch);
+case(ch){
+	letter : get-name;
+	digit : get-number
+	< : getchar(ch)
+	...
+	...
+}
+```
