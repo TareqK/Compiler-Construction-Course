@@ -872,7 +872,7 @@ Turning this into an DFSA :
 5|5|7
 7|7|7
 
-	**feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
+  **feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
 --- | --- | --- 
 (2,5)|(5,5)|(7,7)
 (7,7)|(5,5)|(7,7)
