@@ -851,7 +851,7 @@ Turning this into an DFSA :
 **8**	 |  5 |  7 | 3,9,8,4,6   
 **9**|	 |   |  
 
-2.
+2. 
 **State** \ <sup>V<sub>T</sub></sup>| L| d 
 --- | --- | --- 
 &#10003;1    | 2 |   |   
@@ -864,29 +864,32 @@ Turning this into an DFSA :
 8	 |  5 |  7    
 **9**|	 |   |  
 
-3.
+3. 
 **State** \ <sup>V<sub>T</sub></sup>| L| d 
 --- | --- | --- 
-1|2|
-2|5|7
-5|5|7
-7|7|7
+&#10003;1|2|
+&#10003;**2**|5|7
+&#10003;**5**|5|7
+&#10003;**7**|7|7
 
-  **feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
+   **feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
 --- | --- | --- 
 (2,5)|(5,5)|(7,7)
 (7,7)|(5,5)|(7,7)
 (5,7)|(5,5)|(7,7)
 
 4.
-**State** \ <sup>V<sub>T</sub></sup>| L| d 
+**State** \ <sup>V<sub>T</sub></sup>| L | d 
 --- | --- | --- 
-1|2|
-2|5|7
+&#10003;1|2|
+&#10003;**2**|5|7
+&#10003;**5**|5|7
+&#10003;**7**|7|7
+
  
  **INSERT DRAWING**
 
-programatically, this results int
+programmatically, this results in :
 
 ```C
 
@@ -899,3 +902,5 @@ case(ch){
 	...
 }
 ```
+
+
