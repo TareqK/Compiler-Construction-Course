@@ -6,4 +6,4 @@
 
 ![Chapter 3 : Lexical Analysis](./Notes/lexicalAnalysis.markdown)
 
-![Chapter 4 Syntax Analysis](./Notes/synatxAnalysis.markdown)
+![Chapter 4 : Syntax Analysis](./Notes/syntaxAnalysis.markdown)
