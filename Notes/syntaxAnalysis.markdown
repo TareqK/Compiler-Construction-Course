@@ -219,3 +219,83 @@ V<sub>N</sub> = {Program, block, stmt-List, statement, if-stmt,
 while-stmt, read-stmt, write-stmt, assignment-stmt}
 
 V<sub>T</sub> = { "{", "}", "#", ";", "if", "while", "read", "write" }
+
+
+Lets Follow through some derivations :
+
+> Program --> **block** # --> { **stmt-list** } # --> { &lambda; } #
+>
+> Program --> **block** # --> {**stmt-list**} # --> {statement ; **stmt-list**} #
+> --> {statement ; statement ; **stmt-list**} # --> {statement ; statement ; &lambda;} #
+> --> {**statement** ; statement ;} # -->  {**READ-statement** ; statement ;} #
+> -->{READ ; **statement** ;} # -->{READ ; write-statement ;} # --> {READ ; WRITE ;} #
+
+We can write this as 
+
+```
+{ READ;
+  WRITE;
+}#
+```
+The language of this language is defined as 
+
+> L(G) = {Set of all programs that can be written in this language}.
+
+This is only a simple example, of a simple language. For something more
+complex such as C or Pascal, there are hundreds of productions.
+
+
+### Algorithms for Derivation 
+
+
+>A Leftmost derivation is a derivation in which we replace the **leftmost**
+>nonterminal in each derivation step.
+
+
+>A Rightmost derivation is a derivation in which we replace the **rightmost**
+>nonterminal in each derivation step.
+
+For example, given the grammar
+
+>V --> S R $
+>
+>S --> +|-|&lambda;
+>
+>R --> .dN | dN.N
+>
+>N --> dN | &lambda;
+>
+>V<sub>N</sub> = {V,R,S,N}
+>
+>V<sub>T</sub> = {+, - , ., d, $}
+
+Lets follow through on the leftmost derivation 
+
+> V --> **S**R$ --> -**R**$ --> -d**N**.N$ --> -dd**N**.N$ --> -dddN.N$
+> --> -ddd.**N**$ --> -ddd.d**N**$ --> -ddd.d$ <-- A sentence.
+
+Lets follow through on the rightmost derivation
+
+> V --> S**R**$ --> SdN.**N** --> SdN.d**N**$ --> Sd**N**.d$ --> sdd**N**.d$
+> --> sddd**N**.d$ --> **S**ddd.d$ --> -ddd.d$ <-- A sentence.
+
+### Derivation Trees
+
+A Derivation Tree is a Tree that displays the derivation of some 
+sentence in the language. For example, lets look at the 
+tree for the previous example
+
+**INSERT IMAGE OF TREE FOR -ddd.d$**
+
+Note that if we traverse the tree in order, recording **only** the leaves,
+we obtain the sentence.
+
+### Classes of Grammars 
+
+According to Chomsky, Grammars can be classified into :
+
+1. Unrestricted Grammars : No restrictions whatsoever. It is not 
+practical to work with.
+
+2. 
+
