@@ -1,5 +1,14 @@
 # Syntax Analysis(Parser)
 
+A Syntax analyzer is formally defined as :
+
+> An Algorithm that Groups the Set of Tokens Sent by the Scanner to Form
+> **Syntax Structures** Such As Expressions, Statements, Blocks,etc.
+
+Simply put, the parser examines if the source code written follows
+the grammar(production rules) of the language.
+
+
 The Syntax structure of programming languages and even spoken languages
 can be expressed in what is called **BNF** notation, which stands 
 for **B**akus **N**aur **F**orm. 
@@ -54,6 +63,10 @@ Now, let us derive a sentence :
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 > THE STUDENT READS A BOOK
 
+
+In the same way, the parser tries to **derive** your source program 
+from the starting symbol of the grammar.
+
 Lets say we have these sentences :
 
 > THE BOOK BUYS A STUDENT
@@ -67,6 +80,8 @@ is not correct, and they are not useful. What differentiates 2
 sentences that are grammatically correct is their meaning or their 
 **semantics**. You and I can agree that the meaning of a grammatically 
 correct sentence is not correct, but how does the computer do it?
+
+
 
 ## Grammar 
 
@@ -299,3 +314,74 @@ practical to work with.
 
 2. 
 
+## Parsing Techniques
+
+There are 2 main parsing techniques used by a compiler.
+
+### Top-Down Parsing
+
+In Top-Down Parsing, the parser builds the derivation tree from the 
+root(S : the starting symbol) down to the leaves(sentence). 
+
+In Simple words, the parser tries to derive the sentence using 
+leftmost derivation. For example, say we have this grammar :
+
+> V --> SR$
+>
+> S --> + | - | &lambda;
+>
+> R --> .dN | dN.N
+>
+> N --> dN | &lambda;
+
+Lets examine if the sentence
+
+> dd.d$ 
+
+is derived from this grammar.
+
+> V --> **S**R$ --> +**R**$ --> d**N**.N$ --> dd**N**.N$ --> dd.**N**$ --> dd.d**N**$ --> dd.d$
+
+Therefore, this sentence is derived from the grammar.
+
+However, this approach is very computationally intensive, and more importantly, 
+this requires knowing the source code in advance. The Parser doesnt know
+which production it should select in each derivation statement. We will
+learn how to solve these issues later in the course.
+
+### Bottom-Up Parsing
+
+In Bottom-Up Parsing, the parser builds the derivation tree from the
+leaves(sentence) up to the root(S : Starting Symbol). This type of tree,
+built from the leaves to the root, is 
+called a [B-Tree](https://en.wikipedia.org/wiki/B-tree).
+
+In Simple words, the parser starts with the given sentence, does 
+**reduction**(opposite of derivation) steps, until the starting symbol
+is reached.
+
+Note that the string &lambda; is present everywhere in the string, and
+we can use it wherever we like.
+
+Lets follow the reduction of the example given above.
+
+> +dd.d$ --> +dd&lambda;.d$ --> +ddN.d$ --> +dN.d$ --> +dN.d&lambda;$
+> --> +dN.dN$ --> +dN.N$ --> +R$ --> SR$ --> V
+
+Which means that the sentence is in the grammar. 
+
+Note that we can run into deadlocks here. say we took this path instead :
+
+> +dd.d$ --> +dd&lambda;.d$ --> +ddN.d$ --> +dN.d$ --> +dN.d&lambda;$
+> --> +dN.dN$ --> **+dNR$ --> +NR$ --> SNR$** --> Deadlock
+
+This technique also has a major problem : Which substring should we 
+select to reduce in each reduction step?
+
+how do we slove this?
+
+
+انضموا الينا في الحلقة القادمة من
+
+!!!!!!!!!كومبايلر كونسترااااااااااااااااكشن
+--
