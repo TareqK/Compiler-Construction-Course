@@ -380,8 +380,114 @@ select to reduce in each reduction step?
 
 how do we slove this?
 
+## Ambiguity 
 
-انضموا الينا في الحلقة القادمة من
+Given the following grammar :
 
-!!!!!!!!!كومبايلر كونسترااااااااااااااااكشن
---
+> num --> num d
+>
+> num --> d
+
+Let us draw the derivation tree for the sentence ```dddd```
+
+** TODO INSERT TREE**
+
+Question : is there another derivation tree that represents the sentence?
+
+The answer is **no**.
+
+If there is only one derivation tree representing the sentence, 
+this means there is only one way to derive the sentence.
+
+Based on this, we can say that :
+
+> A Grammar G is said to be ambiguous if there is one sentence with more than
+> one derivation tree. 
+> 
+> That is, there is more than one way to derive the sentence. 
+>
+> This means that our algorithm is **non-deterministic**.
+
+Say we have this grammar
+
+> E --> E + E
+>
+> E --> E * E
+>
+> E --> (E) | a
+
+Take the sentence :
+
+> a + a * a
+
+Lets draw the derivation tree
+
+**TODO INSERT DERIVATION TREE 1 and 2**
+
+
+Due to the fact that we have 2 trees that give the same result, we can 
+say that this grammar is ambiguous.
+
+In this case, to enforce the associativity rule, this grammar can 
+be re-written as :
+
+> E --> E + E | T 
+>
+> T --> T*T | F
+>
+> F--> (E) | a
+
+Now, Take the sentence ```a + a * a```
+and find the derivation tree now. 
+
+** INSERT NEW DERIVATION TREE **
+
+There is only 1 possible derivation tree now. This solves the associativity
+issue of the grammar before with the ```+``` and ```*``` operations.
+
+But lets say we have the sentence :
+
+> a + a + a
+
+Lets try to find the derivation tree and any alternative trees. 
+
+**TODO INSERT DERIVATION TREES**
+
+We can see here that there is more than 1 derivation tree, and the 
+language is still ambiguous.
+
+We can solve this if we rewrite the grammar with the **left-associative rule**
+
+> E --> E + T | T
+>
+> T --> T * F | F
+>
+> F --> (E) | a
+
+The resultant grammar is left-associative.
+
+This grammar solves the problems of :
+
+- ambiguity.
+- precedence.
+- associativity.
+
+Lets try rewriting it with the **right-associative rule**
+
+> E --> T + E | T
+>
+> T --> F * T | F
+>
+> F --> (E) | a
+
+Lets try creating the derivation tree of ```a + a * a```
+
+** INSERT THE TREE of a+a*a**
+
+Now lets draw the derivation tree of ```a + a + a```
+
+** INSERT THE TREE OF a+a+a**
+
+This new grammar is not ambiguity, however, as we can tell from the derivation 
+trees, there are precedence issues now. It's not technically wrong, 
+but it doesnt not follow standard arithmetic rules.
