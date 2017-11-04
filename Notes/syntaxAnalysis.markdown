@@ -488,6 +488,180 @@ Now lets draw the derivation tree of ```a + a + a```
 
 ** INSERT THE TREE OF a+a+a**
 
-This new grammar is not ambiguity, however, as we can tell from the derivation 
+This new grammar is not ambiguious, however, as we can tell from the derivation 
 trees, there are precedence issues now. It's not technically wrong, 
 but it doesnt not follow standard arithmetic rules.
+
+Back to the left-associative grammar now. This grammar is called
+**left-recursive**. This causes problems when it omes to top-down parsing
+techniques(we will see why later).
+
+A grammar is said to be left recursive if there is a production of the form:
+
+> A-->A&alpha;
+
+Conversely, a grammar is right-recursive if there is a production of the form:
+
+> A-->&alpha;A
+
+And causes no problems in top-down parsing.
+
+our grammar has 2 rules of the form 
+
+>A-->A&alpha;
+
+The solution is to transform the grammar to a grammar which is not 
+left-recursive. 
+
+This has an algorithm to it. 
+
+Given that 
+
+> A-->A&alpha;<sub>1</sub>| A&alpha;<sub>2</sub>|A&alpha;<sub>3</sub>|...|A&alpha;<sub>n</sub>
+>
+> A-->&Beta;<sub>1</sub>|&Beta;<sub>2</sub>|&Beta;<sub>3</sub>|...|&Beta;<sub>n</sub>
+
+To do this, we must introduce a new non-terminal, say A\`.
+
+The grammar now becomes :
+
+> A-->&Beta;<sub>1</sub>A\`|&Beta;<sub>2</sub>A\`|&Beta;<sub>3</sub>A\`|...|&Beta;<sub>n</sub>A\`
+
+and
+
+> A\`-->&alpha;<sub>1</sub>A\`| &alpha;<sub>2</sub>A\`|&alpha;<sub>3</sub>A\`|...|&alpha;<sub>n</sub>A\`|&lambda;
+
+For example, say we have
+
+>A-->Ab
+>
+>A-->a
+>
+>L(G)=ab*
+
+Then according to the above
+
+>A-->aA\`
+>
+>A\`-->bA\`|&lambda;
+
+which results in the same grammar.
+
+Lets apply this to the grammar :
+
+> E --> E + T | T
+>
+> T --> T * F | F
+>
+> F --> (E) | a
+
+This results in :
+
+> E --> T E\` 
+>
+> E\` --> + T E\` | &lambda;
+>
+> T --> F T\`
+>
+> T\` --> \* F T\` | &lambda;
+>
+> F --> (E) | a
+
+This grammar is now **perfect**. It solves all our ambiguity issues, and this is a
+grammar we can use to construct the production rules for our programming
+language.
+
+Another ambiguity in programming languages is the ```if...else```
+statement.
+
+Lets take a generic if statement in a generic language:
+
+> stmt --> if-stmt | while-stmt | ....
+>
+> if-stmt --> IF condition stmt
+>
+> if-stmt --> IF condition stmt ELSE stmt 
+>
+> condition --> C
+>
+> stmt --> S 
+
+This grammar is ambiguous.
+
+Lets take the nested ```if...else``` statement :
+
+```
+IF C
+	IF C
+		S
+	ELSE
+		S
+		
+```
+This statement results in 2 derivations trees :
+
+**INSERT TREES OF THIS STATEMENT**
+
+Both these trees result in the same traversal, but they have different meanings.
+The first results in the ```ELSE``` belonging to the first ```IF```, while the 
+second results int he ```ELSE``` belonging to the second ```IF```. We as 
+humans know that the ```ELSE``` belongs to the second ```IF```, since we know that
+the ```ELSE``` statement follows the nearest ```IF```. but how can 
+the compiler know?
+
+There are a bunch of solutions to this problem:
+
+1. Add a delimiter to the ```IF``` statement, such as ```ENDIF``` or 
+```END``` or ```FI``` to the end of the statement, resulting in these 
+productions :
+> if-stmt --> IF condition stmt **ENDIF**
+>
+> if-stmt --> IF condition stmt ELSE stmt **ENDIF**
+
+	Resulting in this statement :
+	
+	```
+	IF C
+	|	IF C
+	|	|	S
+	|	|ELSE
+	|	|	S
+	|	ENDIF
+	ENDIF
+	
+	```
+	The grammar is now unambigious, since we have to clearly state when 
+	an ```IF``` statement ends. However, this is not a pretty solution, 
+	and is extra work for both the programmar and compiler, and results
+	in less readable code.
+2. In C and Pascal, the compiler **always** prefers to shift the ```ELSE```
+	when it sees it in the source code so it follows the nearest ```IF```. We 
+	will learn about this in more detail later.
+	
+Another thing about this grammar is **left factoring**. Consider the 
+productions :
+
+> A --> &alpha;&beta;
+>
+> A --> &alpha;&gamma;
+
+Note how the first part of the productions is the same. This grammar
+can be transformed by introducing a new non-terminal, So what happens now is:
+
+> A --> &alpha;B
+>  
+> B --> &beta;&gamma;
+
+For our grammar, this results in 
+
+> if-stmt --> IF condition stmt
+>
+> if-stmt --> IF condition stmt ELSE stmt 
+
+becoming
+
+> if-stmt --> IF conditon stmt else-part
+>
+> else-parte --> ELSE stmt | &lambda;
+
+Does this solve the ambiguity? No, but it helps.
