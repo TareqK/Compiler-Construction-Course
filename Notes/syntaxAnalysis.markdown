@@ -664,4 +664,4 @@ becoming
 >
 > else-parte --> ELSE stmt | &lambda;
 
-Does this solve the ambiguity? No, but it helps.
+Does this solve the ambiguity? No, but it helps in removing choices.
