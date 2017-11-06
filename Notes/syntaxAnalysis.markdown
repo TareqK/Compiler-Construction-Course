@@ -307,12 +307,59 @@ we obtain the sentence.
 
 ### Classes of Grammars 
 
-According to Chomsky, Grammars can be classified into :
+According to Chomsky, There are 4 classes of grammars :
 
-1. Unrestricted Grammars : No restrictions whatsoever. It is not 
-practical to work with.
+1. Unrestricted Grammars : No restrictions whatsoever except the restriction
+by definition that the left side of the production contains at least one
+nonterminal from V<sub>s</sub>. This grammar is not practical and we cannot
+work with it. 
 
-2. 
+2. Context-Sensitive Grammars : For each production &alpha; --> &Beta;,
+|&alpha;| &le; |&Beta;|, ie , the **length of alpha(&alpha;)** is less than or equal to 
+the **length of Beta(&Beta;)**. This means that in this class of grammar, there are no
+&lambda; productions in the form A --> &lambda, since |&lambda;| = 0 and A &ge; 1.
+
+   They Say that Fortran has a context-sensitive grammar.
+   
+   It is very difficult to work with this class of grammars.
+
+3. Context-Free Grammar(CFG) : Each production in this grammar class is of the 
+form A --> &alpha; , where A &isin; V<sub>N</sub> and &alpha; &isin; V<sub><sub>*</sub></sub>
+that is to say, the left hand side is **only** one nonterminal.
+
+   This is the most important class of grammar. Most programming languages's
+   structures are context-free. 
+   
+   We will mostly be working with this class of grammar. Most of the
+   examples we have taken are CFG.
+
+4. Regular Grammar (Regular Expressions) : Each production in this grammar class
+   is of the form A -- > aB or A --> a, where A,B &isin; V<sub>N</sub> and a &isin;
+   V<sub>T</sub>, **with the exception** of S --> &lambda;
+   
+   For example, lets say we have the grammar
+   
+   > A --> aA
+   >
+   > A --> a
+   >
+   Therefore, we get 
+   
+   >
+   >G(L)=a<sup>+</sup>
+   > 
+	
+   However, adding the production 
+   
+   >
+   > A --> &lambda;
+   >
+   
+   Results in the grammar
+   
+   >
+   >G(L)=a\*
+   > 
 
 ## Parsing Techniques
 
@@ -638,8 +685,10 @@ productions :
 	when it sees it in the source code so it follows the nearest ```IF```. We 
 	will learn about this in more detail later.
 	
-Another thing about this grammar is **left factoring**. Consider the 
-productions :
+Another thing about this grammar is **left factoring**. 
+
+### Left Factoring
+Consider the productions :
 
 > A --> &alpha;&beta;
 >
@@ -662,6 +711,81 @@ becoming
 
 > if-stmt --> IF conditon stmt else-part
 >
-> else-parte --> ELSE stmt | &lambda;
+> else-part --> ELSE stmt | &lambda;
 
-Does this solve the ambiguity? No, but it helps in removing choices.
+Does this solve the ambiguity? No, but it helps in removing choices, since 
+the if-stmt is now one production. If we look at the statement :
+
+
+```
+IF C
+	IF C
+		S
+	ELSE
+		S
+		
+```
+
+It still has 2 derivation trees
+
+**TODO INSERT THE 2 DERIVATION TREES**
+
+## More Ways of Expressing Programming Languages
+
+### Extended BNF Notation
+
+So far, we have been using **BNF Notation**(Production rules) to express
+languages. However, there is another form to Express a language, which is 
+**Extended BNF Notation**
+
+if there is repetition in the grammar, say in the example of the grammar
+
+
+> E --> E + T | T
+> 
+> T --> T \* F | F
+>
+> F --> (E) | a
+
+which can give us a derivation in the form of 
+
+> E --> **E** + T --> **E** + T + T --> **E** + T + T + T --> T + T + T + T....+T
+
+or in the same line, 
+
+> T --> T * F --> T * F * F --> T * F * F * F --> T * F * F * F....* F
+
+We can express this grammar as :
+
+> E --> T { + T }
+>
+> T --> F { * F }
+>
+> F --> (E) | a
+
+We know that \[x\] means that we take x 0 or 1 time only.
+
+However, \{ x \} means we take x zero or any number of times. This is 
+equivalent to \(x\)\*
+
+We can also express this grammar as:
+
+> E --> T (+ T)\*
+>
+> T --> F (* F)\*
+>
+> F --> (E) | a
+
+### Syntax Diagrams
+
+Another way to express languages are **Syntax Diagrams**. These are used
+only with Extended-BNF notation.
+
+Lets say we have want to express the Expression **E**, using the Terms **T**
+and the Factors **F** of the form 
+
+**TODO INSERT DRAWINGS OF SYNTAX TREES**.
+
+As we can see, A square shape represents a nonterminal and an oval shape
+represents a terminal.
+
