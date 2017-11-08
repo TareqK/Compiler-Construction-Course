@@ -823,7 +823,7 @@ Before we continue, we need to define a few functions
 
 Given a string &alpha; &isin; V\*, then 
 
-> FIRST(&alpha;) = { a | &alpha --\*--> aw, a&isin;V<sub>T</sub>,w&isin;V\*}
+> FIRST(&alpha;) = { a | &alpha; --\*--> aw, a&isin;V<sub>T</sub>,w&isin;V\*}
 
 in addition, if &alpha; --> &lambda;, then we add &lambda; to FIRST(&alpha;), that is
 
