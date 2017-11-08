@@ -789,3 +789,109 @@ and the Factors **F** of the form
 As we can see, A square shape represents a nonterminal and an oval shape
 represents a terminal.
 
+## Parsing Techniques (Continued)
+
+Recall : The parser is an algorithm which accepts or rejects a sentence
+in the programming language. 
+
+Recall : There are 2 kinds of parsers : 
+
+1. Top-Down Parsers : In This parsing technique, The parser starts with 
+```S``` using leftmost derivation to derive the sentence. The Major problem
+with this parsing technique is that the parser doesn't know which production
+it should select in each derivation step.
+
+2. Bottom-Up Parsers : The parser in this parsing technique starts 
+from the sentence, doing reduction steps, until it reaches the starting
+symbol ```S``` of the grammar. The Major problem with this technique
+is that the parser doesn't know which substring the parser should select
+in each reduction step.
+
+In Top-Down parsing, we have 2 available algorithms for parsing :
+
+1. Recursive Descent Parsing.
+2. LL(1) Predictive Parsing.
+
+In Bottom-Up parsing, we have 2 available algorithms for parsing :
+
+1. LR Parsers.
+2. Operator Precedence Parsers --> Uses matrix manipulation.
+
+Before we continue, we need to define a few functions
+
+### The ```FIRST``` Function 
+
+Given a string &alpha; &isin; V\*, then 
+
+> FIRST(&alpha;) = { a | &alpha --\*--> aw, a&isin;V<sub>T</sub>,w&isin;V\*}
+
+in addition, if &alpha; --> &lambda;, then we add &lambda; to FIRST(&alpha;), that is
+
+> &lambda; &isin; FIRST(&alpha;)
+
+That is to say,  FIRST(&alpha;) = Set of all terminals that may begin 
+strings derived from &alpha;.
+
+For example 
+
+> &alpha; --\*--> cBx
+>
+> &alpha; --\*--> ayD
+>
+> &alpha; --\*--> ab
+>
+> &alpha; -----> ddd
+
+Then
+
+> FIRST(&alpha;) = {c,a,d}
+
+Assume as well that
+
+> &alpha; --\*--> &lambda;
+
+then 
+
+> FIRST(&alpha;) = {c,a,d,&lambda;}
+
+That is to say, **&lambda; appears in the ```FIRST``` function**.
+
+Lets take an example of this.
+
+### The ```FOLLOW``` Function
+
+We define the ```FOLLOW``` function for **only** nonterminals. That is 
+to say 
+
+> FOLLOW(A), A&isin;V<sub>N</sub>
+
+Given 
+
+> S --\*--> uA&beta; , u&isin;V<sub>T</sub>\*, A&isin;V<sub>N</sub>, &beta;&isin;V\*
+
+then
+
+> FOLLOW(A)=FIRST(&beta;)
+
+That is to say, FOLLOW(A) =  The set of all terminals that may appear after A in 
+the derivation.
+
+> S --\*--> aaXdd
+>
+> S --\*--> Xa
+>
+> S --\*--> BXc
+
+Then 
+
+> FOLLOW(X) = {d,a,c}
+
+### Rules To Compute ```FIRST``` and ```FOLLOW``` Sets
+
+1. FIRST(&lambda;) = {&lambda;}.
+2. FIRST(a) = { a }.
+3. FIRST(a&alpha;)= {&alpha;}.
+4. FIRST(XY) = FIRST(FIRST(X).FIRST(Y)) **OR** FIRST(X.FIRST(Y)) **OR** FIRST(FIRST(X).Y).
+5. Given the production A --> &alpha;X&beta;, Then :
+	a. FIRST(&beta;) &sub; FOLLOW(X) if &beta; &ne; &lambda;.
+	b. FOLLOW(A) &sub; FOLLOW(X) if &beta; = &lambda;.
