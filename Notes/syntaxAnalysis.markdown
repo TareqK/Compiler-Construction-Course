@@ -819,7 +819,7 @@ In Bottom-Up parsing, we have 2 available algorithms for parsing :
 
 Before we continue, we need to define a few functions
 
-### The ```FIRST``` Function 
+### The FIRST() Function 
 
 Given a string &alpha; &isin; V\*, then 
 
@@ -854,13 +854,13 @@ then
 
 > FIRST(&alpha;) = {c,a,d,&lambda;}
 
-That is to say, **&lambda; appears in the ```FIRST``` function**.
+That is to say, **&lambda; appears in the FIRST() function**.
 
 Lets take an example of this.
 
-### The ```FOLLOW``` Function
+### The FOLLOW() Function
 
-We define the ```FOLLOW``` function for **only** nonterminals. That is 
+We define the FOLLOW() function for **only** nonterminals. That is 
 to say 
 
 > FOLLOW(A), A&isin;V<sub>N</sub>
@@ -886,7 +886,7 @@ Then
 
 > FOLLOW(X) = {d,a,c}
 
-### Rules To Compute ```FIRST``` and ```FOLLOW``` Sets
+### Rules To Compute FIRST() and FOLLOW() Sets
 
 1. FIRST(&lambda;) = {&lambda;}.
 2. FIRST(a) = { a }.
@@ -895,3 +895,256 @@ Then
 5. Given the production A --> &alpha;X&beta;, Then :
 	a. FIRST(&beta;) &sub; FOLLOW(X) if &beta; &ne; &lambda;.
 	b. FOLLOW(A) &sub; FOLLOW(X) if &beta; = &lambda;.
+
+Note that the FIRST() and FOLLOW() sets are made of **terminals only**
+
+By these rules, say we have 
+
+> A -- > &alpha;X&Beta; , X&isin;V<sub>N</sub>
+
+and say we want FOLLOW(X)
+
+Then 
+
+> FIRST(&Beta;) &sub; FOLLOW(X)
+
+We say it is a subset because we can have other productions involving 
+X.
+
+Assuming that &Beta; = &lambda;, Things are different. 
+
+Say that we have a production that leads to this derivation is 
+
+> S --*--> uA&gamma;
+
+and following through this results in this derivation : 
+
+> S --*--> uA&gamma; --> u&alpha;X&gamma;
+
+Therefore, 
+
+> FOLLOW(A) &sub; FOLLOW(X)
+
+This is because whatever follows A can follow X if there is nothing 
+between them.
+
+Notes : 
+
+1. &lambda; **may** appear in FIRST() but it doesn't appear in FOLLOW(). We 
+will see this when we define augmented grammars.
+
+2. Generally, we start computing the FIRST() from bottom to top, But follow
+from top to bottom.
+
+3. When we compute FOLLOW(X), we search for X in the right side of 
+any production.
+
+## Augmented Grammars
+
+Given the grammar G=(V<sub>N</sub>,V<sub>T</sub>,S,P), then the 
+augmented grammar G\`=(V<sub>N</sub>\`,V<sub>T</sub>\`,S\`,P\`) can 
+be obtained from G as follows:
+
+1. V<sub>N</sub>\` = V<sub>N</sub> &cup; {S\`}.
+2. V<sub>T</sub>\` = V<sub>T</sub> &cup; { $ }.
+3. S\` = new starting point.
+4. P` = P &cup; {S\`-->S$}
+
+For example :
+
+> E --> E + T | T
+>
+> T --> T * F | F
+>
+> F --> (E) | a
+
+Becomes :
+
+> G --> E$
+>
+> E --> E + T | T
+>
+> T --> T * F | F
+>
+> F --> (E) | a 
+
+This is because we want to create a FOLLOW() set for S.
+
+Lets take another example :
+
+> S\` --> S$
+>
+> S --> AB
+>
+> A --> a | &lambda;
+>
+> B --> b | &lambda;
+
+Lets compute the FIRST() sets for this grammar :
+
+> FIRST(A) = \{a,&lambda;\}
+>
+> FIRST(B) = \{b,&lambda;\}
+> 
+> FIRST(S) = FIRST(AB) = FIRST(FIRST(A).FIRST(B))
+>
+> = FIRST(\{a,&lambda;\},\{b,&lambda;\})
+>
+> = FIRST(\{a,&lambda;,b,&lambda;})
+>
+> = \{a,b,&lambda;\}
+>
+> FIRST(S\`) = FIRST(S$) = FIRST(FIRST(S).FIRST($)) 
+>
+> = FIRST(\{a,b,&lambda;\}.$)= FIRST(a$,b$,$)
+>
+> = {a,b,$}
+
+Now Lets compute the FOLLOW() sets for this grammar :
+
+> FOLLOW(S) = \{$\}
+>
+> FOLLOW(A) = \{b,$\}
+>
+> FOLLOW(B) = \{$\}
+
+---
+
+Lets Take another, slightly more complex example :
+
+> S\` --> S$
+>
+> S --> aAcb
+>
+> S --> Abc
+>
+> A --> b | c | &lambda;
+
+Lets take the FIRST() for this grammar :
+
+> FIRST(A) = \{b,c,&lambda;\}
+>
+> FIRST(S) =  FIRST(aAcb)&cup;FIRST(Abc) = \{a,\} &cup \{b,c\}
+>
+> = \{a,b,c\}
+>
+> FIRST(S\`) = FIRST(S$) = FIRST(FIRST(S).FIRST($)) 
+>
+>= FIRST(\{a,b,c\}.\{$\})
+>
+> = \{a,b,c\}
+
+Now lets take the FOLLOW() : 
+
+> FOLLOW(S) = \{$\}
+>
+> FOLLOW(A = \{c,b\}
+
+---
+
+Say we have the grammar 
+
+> G --> E$
+>
+> E --> E + T | T
+>
+> T --> T * F | F
+>
+> F --> (E) | a 
+
+Lets calculate FIRST() :
+
+> FIRST(F) = {(,a}
+>
+> FIRST(T) = FIRST(T * F)&cup;FIRST(F) =  FIRST(T * F)&cup;{\(,a} 
+>
+> = {\(,a} (Because every T will eventually become an F)
+>
+> FIRST(E) = FIRST(E + T) &cup; FIRST(T) = {\(,a} &cup; {\(,a} 
+>
+> = {\(,a} 
+>
+> FIRST(G) = FIRST(E$) = {\(,a} 
+
+Now lets Calculate FOLLOW() :
+
+> FOLLOW(E) = \{$,+,)\}
+>
+> FOLLOW(T) = FOLLOW(E) &cup; \{*\} = \{$,+,\*,)\}
+>
+> FOLLOW(F) = FOLLOW(T) = \{$,+,\*,)\}
+
+---
+
+But what makes all this so important? 
+
+Well, All of the parsing techniques we are going to learn will heavily rely 
+on FIRST() and FOLLOW().
+
+---
+
+### Top-Down Parsing(continued)
+
+#### Recursive Descent Parsing
+
+Recursive Descent Parsing is very simple. It works like this :
+
+1. Divide the grammar into primitive/simple components
+	1. For the token "a" :
+	  
+	    
+	   >If(token == "a"){
+	   >
+	   >		get-next()
+	   >
+	   >}
+	   >
+	   >else{
+	   >
+	   >	report-error()
+	   >
+	   >}
+
+	2.  For X = &alpha;<sub>1</sub>,&alpha;<sub>2</sub>,...,&alpha;<sub>n</sub> :
+		
+	 
+		>code(X):\{ 
+		>
+		>code(&alpha;<sub>1</sub>);
+		>
+		>code{&alpha;<sub>2</sub>};
+		>...
+		>
+		>...
+		>
+		>...
+		>
+		>code(&alpha;<sub>n</sub>);
+		>\}
+		
+		Then
+		
+		> If(token &isin; FIRST(&alpha;<sub>1</sub>))
+		>
+		>	code(&alpha;<sub>1</sub>)
+		>
+		> else If(token &isin; FIRST(&alpha;<sub>2</sub>))
+		>
+		>	code(&alpha;<sub>2</sub>)
+		>...
+		>
+		>...
+		>
+		>...
+		>If(token &isin; FIRST(&alpha;<sub>n</sub>))
+		>
+		>	code(&alpha;<sub>n</sub>)
+		>
+		>else{
+		>
+		> report-error();
+		>}
+		
+		If &alpha; &ne; &lambda;
+		
+		
