@@ -1147,4 +1147,234 @@ Recursive Descent Parsing is very simple. It works like this :
 		
 		If &alpha; &ne; &lambda;
 		
+		So we say, the code for x = &alpha;\*, we say
 		
+		> while(token &isin; FIRST(&alpha;\*))\{
+		>
+		> call(&alpha\*);
+		>
+		> /}
+---
+
+Notes :
+
+1. Every nonterminal has a code(a function).
+2. S\` in augmented grammar is represented by the function "main".
+3. We only start with calling "get-token" in function "main".
+
+---
+
+For Example, lets say we have
+
+> G --> E$
+>
+> E --> T( + T )*
+>
+> T --> F( \* F )\*
+>
+> F --> ( E ) | a
+
+Then we can say :
+
+```
+
+ main(){//represents G
+
+ get-token;
+
+ call E();
+
+ if(token!="$")
+ {
+	Error;
+ }
+ else{
+	SUCCESS;
+ }
+	
+	
+
+}
+
+ function E(){//Represents E -- T (+ T)*
+
+	call T();
+
+	while(token == "+"){
+
+		get-token();
+
+		call T()
+	}
+
+ }
+ 
+ function T(){//T--> F (* F)*
+ 
+	call F();
+	while(token == "*"){
+	
+		get-token();
+	
+		call F();
+	}
+ }
+ 
+ function F(){
+ 
+	if(token == "(")
+	{
+		get-token();
+		
+		call E();
+		
+		if(token == ")")
+		{
+			get-token();
+		}
+		else
+		{
+			ERROR;
+		}
+	}
+	else if(token=="a")
+		{
+		get-token();
+		}
+	else
+	{
+		ERROR;
+	}
+ }
+ 
+```
+
+Note that ```ERROR``` is a function we should write.
+
+---
+
+Lets take another example now. 
+
+Given the grammar :
+
+> Program --> body .
+> 
+> body --> Begin stmt (; stmt)* End
+>
+> stmt --> Read | Write | body | &lambda;
+
+where we will represent &lambda; as ```l``` from now on in the example;
+
+and
+
+> V<sub>N</sub> = { Program, body, stmt, block}
+>
+> V<sub>T</sub> = { ., Begin, ;, End, Read, Write}
+
+examples of programs of this language would be
+
+``` 
+
+Begin
+	Read;
+	Write;
+	Read;
+	Write;
+End.
+
+```
+or
+
+```
+
+Begin
+	Read;
+End.
+
+```
+
+or
+
+```
+
+Begin
+	Read;
+	Begin
+		Read;
+		Write;
+	End.
+	Write;
+End.
+
+```
+
+or
+
+```
+
+Begin;
+	;
+	;
+	;
+	;
+End.
+
+```
+
+Lets write the code for this programming language.
+
+```
+main(){
+
+	get-token();
+	
+	call body();
+	
+	if(token != "."){
+		ERROR;
+	}
+	else{
+		SUCCESS;
+	}
+}
+
+function body(){
+
+	call Begin();
+	if(token == "Begin"){
+		get-token();
+		call stmt();
+		while(token ==";"){
+			get-token();
+			call stmt();
+		}
+		if(token == "End"){
+			get-token();
+		}
+		else{
+			ERROR;
+		}
+	
+	}
+	else{
+		ERROR;
+	}
+}
+
+function stmt(){
+
+	if(token == "Read"){
+		get-token();
+		
+	}
+	else if(token == "Write"){
+		get-token();
+	}
+	else if(token == "Begin"){
+		call body();
+	}else if(token != ";" || token != "End" ){
+		ERROR();
+	}
+}
+		
+```
