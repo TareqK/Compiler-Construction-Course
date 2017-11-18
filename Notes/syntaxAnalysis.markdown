@@ -1364,17 +1364,131 @@ function body(){
 function stmt(){
 
 	if(token == "Read"){
-		get-token();
-		
+		get-token();	
 	}
 	else if(token == "Write"){
 		get-token();
 	}
 	else if(token == "Begin"){
 		call body();
-	}else if(token != ";" || token != "End" ){
+	}
+	else if(token != ";" || token != "End" ){
 		ERROR();
 	}
 }
 		
 ```
+
+#### LL(1) Parsing
+
+This Parsing method is a **table-driven** parsing method. The LL(1) parsing
+table selects which production to choose for the next derivation step. 
+
+But how do we build the LL(1) parsing table?
+
+##### LL(1) Parsing Table Building Algorithm
+
+1. For each production A --> &alpha; in the grammar G, 
+   1. Add to the table entry T[A,a] the production A --> &alpha;, where A &isin; FIRST(&alpha;)
+2. If &lambda; &isin; FIRST(&alpha;), Add to the table entry T[A,b] the production A --> &alpha; &forall; b &isin; FOLLOW(A).
+3. All Remaining Entries are Error Entries.
+
+The table looks like
+
+
+
+V<sub>N</sub>\V<sub>T</sub>|test
+---|---
+A|..
+
+---
+
+For example, given the grammar :
+
+>V --> SR $<sup>1</sup>
+>
+>S --> +<sup>2</sup> | -<sup>3</sup> | &lambda;<sup>4</sup>
+>
+>R --> dN.N<sup>5</sup> | .dN<sup>6</sup>
+>
+>N --> dN<sup>7</sup>| &lambda;<sup>8</sup>
+
+note that the superscript denotes the production number.
+
+Then the table will look like this 
+
+> FIRST(SR $) = {+,-,d,.}
+> 
+> FIRST(+) = {+}
+>
+> FOLLOW(S) = {d,.}
+>
+> FIRST\(R\) = {., $}
+>
+> FIRST(d) = { - }
+>
+> FOLLOW(N) = {., $}
+
+V<sub>N</sub>\V<sub>T</sub>| + | - | d | . | $
+---|---|---|---|---|---
+ V | 1 | 1 | 1 | 1 |
+ S | 2 | 3 | 4 | 4 |   
+ R |   |   | 5 | 5 |
+ N |   |   | 7 | 8 | 8
+
+There should be no conflict(multiple entries) in the LL(1) table.
+
+L(G) of this grammar = all floating point numbers.
+
+
+The parser works like this
+
+Stack | Remaining Input | Action 
+---|---|---|
+V    |-dd.d$ | Production 1
+SR$  |-dd.d$ | Production 3
+-R$  |-dd.d$ | Pop & advance input
+R$   | dd.d$ | Production 5
+dN.N$| dd.d$ | Pop & advance input
+N.N$ |  d.d$ | Production 7
+dN.N$|  d.d$ | Pop & advance input
+N.N$ |   .d$ | Production 8
+.N$  |   .d$ | Pop & advance input
+N$   |    d$ | Production 7
+dN$  |    d$ | Pop & advance
+N$   |     $ | Production 8
+$    |     $ | Pop and Advance
+&lambda; | &lambda; | Accept 
+
+If at any point the parser reaches a place where the input and the 
+stack have 2 different terminal symbols, it throws a syntax error.
+
+---
+
+Lets Take another example. Let the Grammar be :
+
+> program --> block $ <sup>1</sup>
+>
+> block --> { declarations stmnts } <sup>2</sup>
+>
+> decls --> D ; decls <sup>3</sup> | &lambda; <sup>4</sup>
+>
+> stmnts --> statement ; stmts <sup>5</sup> | &lambda; <sup>6</sup>
+>
+> statement --> if <sup>7</sup> | while <sup>8</sup> | ass <sup>9</sup> | scan <sup>10</sup> | print<sup>11</sup> | block <sup>12</sup> | &lambda;<sup>13</sup>
+
+V<sub>T</sub> = {$,{,},D,;,if,while,ass,scan,print}
+
+V<sub>N</sub>\V<sub>T</sub>|if|while|ass|scan|print|{|}|D|;|$
+         |   |   |   |   |   |   |   |   |   |   
+Program  |   |   |   |   |   | 1 |   |   |   |   
+block    |   |   |   |   |   | 2 |   |   |   |   
+decls    | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 3 | 4 |   
+stmts    | 5 | 5 | 5 | 5 | 5 | 5 | 6 |   | 5 |   
+statement| 7 | 8 | 9 | 10| 11| 2 |   |   | 13|   
+
+No conflict. 
+
+---
+
+
