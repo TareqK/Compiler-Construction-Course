@@ -1397,7 +1397,7 @@ The table looks like
 
 
 
-V<sub>N</sub>\V<sub>T</sub>|test
+V<sub>N</sub>/V<sub>T</sub>|test
 ---|---
 A|..
 
@@ -1429,7 +1429,7 @@ Then the table will look like this
 >
 > FOLLOW(N) = {., $}
 
-V<sub>N</sub>\V<sub>T</sub>| + | - | d | . | $
+V<sub>N</sub>/V<sub>T</sub>| + | - | d | . | $
 ---|---|---|---|---|---
  V | 1 | 1 | 1 | 1 |
  S | 2 | 3 | 4 | 4 |   
@@ -1444,20 +1444,20 @@ L(G) of this grammar = all floating point numbers.
 The parser works like this
 
 Stack | Remaining Input | Action 
----|---|---|
-V    |-dd.d$ | Production 1
-SR$  |-dd.d$ | Production 3
--R$  |-dd.d$ | Pop & advance input
-R$   | dd.d$ | Production 5
-dN.N$| dd.d$ | Pop & advance input
-N.N$ |  d.d$ | Production 7
-dN.N$|  d.d$ | Pop & advance input
-N.N$ |   .d$ | Production 8
-.N$  |   .d$ | Pop & advance input
-N$   |    d$ | Production 7
-dN$  |    d$ | Pop & advance
-N$   |     $ | Production 8
-$    |     $ | Pop and Advance
+---|---|---|---
+V     | -dd.d$ | Production 1
+SR$   | -dd.d$ | Production 3
+-R$   | -dd.d$ | Pop & advance input
+R$    |  dd.d$ | Production 5
+dN.N$ |  dd.d$ | Pop & advance input
+N.N$  |   d.d$ | Production 7
+dN.N$ |   d.d$ | Pop & advance input
+N.N$  |    .d$ | Production 8
+.N$   |    .d$ | Pop & advance input
+N$    |     d$ | Production 7
+dN$   |     d$ | Pop & advance
+N$    |      $ | Production 8
+$     |      $ | Pop and Advance
 &lambda; | &lambda; | Accept 
 
 If at any point the parser reaches a place where the input and the 
@@ -1479,7 +1479,8 @@ Lets Take another example. Let the Grammar be :
 
 V<sub>T</sub> = {$,{,},D,;,if,while,ass,scan,print}
 
-V<sub>N</sub>\V<sub>T</sub>|if|while|ass|scan|print|{|}|D|;|$
+V<sub>N</sub>/V<sub>T</sub>|if|while|ass|scan|print|{|}|D|;|$
+---|---|---|---|---|---|---|---|---|---|---
          |   |   |   |   |   |   |   |   |   |   
 Program  |   |   |   |   |   | 1 |   |   |   |   
 block    |   |   |   |   |   | 2 |   |   |   |   
@@ -1488,4 +1489,5 @@ stmts    | 5 | 5 | 5 | 5 | 5 | 5 | 6 |   | 5 |
 statement| 7 | 8 | 9 | 10| 11| 2 |   |   | 13|   
 
 No conflict. 
+
 
