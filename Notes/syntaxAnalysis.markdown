@@ -1482,7 +1482,6 @@ V<sub>T</sub> = {$,{,},D,;,if,while,ass,scan,print}
 
 V<sub>N</sub>\V<sub>T</sub>|if|while|ass|scan|print|\{|\}|D|;|$
 ---|---|---|---|---|---|---|---|---|---|---
-         |   |   |   |   |   |   |   |   |   |   
 Program  |   |   |   |   |   | 1 |   |   |   |   
 block    |   |   |   |   |   | 2 |   |   |   |   
 decls    | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 3 | 4 |   
