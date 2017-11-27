@@ -1479,7 +1479,9 @@ Lets Take another example. Let the Grammar be :
 
 V<sub>T</sub> = {$,{,},D,;,if,while,ass,scan,print}
 
+
 V<sub>N</sub>\V<sub>T</sub>|if|while|ass|scan|print|{|}|D|;|$
+---------|---|---|---|---|---|---|---|---|---|---
          |   |   |   |   |   |   |   |   |   |   
 Program  |   |   |   |   |   | 1 |   |   |   |   
 block    |   |   |   |   |   | 2 |   |   |   |   
