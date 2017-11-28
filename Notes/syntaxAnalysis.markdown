@@ -889,7 +889,7 @@ Then
 
 1. FIRST(&lambda;) = {&lambda;}.
 2. FIRST(a) = { a }.
-3. FIRST(a&alpha;)= {&alpha;}.
+3. FIRST(a&alpha;)= {a}.
 4. FIRST(XY) = FIRST(FIRST(X).FIRST(Y)) **OR** FIRST(X.FIRST(Y)) **OR** FIRST(FIRST(X).Y).
 5. Given the production A --> &alpha;X&beta;, Then :
 	a. FIRST(&beta;) &sub; FOLLOW(X) if &beta; &ne; &lambda;.
