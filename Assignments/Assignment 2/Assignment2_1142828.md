@@ -9,13 +9,13 @@ Symbol | FIRST() set
 $ |	$
 d  |  d
 a 	|a
-λ 	|λ
+&lambda; 	|&lambda;
 b 	|b
 c 	|c
-S 	|d, b, c, a, λ
-A 	|a, λ
+S 	|d, b, c, a, &lambda;
+A 	|a, &lambda;
 B 	|b, c
-S' 	|d, b, c, a, λ
+S' 	|d, b, c, a, &lambda;
 
 
 
@@ -32,15 +32,15 @@ B  | a, $
 Symbol | FIRST() set
 ---|---
 a 	|a
-λ 	|λ
+&lambda; 	|&lambda;
 b 	|b
 c 	|c
 S' 	|a
 S 	|a
 A 	|a, b
-B 	|a, λ
-C 	|b, λ
-D 	|c, λ
+B 	|a, &lambda;
+C 	|b, &lambda;
+D 	|c, &lambda;
 
 
 
@@ -166,7 +166,7 @@ C  --> c 6
 Symbols | FIRST() set 
 --|--
 S |	i, a
-E |	e, λ
+E |	e, &lambda;
 C |	c
 S'| i, a
 
