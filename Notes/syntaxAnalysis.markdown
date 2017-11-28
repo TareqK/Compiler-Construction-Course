@@ -497,7 +497,7 @@ But lets say we have the sentence :
 
 Lets try to find the derivation tree and any alternative trees. 
 
-![eft1](./images/eft1.PNG)
+![eft1](./images/etf1.PNG)
 
 We can see here that there is more than 1 derivation tree, and the 
 language is still ambiguous.
