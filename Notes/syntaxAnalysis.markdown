@@ -1422,11 +1422,11 @@ Then the table will look like this
 >
 > FOLLOW(S) = {d,.}
 >
-> FIRST\(R\) = {., $}
+> FIRST\(R\) = {d, .}
 >
-> FIRST(d) = { - }
+> FIRST(d) = { d }
 >
-> FOLLOW(N) = {., $}
+> FOLLOW(N) = {d, ., $}
 
 V<sub>N</sub>\V<sub>T</sub>| + | - | d | . | $
 ---|---|---|---|---|---
