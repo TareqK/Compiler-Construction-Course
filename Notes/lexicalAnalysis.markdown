@@ -735,8 +735,8 @@ Lets quickly apply what we learned on this table.
 	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 	--- | --- | --- | --- | ---
 	(H,Y)| | | | H,Z
-	&#10003;(H,Z)| | | | H,Z
-	&#10003;(Y,Z)| | | | Z,Z
+	(H,Z)| | | | H,Z
+	(Y,Z)| | | | Z,Z
 
 
 2. Marking feasible pairs 
@@ -744,8 +744,8 @@ Lets quickly apply what we learned on this table.
 	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 	--- | --- | --- | --- | ---
 	(H,Y)| | | | H,Z
-	(H,Z)| | | | H,Z
-	(Y,Z)| | | | Z,Z
+	&#10003;(H,Z)| | | | H,Z
+	&#10003;(Y,Z)| | | | Z,Z
 
 3. Merge and Replace
 
