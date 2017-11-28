@@ -1,6 +1,6 @@
 # Question 1
 
-## Part a
+## Part A
 
 
 
@@ -26,7 +26,7 @@ S  | $
 A  | d, a, $
 B  | a, $
    
-##Part B
+## Part B
 
 
 Symbol | FIRST() set
@@ -56,6 +56,7 @@ D | c
 # Question 2
 
 ```
+
 main(){
 
  get-token();
@@ -149,7 +150,6 @@ statement(){
 		throw_error();
 	}
 	}
-
 
 ```
 
