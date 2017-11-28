@@ -300,7 +300,7 @@ A Derivation Tree is a Tree that displays the derivation of some
 sentence in the language. For example, lets look at the 
 tree for the previous example
 
-**INSERT IMAGE OF TREE FOR -ddd.d$**
+![ddd](./images/derivationtree.PNG)
 
 Note that if we traverse the tree in order, recording **only** the leaves,
 we obtain the sentence.
@@ -437,7 +437,7 @@ Given the following grammar :
 
 Let us draw the derivation tree for the sentence ```dddd```
 
-** TODO INSERT TREE**
+![numd](./images/num_d.PNG)
 
 Question : is there another derivation tree that represents the sentence?
 
@@ -469,7 +469,7 @@ Take the sentence :
 
 Lets draw the derivation tree
 
-**TODO INSERT DERIVATION TREE 1 and 2**
+![aaa](./images/aaa..PNG)
 
 
 Due to the fact that we have 2 trees that give the same result, we can 
@@ -486,8 +486,7 @@ be re-written as :
 
 Now, Take the sentence ```a + a * a```
 and find the derivation tree now. 
-
-** INSERT NEW DERIVATION TREE **
+![left](./images/left.PNG)
 
 There is only 1 possible derivation tree now. This solves the associativity
 issue of the grammar before with the ```+``` and ```*``` operations.
@@ -498,7 +497,7 @@ But lets say we have the sentence :
 
 Lets try to find the derivation tree and any alternative trees. 
 
-**TODO INSERT DERIVATION TREES**
+![eft1](./images/eft1.PNG)
 
 We can see here that there is more than 1 derivation tree, and the 
 language is still ambiguous.
@@ -529,11 +528,11 @@ Lets try rewriting it with the **right-associative rule**
 
 Lets try creating the derivation tree of ```a + a * a```
 
-** INSERT THE TREE of a+a*a**
+![right1](./images/right1.PNG)
 
 Now lets draw the derivation tree of ```a + a + a```
 
-** INSERT THE TREE OF a+a+a**
+![righ2](./images/right2.PNG)
 
 This new grammar is not ambiguious, however, as we can tell from the derivation 
 trees, there are precedence issues now. It's not technically wrong, 
