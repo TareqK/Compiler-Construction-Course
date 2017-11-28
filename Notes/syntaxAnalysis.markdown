@@ -1343,7 +1343,7 @@ function body(){
 	if(token == "Begin"){
 		get-token();
 		call stmt();
-		while(token ==";"){
+		while(token !=";"){
 			get-token();
 			call stmt();
 		}
