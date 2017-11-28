@@ -2,7 +2,7 @@
 
 ## Part a
 
-### FIRST()
+
 
 Symbol | FIRST() set
 ---|---
@@ -17,7 +17,7 @@ A 	|a, λ
 B 	|b, c
 S' 	|d, b, c, a, λ
 
-### FOLLOW()
+
 
 Symbol | FOLLOW() set
 ---|---
@@ -28,7 +28,7 @@ B  | a, $
    
 ##Part B
 
-### FIRST()
+
 Symbol | FIRST() set
 ---|---
 a 	|a
@@ -42,7 +42,7 @@ B 	|a, λ
 C 	|b, λ
 D 	|c, λ
 
-### FOLLOW()
+
 
 Symbol | FOLLOW() set
 ---|---
@@ -170,8 +170,6 @@ E |	e, λ
 C |	c
 S'| i, a
 
-```
-```
 
 Symbols | FOLLOW() set
 ---|---
@@ -180,9 +178,6 @@ S |	e, $
 E |	e, $
 C |	i, a
 
-```
-
-```
 
 V<sub>N</sub>\\V<sub>T</sub>| i | a | e | c | $
 ---|---|---|---|---|---
@@ -195,9 +190,7 @@ There is a conflict, this table is not LL(1)
 
 b. S  -->  iCSE  | a  becomes S -->  iCSEd  |  a 
 
-```
 
-```
 
 V<sub>N</sub>\\V<sub>T</sub>| i | a | e | c | d | $ 
 ---|---|---|---|---|---|---
