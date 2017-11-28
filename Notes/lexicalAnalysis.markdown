@@ -695,10 +695,10 @@ therefore, we merge p and q, choosing one of them :
 
 1. 1 &equiv; 3 ---> 1
 2. 2 &equiv; 5 ---> 2
-3. 4 &equiv; 7 ---> 4
+3. 4 &equiv; 6 ---> 4
 
 We then merge, replacing every 3 with a 1, every 5 with a 2, and every
-7 with a 4, resulting in this state table :
+6 with a 4, resulting in this state table :
 
 **State** \ <sup>V<sub>T</sub></sup>| a | b | c 
 --- | --- | --- | --- 
@@ -735,8 +735,8 @@ Lets quickly apply what we learned on this table.
 	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 	--- | --- | --- | --- | ---
 	(H,Y)| | | | H,Z
-	(H,Z)| | | | H,Z
-	(Y,Z)| | | | Z,Z
+	&#10003;(H,Z)| | | | H,Z
+	&#10003;(Y,Z)| | | | Z,Z
 
 
 2. Marking feasible pairs 
