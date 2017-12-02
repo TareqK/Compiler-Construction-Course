@@ -1383,6 +1383,27 @@ function stmt(){
 This Parsing method is a **table-driven** parsing method. The LL(1) parsing
 table selects which production to choose for the next derivation step. 
 
+##### Formal Definition of LL(1)
+
+The Formal definition of LL(1) grammars is given by :
+
+> Given the Productions :
+>
+> A --> &alpha;<sub>1</sub>
+>
+> A --> &alpha;<sub>2</sub>
+>
+> A --> &alpha;<sub>3</sub>
+>
+> A --> &alpha;<sub>n</sub>
+>
+> then the grammar is LL(1) if :
+>
+> 1. FIRST(&alpha;<sub>i</sub>)&cap;FIRST(&alpha;<sub>g</sub>) = &empty; for all i,j
+>
+> 1. if one of &alpha;<sub>i</sub>  is &lambda;,&alpha;<sub>n</sub> = &lambda;, in addition to 1, &forall; i &lt; n
+
+
 But how do we build the LL(1) parsing table?
 
 ##### LL(1) Parsing Table Building Algorithm
@@ -1392,15 +1413,6 @@ But how do we build the LL(1) parsing table?
 2. If &lambda; &isin; FIRST(&alpha;), Add to the table entry T[A,b] the production A --> &alpha; &forall; b &isin; FOLLOW(A).
 3. All Remaining Entries are Error Entries.
 
-The table looks like
-
-
-
-V<sub>N</sub>\V<sub>T</sub>|test
----|---
-A|..
-
----
 
 For example, given the grammar :
 
@@ -1489,3 +1501,67 @@ statement| 7 | 8 | 9 | 10| 11| 2 |   |   | 13|
 
 No conflict. 
 
+---
+
+Another example is  the If....else statement with a delimiter. the grammar 
+looks like this :
+
+> S` --> S$
+>
+> S --> iCSE
+>
+> E --> S | &lambda;
+>
+> S --> a
+>
+> C --> c
+
+V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | $
+---|---|---|---|---|---
+S` | 1 | 1 |   |   |   
+S  | 2 | 5 |   |   |   
+E  |   |   |3,4|   | 4   
+C  |   |   |   | 6 |
+
+There is a conflict. To solve this, we can add a delimiter.
+
+> S` --> S$
+>
+> S --> iCSEd
+>
+> E --> eS | &lambda;
+>
+> S --> a
+>
+> C --> c
+
+V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | d | $
+---|---|---|---|---|---|---
+S` | 1 | 1 |   |   |   |
+S  | 2 | 5 |   |   |   |
+E  |   |   | 3 |   | 4 | 
+C  |   |   |   | 6 |   |
+
+The grammar is now unambiguous. Alternatively, we can just strike out
+the transition 4 from the LL(1) table, which is a &lambda; transition.
+Lets follow through the derivation tree **INSERT TREE** . the resultant table is 
+
+V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | $
+---|---|---|---|---|---
+S` | 1 | 1 |   |   |   
+S  | 2 | 5 |   |   |   
+E  |   |   | 3 |   | 4   
+C  |   |   |   | 6 |
+
+and this works because the natural behavior of the else-part is to follow
+the nearest if statement.
+
+---
+
+Something Important to note is that **if a grammar is LL(1), then it is 
+unambiguous. However, the opposite is not necessarily true.**
+
+Another thing to note is that 
+in Top-Down parsing, we should avoid a grammar that is not LL(1). 
+
+--- 
