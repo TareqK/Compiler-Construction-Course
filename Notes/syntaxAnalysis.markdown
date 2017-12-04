@@ -425,7 +425,7 @@ Note that we can run into deadlocks here. say we took this path instead :
 This technique also has a major problem : Which substring should we 
 select to reduce in each reduction step?
 
-how do we slove this?
+how do we solve this?
 
 ## Ambiguity 
 
@@ -938,7 +938,7 @@ from top to bottom.
 3. When we compute FOLLOW(X), we search for X in the right side of 
 any production.
 
-## Augmented Grammars
+#### Augmented Grammars
 
 Given the grammar G=(V<sub>N</sub>,V<sub>T</sub>,S,P), then the 
 augmented grammar G\`=(V<sub>N</sub>\`,V<sub>T</sub>\`,S\`,P\`) can 
@@ -1082,7 +1082,7 @@ on FIRST() and FOLLOW().
 
 ---
 
-### Top-Down Parsing(continued)
+### Top-Down Parsing (Continued)
 
 #### Recursive Descent Parsing
 
@@ -1403,8 +1403,44 @@ The Formal definition of LL(1) grammars is given by :
 >
 > 1. if one of &alpha;<sub>i</sub>  is &lambda;,&alpha;<sub>n</sub> = &lambda;, in addition to 1, &forall; i &lt; n
 
+For example, Given the grammar :
 
-But how do we build the LL(1) parsing table?
+> S --> S$
+>
+> S --> aABC
+> 
+> A --> a | bbD
+>
+> B --> a | &lambda;
+>
+> C --> b | &lambda;
+>
+> D --> C | &lambda;
+
+let us see if it is LL(1)
+
+- FIRST(a)&cap;FIRST(bbD) = &empty;
+- FIRST(a)&cap;FOLLOW(B) = &empty;
+- FIRST(b)&cap;FOLLOW\(C\) = &empty;
+- FIRST\(c\)&cap;FOLLOW(D) = &empty;
+
+Then this grammar is LL(1).
+
+Given another Grammar :
+
+> S` --> S$
+>
+> S --> aAa | &lambda;
+>
+> A --> abS | &lambda;
+
+- FIRST(aAa)&cap;FOLLOW(S) = {a}&cap;{$,a} = {a} &ne; &empty;
+
+This grammer is **not** LL(1).
+
+---
+
+Lets assume that we have a grammer that is LL(1). How do we build the LL(1) parsing table?
 
 ##### LL(1) Parsing Table Building Algorithm
 
@@ -1565,3 +1601,115 @@ Another thing to note is that
 in Top-Down parsing, we should avoid a grammar that is not LL(1). 
 
 --- 
+
+### Bottom-Up Parsing (Continued)
+
+Recall that in Bottom-Up parsing, the parser starts from the given sentence,
+applying reductions until it reaches the starting symbol of the grammar or 
+a deadlock. The major problem with Bottom-Up parsing is which substring
+we should select in each reduction step.
+
+The answer to the above question is : In each reduction step, we select 
+what is called **the handle**.
+
+The Handle is obtained by a **rightmost** derivation **in reverse** 
+
+For example, Given the grammar :
+
+>V --> S R $
+>
+>S --> +|-|&lambda;
+>
+>R --> .dN | dN.N
+>
+>N --> dN | &lambda;
+
+and the sentence
+
+> -dd.d$
+
+First, we derive the sentence rightmost. 
+
+> V --<sup>rm</sup>--> SR$ --<sup>rm</sup>--> SdN.N$ --<sup>rm</sup>--> SdN.dN$ --<sup>rm</sup>--> SdN.dd$ --<sup>rm</sup>--> SddN.d$
+> --<sup>rm</sup>--> Sdd.d$ --<sup>rm</sup>--> -dd.d$
+
+So our handles would be :
+
+> V <-- **SR$** <-- S**dN.N**$<--
+> SdN.**dN**$ <-- SdN.d**&lambda;**$ <-- Sd**dN**.d$ <-- Sdd**&lambda;**.d$ <-- **-**dd.d$
+
+But Compilers dont work like this. We already derived the sentence, why would we go 
+back and do it again?
+
+We cannot build a Bottom-Up parser for every Context-Free Grammar. However,
+we are fortunate enough that there exist subsets of the Context-Free Grammar 
+for which we can build a deterministic Bottom-Up parser ie, the parser
+can determine/decide precisely where the handle is in each reduction step.
+
+some  of these subsets are 
+
+- LR Parsers :
+  - SLR(Simple-LR).
+  - LALR(Look-Ahead LR).
+  - LR.
+
+- Operator Precedence.
+
+We will only be talking about the SLR parser, just to get an idea
+of how Bottom-Up parsing works.
+
+#### SLR Parsing
+
+SLR parsing, and LR parsing in general, is a tabular parsing method.
+
+All LL(1) grammars are a subset of SLR grammars. 
+
+All LR parsers contains :
+
+1. A parsing table.
+
+2. A stack.
+
+3. The input string.
+
+As a reminder, the LL(1) parser contains :
+
+
+1. A parsing table.
+
+2. A stack.
+
+3. The input string.
+
+However, the way we build it is different.
+
+##### Building the SLR Parsing Table
+
+> An LR(0) item of a grammar G is a production in G with a dot(.) at
+> some position in the right side.
+
+For example, the production 
+
+> A --> aBY 
+
+This production generates the following LR(0) items :
+
+> A --> .aBY
+>
+> A --> a.BY
+>
+> A --> aB.Y
+>
+> A --> aBY. --> complete item
+
+Note that for A --> &lambda;, this generates only A --> &lambda;. .
+
+Generally speaking, if the right side of the production is L, then 
+there are L+1 resultant LR(0) items.
+
+The LR(0) item 
+
+> A --> aB.Y
+
+Means that the parser has scanned on the input a string derived from 
+aB and expects to see a string derived from Y .
