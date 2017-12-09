@@ -1716,7 +1716,7 @@ aB and expects to see a string derived from Y .
 
 We need to define the following 2 functions. 
 
-#####The CLOSURE function 
+##### The CLOSURE function 
 
 ``` 
 
@@ -1783,7 +1783,7 @@ we iterate again, and the resultant set is:
 > I<sub>0</sub>:{E`-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F, F-->.(E), F-->.a}
 >
 
-#####The GOTO function
+##### The GOTO function
 
 ```
 
@@ -1837,7 +1837,7 @@ and take the CLOSURE for all these sets. The resultant is :
 **TODO INSERT FINAL TABLE**
 
 
-#####Constructing the SLR table
+##### Constructing the SLR table
 
 Input : LR(0) sets of items
 
