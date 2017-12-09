@@ -1713,3 +1713,162 @@ The LR(0) item
 
 Means that the parser has scanned on the input a string derived from 
 aB and expects to see a string derived from Y .
+
+We need to define the following 2 functions. 
+
+######The CLOSURE function 
+
+``` 
+
+function CLOSURE(I)//I is a set of LR(0)items
+{
+	Repeat 
+		for(every LR(0) item A-->alpha.Bbeta in I,
+		and for every production B-->gamma in G,
+		Add the LR(0)item B-->.gama to I)
+	Untill no more items to be added;
+}
+
+```
+
+Lets apply this to our grammar :
+
+> (1)E --> E+T 
+> 
+> (2)E --> T 
+>
+> (3)T --> T*F
+>
+> (4)T --> F
+>
+> (5)F --> (E) 
+>
+> (6)F --> a
+
+This grammar is not LL(1) because
+
+> FIRST(T*F)&cap;FIRST(F) = {(,a} &ne; &empty;
+
+We will need to build the LR(0) sets of items.
+
+we start with I<sub>0</sub
+
+> I<sub>0</sub>: E` --> .E
+>
+> CLOSURE(I<sub>0</sub>)
+>
+> E` --> &lambda;.E&lambda;
+>
+> A ---> &gamma;.B&Beta;
+>
+
+we add all productions starting with E and add the . at the start
+therefore :
+
+>I<sub>0</sub>:{E1-->.E, E-->.E+T, E-->.T}
+
+Lets look at  E-->.E+T
+
+>  E-->&lambda;.E+T
+>
+>  A ---> &gamma;.B&Beta;
+
+Therefore, we add all productions starting wtih T to I<sub>0</sub>
+
+> I<sub>0</sub>:{E1-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F}
+>
+
+we iterate again, and the resultant set is:
+
+> I<sub>0</sub>:{E`-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F, F-->.(E), F-->.a}
+>
+
+######The GOTO function
+
+```
+
+function GOTO(I,X)//I=set of items,X=Grammar symbol
+{
+
+   CLOSURE(all items A-->alphaX.Beta Where A-->alpha.XBeta in I)
+
+}
+
+```
+
+Lets apply this to the grammar above. First we seperate 
+each grammar symbol production to its own set This results in 4 Item groups:
+
+> I<sub>1</sub> : E-->.E, E-->.E+T
+>
+>I<sub>2</sub> : E-->.T, T--> .T*F
+>
+>I<sub>3</sub> : T-->.F
+>
+>I<sub>4</sub> : F-->.(E)
+>
+> I<sub>5</sub> :F-->.a
+
+and take the CLOSURE for all these sets. The resultant is :
+
+> I<sub>1</sub> : E-->E., E-->E.+T
+>
+> I<sub>2</sub> : E-->T., T--> T.*F
+>
+> I<sub>3</sub> : T-->F.
+>
+> I<sub>4</sub> : F-->(.E), E --> .E+T,E-->.T,E-->.T*F,T-->.F,F-->.(E),F-->.a
+>
+> I<sub>5</sub> : F-->.a
+>
+> I<sub>6</sub> : E-->E+.T,E-->.T*F,T-->.F,F-->.(E),F-->.a
+>
+> I<sub>7</sub> : E-->T*.F,F-->.(E),F-->.a
+>
+> I<sub>8</sub> : F-->(E.),E-->E.+T
+>
+> I<sub>9</sub> : E --> E+T. , T --> T.*F
+>
+> I<sub>10</sub> : T --> T*F.
+>
+> I<sub>11</sub> : F --> (E).
+
+
+**TODO INSERT FINAL TABLE**
+
+
+######Constructing the SLR table
+
+Input : LR(0) sets of items
+
+Output : SLR(1) parsing table
+
+1. For every item A-->&alpha;.A&Beta; in I<sub>i</sub>, &alpha; &isin; V<sub>T</sub> , and
+ GOTO(I<sub>i</sub>,a)=I<sub>j</sub>, then set; then ACTION[i,a]=S<sub>j</sub>(shift and push j on the stack).
+ 
+2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b]=Reduce by a-->&Alpha; FOR ALL b &isin; FOLLOW(A).
+
+3. For S` --> S. in I<sub>i</sub>, ACTION[i,$] = Accept.
+
+4. If GOTO(I<sub>i</sub>,A) = I<sub>j</sub> then set, GOTO(i,A) = j.
+
+5. All remaining entries are error entries.
+
+
+lets apply this to the example above and generate the table
+
+V  | a | + | * | ( | ) | $ || E | T | F
+---|---|---|---|---|---|---||---|---|---
+0  |S5 |   |   |S4 |   |   || 1 | 2 | 3
+1  |   |   |   |   |   | A ||   |   |
+2  |   |   |   |   |   |   ||   |   |
+3  |   |   |   |   |   |   ||   |   |
+4  |   |   |   |   |   |   ||   |   |
+5  |   |   |   |   |   |   ||   |   |
+6  |   |   |   |   |   |   ||   |   |
+7  |   |   |   |   |   |   ||   |   |
+8  |   |   |   |   |   |   ||   |   |
+9  |   |   |   |   |   |   ||   |   |
+0  |   |   |   |   |   |   ||   |   |
+11 |   |   |   |   |   |   ||   |   |
+
