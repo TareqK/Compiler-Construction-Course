@@ -1872,3 +1872,38 @@ V  |<sup>Action</sup>  | a | + | * | ( | ) | $ |<sup>GOTO</sup>  | E | T | F
 10 |   |   |R3 |R3 |   |R3 |R3 |   |   |   |
 11 |   |   |R5 |R5 |   |R5 |R5 |   |   |   |
 
+
+No conflict --> SLR(1) grammar
+
+##### Parsing The SLR Table
+
+> E --> E+T 
+> 
+> E --> T 
+>
+> T --> T*F
+>
+> T --> F
+>
+> F --> (E) 
+>
+> F --> a
+
+Lets examine the sentence 
+
+> a + a $
+
+
+Stack         | Remaining | Action
+--------------|-----------|-------
+0             | a + a $   | S5
+0 a 5         |   + a $   | R6
+0 F 3         |   + a $   | R4
+0 T 2         |   + a $   | R2
+0 E 1         |   + a $   | S6
+0 E 1 + 6     |     a $   | S5
+0 E 1 + 6 a 5 |     $     | R6
+0 E 1 + 6 F 3 |     $     | R4
+0 E 1 + 6 T 9 |     $     | R1
+0 E 1         |     $     | Accept
+
