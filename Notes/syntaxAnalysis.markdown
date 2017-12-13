@@ -1725,8 +1725,8 @@ function CLOSURE(I)//I is a set of LR(0)items
 	Repeat 
 		for(every LR(0) item A-->alpha.Bbeta in I,
 		and for every production B-->gamma in G,
-		Add the LR(0)item B-->.gama to I)
-	Untill no more items to be added;
+		Add the LR(0)item B-->.gamma to I)
+	Until no more items to be added;
 }
 
 ```
@@ -1907,3 +1907,138 @@ Stack         | Remaining | Action
 0 E 1 + 6 T 9 |     $     | R1
 0 E 1         |     $     | Accept
 
+---
+
+But what if the grammar is not SLR?
+
+#### LR Parsing Techniques
+
+The main difference between LR and SLR is the CLOSURE function
+
+``` 
+
+function CLOSURE(I)//I is a set of LR(1)items
+{
+	Repeat 
+		for(every LR(1) item [A-->alpha.Bbeta, a] in I,
+		and for every production B-->gamma in G,
+		Add the LR(1)item [B-->.gamma , b] where b belongs to FIRST(Beta a)to I)
+	Until no more items to be added;
+}
+
+```
+
+Where An LR(1) item is an LR(0) item with a **Lookahead Symbol**. For example
+
+[A --> &alpha;.&Beta; , a] where a is the lookahead. The lookahead symbol
+"a" has no effect whatsoever on an item [A --> &alpha;.&Beta;,a] &Beta; &ne; &lambda; (not complete item) However,
+if the item is a complete [A --> &alpha;.,a], this means we reduce by the 
+production A --> &alpha; on token "a".
+
+For example, Give the grammar :
+
+> S --> S`
+>
+> S --> CC (1)
+>
+> C --> cC (2)
+>
+> C --> d (3)
+
+I<sub>0</sub>:
+
+- S` --> .S, $ I<sub>1</sub>
+
+
+- S --> .CC, FIRST(&lambda;$) = FIRST($) = $ I<sub>2</sub>
+
+
+- C --> .cC, FIRST(C$) = c,d I<sub>3</sub>
+
+
+- C --> .d,   c,d I<sub>4</sub>
+
+I<sub>1</sub>:
+
+- S` --> .S, $ Accept
+
+I<sub>2</sub>:
+
+- S --> C.C , $  I<sub>5</sub> (if the lookahead is different it goes to a new state)
+- C --> .cC , $  I<sub>6</sub>
+- C --> .d , $  I<sub>7</sub>
+
+
+I<sub>3</sub>:
+
+- C --> c.C , c,d I<sub>8</sub>
+- C --> .cC   c,d I<sub>3</sub>
+- C --> .d I<sub>4</sub>
+
+I<sub>4</sub>:
+
+- C --> d.,   c,d Complete
+
+I<sub>5</sub> :
+
+- S --> CC. , $ Complete
+
+I<sub>6</sub> :
+
+- C --> c.C , $ I<sub>9</sub>
+- C --> .cC , $ I<sub>6</sub>
+- C --> .d , $ I<sub>7</sub>
+
+I<sub>7</sub> :
+
+- C --> d. , $ Complete
+
+I<sub>8</sub> :
+
+- C --> cC. , c,d Complete
+
+I<sub>9</sub> :
+
+- C --> cC. , $ Complete
+
+
+V  |<sup>Action</sup>  | c | d | $ |<sup>GOTO</sup> | S | C
+---|-------------------|---|---|---|----------------|---|---
+0  |                   |S3 |S4 |   |                | 1 | 2 
+1  |                   |   |   | A |                |   |   
+2  |                   |S6 |S7 |   |                |   | 5 
+3  |                   |S3 |S4 |   |                |   | 8  
+4  |                   |R3 |R3 |   |                |   |   
+5  |                   |   |   |R1 |                |   |   
+6  |                   |S6 |S7 |   |                |   | 9  
+7  |                   |   |   |R3 |                |   |   
+8  |                   |R2 |R2 |   |                |   |   
+9  |                   |   |   |R2 |                |   |   
+
+---
+
+No conflict, the grammar is an LR grammar.
+
+---
+
+If we look at the above example, we can see that some sets of items have the 
+same core items(LR(0) items), but the lookahead is different. For example (I<sub>7</sub> , I<sub>4</sub>),
+(I<sub>3</sub> , I<sub>6</sub>), (I<sub>8</sub> , I<sub>9</sub>). Lets say we 
+merge the states. What happens is the we add the lookaheads and 
+change the state references for equivalent states . The table becomes this:
+
+V  |<sup>Action</sup>  | c | d | $ |<sup>GOTO</sup> | S | C
+---|-------------------|---|---|---|----------------|---|---
+0  |                   |S3 |S4 |   |                | 1 | 2 
+1  |                   |   |   | A |                |   |   
+2  |                   |S3 |S4 |   |                |   | 5 
+3  |                   |S3 |S4 |   |                |   | 8  
+4  |                   |R3 |R3 |R3 |                |   |   
+5  |                   |   |   |R1 |                |   |   
+8  |                   |R2 |R2 |R2 |                |   |     
+
+---
+
+This is now a simplified table. if the parsing table after
+merging has no conflicts(like in the above example), then 
+the grammar is an LALR(1) Grammar. 
