@@ -175,7 +175,7 @@ during execution.
 
 3. In ``` y^:integer```, the attributes ```variable```, ```integer```,
 and ```type pointer``` are static attributes. However, in the statement
-``new(y)```, the attribute ```location``` is a dynamic attribute.
+```new(y)```, the attribute ```location``` is a dynamic attribute.
 
 
 
