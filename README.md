@@ -7,3 +7,5 @@
 ![Chapter 3 : Lexical Analysis](./Notes/lexicalAnalysis.markdown)
 
 ![Chapter 4 : Syntax Analysis](./Notes/syntaxAnalysis.markdown)
+
+![Chapter 5 : Semantics ](./Notes/semantics.markdown)
