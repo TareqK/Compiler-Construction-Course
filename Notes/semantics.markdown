@@ -169,14 +169,255 @@ attributes ```constant``` and ```value=2``` is assigned during
 compilation.
 
 2. In ```x:integer``` the attributes ```variable``` and ```type integer```
-are also static attributes. However, when we say ```x :=2```, the 
+are also static attributes. However, when we say ```x:=2```, the 
 attribute ```value=2``` is a dynamic attribute because it is assigned
 during execution.
 
 3. In ``` y^:integer```, the attributes ```variable```, ```integer```,
 and ```type pointer``` are static attributes. However, in the statement
-``new(y)```, the attribute ```location``` is a dynamic attribute.
+```new(y)```, the attribute ```location``` is a dynamic attribute.
+
+Binding can be performed prior to translation. There are a number of examples of this :
+
+- Binding values to the ```integer``` type or the ```boolean``` type in PASCAL is performed
+at **language definition time** . Meaning that if the ```integer``` type is 
+16 bits, then its range would be (-2^16) &le; integer &le; (2^16 - 1 ).
+  - This is the same for the ```TRUE``` and ```FALSE``` values binded to ```boolean``` type.
 
 
+- The constant ```MAXINT``` in PASCAL is defined at **implementation time**(when the 
+language was created). it is an ```integer``` with the highest possible value for the
+platform.
+  
+---
+
+In short, Binding can be performed at :
+
+- Language definition time.
+
+- Language implementation time.
+
+- Translation time.
+  - at lexical analysis.
+  - at syntax analysis.
+  - at code generation.
+  - However, this binding is static.
+
+- Execution time
+  - This binding is dynamic.
+
+### Symbol Table 
+
+The Symbol Table is a special data structure used to maintain the binding 
+during the translation process.
+
+---
+
+### Environment 
+
+The Environment is the memory allocation part of the execution process. 
+ie, binding names to the storage locations is called Environment. 
+
+### Memory 
+
+Memory is the binding the storage locations to values.
+
+### Declarations and Blocks
+
+Declarations are the principle method to establish binding.  There 
+are 2 types of declarations:
+
+1. Explicit Declaration:
+   - Pascal : 
+     
+              var
+                x:integer
+                ok,y,Boolean;
+   
+             
+     
+    - ALGOL68 : 
+       
+             
+                 Begin 
+                   Integer X;
+                   Boolean ok;
+                 End
+                 
+    - ADA :   
+               
+                 Declare
+                   x:integer;
+                   y:boolean;
+    - C :
+                 
+                  int n;
+                 
+2. Implicit Declaration : The variable is declared when it is used. 
+for example, ```int n = 10```.
 
 
+Declarations are associated with **blocks**. There are 2 types of 
+blocks:
+
+1. Main Program Block.
+
+2. Procedure and Function Block.
+
+for example, in PASCAL :
+
+```PASCAL
+
+Program Test;
+  Var
+    .
+    .
+    .
+  Procedure P;
+    Var 
+      .
+      .
+      .
+   Begin
+    .
+    .
+    .
+   End;
+   
+  function q:integer;
+    Var 
+      .
+      .
+      .
+   Begin
+    .
+    .
+    .
+   End;
+   
+  Begin(*main*)
+    .
+    .
+    .
+    .
+  End.
+   
+
+
+```
+
+These are all declarations for program Test. Regular declaration scoping
+applies here.
+
+In ALGOL :
+
+```ALGOL
+
+Begin 
+  Integer X;
+  Boolean Y;
+  .
+  .
+  .
+  X := 2;
+  Y ;= True
+  .
+  .
+  .
+End
+
+
+``` 
+
+In ADA:
+
+```ADA
+
+Declare 
+  X : Integer;
+  Y : Boolean;
+  Begin
+    X := 2;
+    Y := 0;
+  End;
+
+```
+
+---
+
+Declarations bind different attributes to names especially the static
+type of attributes. Note that the declaration itself has an attribute, 
+which is the position of the declaration in the program. This is important
+to determine the **scope/visibility** of the variable. 
+
+#### Scope of Declaration
+
+The Scope of Declaration is the region in which you can use or reference
+a variable.
+
+In block structured languages, the scope of declaration is limited to the 
+block in which it is declared/appears and all other blocks contained
+within it(the nested blocks). 
+
+For example, consider the following program in PASCAL :
+
+```PASCAL
+
+Program Ex-1;
+  VAR X : Integer; ________
+  Procedure P;     ______  |
+    VAR X:Real;    ____  | |
+    BEGIN              | | |
+      .                | | | 
+      .                | | |
+      .                | | |
+    END;           ____| | |
+  Procedure q;     ____  | |
+    VAR Z:Boolean; __  | | |
+    BEGIN            | | | |
+      .              | | | |
+      .              | | | |
+      .              | | | |
+    End;           __| | | |
+                       | | |
+  BEGIN(*main*)        | | |
+    .                  | | | 
+    .                  | | |
+    .                  | | |
+    .                  | | |       
+  END.                 | | |
+                     __|_|_|
+
+```
+
+Pascal has this scope rule:
+
+> The scope of declaration extends from the point Just after the 
+> declaration to the end of the block it is declared/located.
+
+In ALGOL 60:
+
+```ALGOL
+
+A:BEGIN
+  Integer:X;
+  Boolean:Y;
+  X:=2;
+    .
+    .
+    .
+  B:BEGIN
+     Integer c,d;
+      .
+      .
+      .
+    END
+    .
+    .
+    .
+   END
+   
+```
+
+```X``` and ```Y``` have scope in blocks ```A``` and ```B```. while ```c```
+and ```d``` have scope only in ```B```
