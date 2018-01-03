@@ -352,18 +352,23 @@ to determine the **scope/visibility** of the variable.
 
 #### Scope of Declaration
 
-The Scope of Declaration is the region in which you can use or reference
-a variable.
+The scope of declaration is :
 
-In block structured languages, the scope of declaration is limited to the 
-block in which it is declared/appears and all other blocks contained
-within it(the nested blocks). 
+> The region of the program over which the declaration covers. 
+> In block structured languages, such as PASCAL , the scope of declaration
+> is limited to the block in which is declared/appears and all other
+> nested blocks. Contained within this block.
 
-For example, consider the following program in PASCAL :
+In fact, a language like PASCAL has the following scope rule :
+
+> The scope of declaration extends from the point it is declared to the 
+> end of the block. 
+
+for example : 
 
 ```PASCAL
 
-Program Ex-1;
+Program scope;
   VAR X : Integer; ________
   Procedure P;     ______  |
     VAR X:Real;    ____  | |
@@ -390,11 +395,6 @@ Program Ex-1;
 
 ```
 
-Pascal has this scope rule:
-
-> The scope of declaration extends from the point Just after the 
-> declaration to the end of the block it is declared/located.
-
 In ALGOL 60:
 
 ```ALGOL
@@ -419,5 +419,74 @@ A:BEGIN
    
 ```
 
-```X``` and ```Y``` have scope in blocks ```A``` and ```B```. while ```c```
-and ```d``` have scope only in ```B```
+That is , ```X``` and ```Y``` have scope in blocks ```A``` and ```B```,
+while ```c```and ```d``` have scope only in ```B```.
+
+---
+
+As we have seen before, declarations bind different attributes to names 
+especially static attributes.
+
+The declaration itself has an attribute which is the position or the location of
+declaration in the program.
+
+---
+
+An Important thing to note. The declarations in nested blocks takes precedence over previous
+declarations. A global variable ```x``` cannot be accessed in a block ```B``` that has a
+local variable ```x```. We say we have a **scope hole** in ```B```. That is why 
+we differentiate between scope and **visibility**. Only the area where
+the declaration applies. So the scope is the visibility - holes.
+
+## Symbol Table
+
+All the declarations and binding are established by a structure called 
+the symbol table. In addition, the symbol table must maintain the scope
+of declaration. Different data structures can be used in the symbol table :
+
+1. Hash Table --> static.
+2. Linked List --> dynamic.
+3. Tree Structure  --> dynamic.
+
+To maintain the scope of declarations correctly, the declarations should
+be processed using the stack concept(FILO). When entering a block, declarations
+are processed and attributes are added/binded to the symbol table(pushed to stack). When 
+exiting from the block, the binding(the attributes) provided in the block
+are removed/popped from the stack. 
+
+Think of the symbol table as a set of names, each of which has a stack of declarations
+associated with it. The top of the stack is the current active declaration.
+
+For example, consider the following pascal program :
+
+```Pascal 
+
+Program Sym-Table;
+VAR X:Integer;
+    Y:Boolean;
+Procedure P;
+    VAR X:Bolean;
+      .
+      .
+      .
+    Procedure Q;
+        VAR Y:integer
+        Begin(*Q*)
+          .
+          .
+          .
+        END;
+    Begin(*P*)
+      .
+      .
+      .
+    END;
+Begin(*main*)
+  .
+  .
+  .
+  .
+END.
+
+
+```
