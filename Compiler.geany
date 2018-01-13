@@ -29,7 +29,10 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=8238;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2Fsemantics.markdown;0;4
+FILE_NAME_0=9994;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2Fsemantics.markdown;0;4
+FILE_NAME_1=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2Fintroduction.markdown;0;4
+FILE_NAME_2=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2FlanguageTranslation.markdown;0;4
+FILE_NAME_3=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2FlexicalAnalysis.markdown;0;4
 
 [VTE]
 last_dir=/home/tareq/Code/Compiler-Construction-Course
