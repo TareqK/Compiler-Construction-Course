@@ -1,0 +1,5 @@
+module tareq  ; 
+const  x=me;
+var z = tayseer;
+begin end
+.
