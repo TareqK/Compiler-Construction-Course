@@ -565,13 +565,13 @@ Given that
 
 > A-->A&alpha;<sub>1</sub>| A&alpha;<sub>2</sub>|A&alpha;<sub>3</sub>|...|A&alpha;<sub>n</sub>
 >
-> A-->&Beta;<sub>1</sub>|&Beta;<sub>2</sub>|&Beta;<sub>3</sub>|...|&Beta;<sub>n</sub>
+> A-->&Beta;<sub>1</sub>|&Beta;<sub>2</sub>|&Beta;<sub>3</sub>|...|&Beta;<sub>m</sub>
 
 To do this, we must introduce a new non-terminal, say A\`.
 
 The grammar now becomes :
 
-> A-->&Beta;<sub>1</sub>A\`|&Beta;<sub>2</sub>A\`|&Beta;<sub>3</sub>A\`|...|&Beta;<sub>n</sub>A\`
+> A-->&Beta;<sub>1</sub>A\`|&Beta;<sub>2</sub>A\`|&Beta;<sub>3</sub>A\`|...|&Beta;<sub>m</sub>A\`
 
 and
 
