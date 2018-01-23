@@ -794,33 +794,26 @@ Which is the same language of our original machine.
 for the regular expressions  R<sub>1</sub>, R<sub>2</sub> respectively,
 N<sub>1</sub> accepts R<sub>1</sub> & N<sub>2</sub> accepts R<sub>2</sub>,
 then :
+
    a. N<sub>12</sub> which represents R<sub>1</sub>R<sub>2</sub> is :
-     
-      ***INESRT CONCATINATION DRWAING***
+      ![OR DRAWING](./images/concatination.png)
       
-   b. N<sub>1|2</sub> which represents R<sub>1</sub>|R<sub>2</sub> is :
+   b. N<sub>1|2</sub> which represents R<sub>1</sub>|R<sub>2</sub> is :   
+      ![OR DRAWING](./images/or.png)
       
-      ***INESRT OR DRWAING***
-      
-   c.  N<sub>x</sub>\* which represents R<sub>x</sub>\* is :
-   
-		***INESRT CLOSURE DRWAING***
+   c. N<sub>x</sub>\* which represents R<sub>x</sub>\* is :
+	  ![OR DRAWING](./images/closure.png)
 		
-   d.  N<sub>x</sub><sup>+</sup> which represents R<sub>x</sub><sup>+</sup> is :
-   
-		***INESRT + DRWAING***
-		
-		Note that this is the same as  R<sub>x</sub>\* except we removed 
-		all the states that result in a &lambda;
+   d. N<sub>x</sub><sup>+</sup> which represents R<sub>x</sub><sup>+</sup> is :
+	  ![OR DRAWING](./images/plus.png)
+	  
+	  Note that this is the same as  R<sub>x</sub>\* except we removed 
+	  all the states that result in a &lambda;
       
       
 for example, lets say we have the regular expression
 
 > L(L|d)*
-
-which gives us this NDFSA
-
-**INSERT DRAWING**
 
 Whch has this transition table
 
@@ -839,6 +832,7 @@ Whch has this transition table
 Turning this into an DFSA :
 
 1.
+
 **State** \ <sup>V<sub>T</sub></sup>| L| d |&lambda;
 --- | --- | --- | ---
 1    | 2 |   |   
@@ -852,6 +846,7 @@ Turning this into an DFSA :
 **9**|	 |   |  
 
 2. 
+
 **State** \ <sup>V<sub>T</sub></sup>| L| d 
 --- | --- | --- 
 &#10003;1    | 2 |   |   
@@ -865,6 +860,7 @@ Turning this into an DFSA :
 **9**|	 |   |  
 
 3. 
+
 **State** \ <sup>V<sub>T</sub></sup>| L| d 
 --- | --- | --- 
 &#10003;1|2|
@@ -873,21 +869,19 @@ Turning this into an DFSA :
 &#10003;**7**|7|7
 
    **feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
---- | --- | --- 
-(2,5)|(5,5)|(7,7)
-(7,7)|(5,5)|(7,7)
-(5,7)|(5,5)|(7,7)
+   --- | --- | --- 
+   (2,5)|(5,5)|(7,7)
+   (7,7)|(5,5)|(7,7)
+   (5,7)|(5,5)|(7,7)
 
 4.
+
 **State** \ <sup>V<sub>T</sub></sup>| L | d 
 --- | --- | --- 
-&#10003;1|2|
+&#10003;1|2| - 
 &#10003;**2**|5|7
 &#10003;**5**|5|7
 &#10003;**7**|5|7
-
- 
- **INSERT DRAWING**
 
 programmatically, this results in :
 

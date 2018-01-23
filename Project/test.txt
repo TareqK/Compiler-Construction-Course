@@ -1,5 +1,8 @@
-module tareq  ; 
+modle tareq  ; 
 const  x=me;
 var z = tayseer;
-begin end
+begin
+x= 3;
+z = 2;
+ end
 .

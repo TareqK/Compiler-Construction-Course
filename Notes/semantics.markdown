@@ -228,31 +228,30 @@ Declarations are the principle method to establish binding.  There
 are 2 types of declarations:
 
 1. Explicit Declaration:
-   - Pascal : 
-     
+    - Pascal : 
+		```
               var
                 x:integer
                 ok,y,Boolean;
-   
-             
-     
+		```       
     - ALGOL68 : 
        
-             
+      ```     
                  Begin 
                    Integer X;
                    Boolean ok;
                  End
-                 
+      ```          
     - ADA :   
-               
+      ```        
                  Declare
                    x:integer;
                    y:boolean;
+	  ```
     - C :
-                 
+      ```           
                   int n;
-                 
+      ```           
 2. Implicit Declaration : The variable is declared when it is used. 
 for example, ```int n = 10```.
 
@@ -302,8 +301,6 @@ Program Test;
     .
   End.
    
-
-
 ```
 
 These are all declarations for program Test. Regular declaration scoping
@@ -491,10 +488,6 @@ END.
 
 ```
 
-# MISSING LECTURE 8/1/2018
-
-# MISSING LECTURE 10/1/2018
-
 # Syntax Directed Translation
 
 Lexical Structure --> Systematic algorithms exist --> Finite State Automata.
@@ -630,14 +623,13 @@ which is easier for the compiler to understand(evaluate). This code is called
    in TAC.
    
 3. Quadruples : Another form of intermediate code, which has at most
-4 components. for example :
-
-   ``` - w * x + ( y + z )``` 
-  would be : 
+4. components. for example :
+   ``` - w * x + ( y + z ) ``` 
+   would be : 
    
-  | operation | operand 1 | operand 2 | result
-  |---|---|---|---
-  | - | w | _ | R1
-  | * | R1| x | R2
-  | + | y | z | R3
-  | + | R2| R3| R4
+operation | operand 1 | operand 2 | result
+--|--|--|--
+\-  | w | _ | R1
+\*  | R1| x | R2
+\+  | y | z | R3
+\+  | R2| R3| R4

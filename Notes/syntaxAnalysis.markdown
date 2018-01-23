@@ -644,9 +644,7 @@ IF C
 		S
 		
 ```
-This statement results in 2 derivations trees :
-
-**INSERT TREES OF THIS STATEMENT**
+This statement results in 2 derivations trees.
 
 Both these trees result in the same traversal, but they have different meanings.
 The first results in the ```ELSE``` belonging to the first ```IF```, while the 
@@ -727,8 +725,6 @@ IF C
 
 It still has 2 derivation trees
 
-**TODO INSERT THE 2 DERIVATION TREES**
-
 ## More Ways of Expressing Programming Languages
 
 ### Extended BNF Notation
@@ -780,12 +776,7 @@ We can also express this grammar as:
 Another way to express languages are **Syntax Diagrams**. These are used
 only with Extended-BNF notation.
 
-Lets say we have want to express the Expression **E**, using the Terms **T**
-and the Factors **F** of the form 
-
-**TODO INSERT DRAWINGS OF SYNTAX TREES**.
-
-As we can see, A square shape represents a nonterminal and an oval shape
+A square shape represents a nonterminal and an oval shape
 represents a terminal.
 
 ## Parsing Techniques (Continued)
@@ -1580,7 +1571,7 @@ C  |   |   |   | 6 |   |
 
 The grammar is now unambiguous. Alternatively, we can just strike out
 the transition 4 from the LL(1) table, which is a &lambda; transition.
-Lets follow through the derivation tree **INSERT TREE** . the resultant table is 
+Lets follow through the derivation tree. the resultant table is 
 
 V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | $
 ---|---|---|---|---|---
@@ -1832,9 +1823,6 @@ and take the CLOSURE for all these sets. The resultant is :
 > I<sub>10</sub> : T --> T*F.
 >
 > I<sub>11</sub> : F --> (E).
-
-
-**TODO INSERT FINAL TABLE**
 
 
 ##### Constructing the SLR table

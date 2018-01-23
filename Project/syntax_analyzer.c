@@ -121,7 +121,7 @@ void compound_stmt(){
 	if((strcmp(tokens->content,"begin")==0)){
 		
 		stmt_list();
-		error_code = 8;
+		
 		if((strcmp(tokens->content,"end")==0)){
 			
 		}else{
@@ -130,6 +130,7 @@ void compound_stmt(){
 		}
 		
 	}else{
+		error_code = 8;
 		error();
 	}
 }
