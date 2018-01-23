@@ -8,4 +8,7 @@
 
 ![Chapter 4 : Syntax Analysis](./Notes/syntaxAnalysis.markdown)
 
-![Chapter 5 : Semantics ](./Notes/semantics.markdown)
+![Chapter 5 : Semantics](./Notes/semantics.markdown)
+
+![PDF Summaries](./PDF)
+

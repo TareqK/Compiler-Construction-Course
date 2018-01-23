@@ -1545,7 +1545,7 @@ looks like this :
 
 V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | $
 ---|---|---|---|---|---
-S` | 1 | 1 |   |   |   
+S\`| 1 | 1 |   |   |   
 S  | 2 | 5 |   |   |   
 E  |   |   |3,4|   | 4   
 C  |   |   |   | 6 |
@@ -1564,7 +1564,7 @@ There is a conflict. To solve this, we can add a delimiter.
 
 V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | d | $
 ---|---|---|---|---|---|---
-S` | 1 | 1 |   |   |   |
+S\`| 1 | 1 |   |   |   |
 S  | 2 | 5 |   |   |   |
 E  |   |   | 3 |   | 4 | 
 C  |   |   |   | 6 |   |
@@ -1575,7 +1575,7 @@ Lets follow through the derivation tree. the resultant table is
 
 V<sub>N</sub>\V<sub>T</sub>| i | a | e | c | $
 ---|---|---|---|---|---
-S` | 1 | 1 |   |   |   
+S\`| 1 | 1 |   |   |   
 S  | 2 | 5 |   |   |   
 E  |   |   | 3 |   | 4   
 C  |   |   |   | 6 |

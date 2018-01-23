@@ -29,11 +29,11 @@ long_line_column=72
 
 [files]
 current_page=4
-FILE_NAME_0=630;C;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FProject%2Fcompile.c;0;4
-FILE_NAME_1=3023;C;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FProject%2Fsyntax_analyzer.c;0;4
-FILE_NAME_2=727;C;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FProject%2Fhead.h;0;4
-FILE_NAME_3=2513;C;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FProject%2Flexical_analyzer.c;0;4
-FILE_NAME_4=3;None;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FProject%2Ftest.txt;0;4
+FILE_NAME_0=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2Fintroduction.markdown;0;4
+FILE_NAME_1=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2FlanguageTranslation.markdown;0;4
+FILE_NAME_2=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2FlexicalAnalysis.markdown;0;4
+FILE_NAME_3=12789;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2Fsemantics.markdown;0;4
+FILE_NAME_4=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Ftareq%2FCode%2FCompiler-Construction-Course%2FNotes%2FsyntaxAnalysis.markdown;0;4
 
 [VTE]
 last_dir=/home/tareq/Code/Compiler-Construction-Course
