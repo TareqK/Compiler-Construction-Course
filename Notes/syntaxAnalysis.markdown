@@ -944,7 +944,7 @@ be obtained from G as follows:
 1. V<sub>N</sub>\` = V<sub>N</sub> &cup; {S\`}.
 2. V<sub>T</sub>\` = V<sub>T</sub> &cup; { $ }.
 3. S\` = new starting point.
-4. P` = P &cup; {S\`-->S$}
+4. P\` = P &cup; {S\`-->S$}
 
 For example :
 
