@@ -678,10 +678,12 @@ productions :
 	ENDIF
 	
 	```
+	
 	The grammar is now unambigious, since we have to clearly state when 
 	an ```IF``` statement ends. However, this is not a pretty solution, 
 	and is extra work for both the programmar and compiler, and results
 	in less readable code.
+	
 2. In C and Pascal, the compiler **always** prefers to shift the ```ELSE```
 	when it sees it in the source code so it follows the nearest ```IF```. We 
 	will learn about this in more detail later.
