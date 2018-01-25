@@ -623,12 +623,14 @@ which is easier for the compiler to understand(evaluate). This code is called
    in TAC.
    
 3. Quadruples : Another form of intermediate code, which has at most 4 components. for example :
+   
    ``` - w * x + ( y + z ) ``` 
+  
    would be : 
    
-operation | operand 1 | operand 2 | result
---|--|--|--
-\-  | w | _ | R1
-\*  | R1| x | R2
-\+  | y | z | R3
-\+  | R2| R3| R4
+   operation | operand 1 | operand 2 | result
+   ----------|---|---|---
+   \-        | w | _ | R1
+   \*        | R1| x | R2
+   \+        | y | z | R3
+   \+        | R2| R3| R4
