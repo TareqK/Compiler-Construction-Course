@@ -753,18 +753,18 @@ Lets quickly apply what we learned on this table.
 
 3. Merge and Replace
 
-	H &equiv; Y &equiv; Z---> H
+   H &equiv; Y &equiv; Z---> H
 
-	Resulting in this state table :
+   Resulting in this state table :
 	
-	--------------| --- | --- | --- | ---
-	&#10003;S     |  A  |  A  |  G  |  X
-	&#10003;A     |     |     |  G  |  X
-	&#10003;G	  |     |     |     |  H 
-	&#10003;**H** |     |     |     |  H 
-	&#10003;**X** |     |     |  H  |  X
+   --------------| --- | --- | --- | ---
+   &#10003;S     |  A  |  A  |  G  |  X
+   &#10003;A     |     |     |  G  |  X
+   &#10003;G	 |     |     |     |  H 
+   &#10003;**H** |     |     |     |  H 
+   &#10003;**X** |     |     |  H  |  X
 	
-	This is the simplest form of the machine.
+   This is the simplest form of the machine.
 	
 Now we must check if the machine accepts the same language as our
 original machine. 
