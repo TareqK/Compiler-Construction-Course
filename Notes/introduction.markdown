@@ -130,7 +130,7 @@ the tokens in this code would be "if","(","x","!=",")","{","n","++",";","}" .
 This is very important for parsing.
 
 after the Scanner has tokenized the statement in the above section ,
-the Syntax analyzer first checks:
+the Syntax analyser first checks:
 
 > if(x!=10)
 
@@ -143,7 +143,7 @@ if statement is correct.
  
 ## Paradigms of Programming Languages
 
-There are 4 paradigms of programing languages
+There are 4 paradigms of programming languages
 
 ###  Imperative or Procedural Paradigm
 
@@ -191,7 +191,7 @@ int gcd(int n, int m)
 ### Functional Paradigm 
 
 Computation is based on the evaluation or calling functions or application of functions. That is why the language is sometimes called
-applicated language. A programming Language that is based on this model is characterized by:
+applicated language. A programming Language that is based on this model is characterised by:
 
 
 1. There is **NO** Notion of Variables or Assignment Statements in this Paradigm. 

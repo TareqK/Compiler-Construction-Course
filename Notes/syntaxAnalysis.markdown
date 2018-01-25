@@ -105,17 +105,21 @@ Note : We will use
 
 3. Greek letters &alpha;,&beta;,&gamma;,... for strings formed from V<sub>N</sub> OR V<sub>T</sub> = V. eg, 
 
-   if V<sub>N</sub> = {S,A,B},
+   if 
    
-   V<sub>T</sub> = {0,1}
+   > V<sub>N</sub> = {S,A,B}
+   
+   and 
+   
+   > V<sub>T</sub> = {0,1}
    
    then
    
-   &alpha; = 0A11B
-   
-   &beta; = S110B
-   
-   &gamma; = 0010
+   > &alpha; = 0A11B
+   > 
+   > &beta; = S110B
+   >
+   > &gamma; = 0010
 
 ### Productions 
 
@@ -358,7 +362,7 @@ that is to say, the left hand side is **only** one nonterminal.
    Results in the grammar
    
    >
-   >G(L)=a\*
+   > G(L)=a\*
    > 
 
 ## Parsing Techniques
@@ -1080,70 +1084,82 @@ on FIRST() and FOLLOW().
 Recursive Descent Parsing is very simple. It works like this :
 
 1. Divide the grammar into primitive/simple components
-	1. For the token "a" :
-	  
+	
+   1. For the token "a" :
+	   
+	   ```
+	   
+	   If(token == "a"){
+	   
+	   		get-next()
+	   
+	   }
+	   
+	   else{
+	   
+	   	report-error()
+	   
+	   }
+	   
+       ```
+       
+    2.  For X = &alpha;<sub>1</sub>,&alpha;<sub>2</sub>,...,&alpha;<sub>n</sub> :
+		
+	    ```
 	    
-	   >If(token == "a"){
-	   >
-	   >		get-next()
-	   >
-	   >}
-	   >
-	   >else{
-	   >
-	   >	report-error()
-	   >
-	   >}
-
-	2.  For X = &alpha;<sub>1</sub>,&alpha;<sub>2</sub>,...,&alpha;<sub>n</sub> :
+		code(X):{ 
 		
-	 
-		>code(X):\{ 
-		>
-		>code(&alpha;<sub>1</sub>);
-		>
-		>code{&alpha;<sub>2</sub>};
-		>...
-		>
-		>...
-		>
-		>...
-		>
-		>code(&alpha;<sub>n</sub>);
-		>\}
+		code(α1);
 		
-		Then
+		code(α2);
+		...
 		
-		> If(token &isin; FIRST(&alpha;<sub>1</sub>))
-		>
-		>	code(&alpha;<sub>1</sub>)
-		>
-		> else If(token &isin; FIRST(&alpha;<sub>2</sub>))
-		>
-		>	code(&alpha;<sub>2</sub>)
-		>...
-		>
-		>...
-		>
-		>...
-		>If(token &isin; FIRST(&alpha;<sub>n</sub>))
-		>
-		>	code(&alpha;<sub>n</sub>)
-		>
-		>else{
-		>
-		> report-error();
-		>}
+		...
 		
-		If &alpha; &ne; &lambda;
+		...
 		
-		So we say, the code for x = &alpha;\*, we say
+		code(αn);
+		}
 		
-		> while(token &isin; FIRST(&alpha;\*))\{
-		>
-		> call(&alpha\*);
-		>
-		> /}
+		```
+		That is, if a production is made of multiple sub productions in order, 
+		they must be called in order.
+		
+		If FIRST(&alpha;<sub>n</sub>) of the production is non-empty, and 
+		&alpha;<sub>n</sub> &ne; &lambda;, ie, the production is not 
+		an empty one, then
+		
+		
+		``` 
+		If(token ∈ FIRST(α1)){
+			code(α1)
+		}
+		 else If(token ∈ FIRST(α2)){
+			code(α2)
+		}
+		...
+		
+		...
+		
+		...
+		else If(token ∈ FIRST(αn)){
+			code(αn)
+		}
+		else{
+		 report-error();
+		}
+		```
+		
+		Furthermore, the code for x = &alpha;\*, where we can have
+		zero or more consecutive repetitions of a production, we say
+		
+		```
+		while(token ∈ FIRST(α*)){
+		
+		 call(α*);
+		
+		 }
+		```
 ---
 
 Notes :
@@ -1714,9 +1730,9 @@ We need to define the following 2 functions.
 function CLOSURE(I)//I is a set of LR(0)items
 {
 	Repeat 
-		for(every LR(0) item A-->alpha.Bbeta in I,
-		and for every production B-->gamma in G,
-		Add the LR(0)item B-->.gamma to I)
+		for(every LR(0) item A-->α.Bβ in I,
+		and for every production B-->γ in G,
+		Add the LR(0)item B-->.γ to I)
 	Until no more items to be added;
 }
 
@@ -1781,7 +1797,7 @@ we iterate again, and the resultant set is:
 function GOTO(I,X)//I=set of items,X=Grammar symbol
 {
 
-   CLOSURE(all items A-->alphaX.Beta Where A-->alpha.XBeta in I)
+   CLOSURE(all items A-->αX.β Where A-->α.Xβ in I)
 
 }
 
@@ -1908,9 +1924,9 @@ The main difference between LR and SLR is the CLOSURE function
 function CLOSURE(I)//I is a set of LR(1)items
 {
 	Repeat 
-		for(every LR(1) item [A-->alpha.Bbeta, a] in I,
-		and for every production B-->gamma in G,
-		Add the LR(1)item [B-->.gamma , b] where b belongs to FIRST(Beta a)to I)
+		for(every LR(1) item [A-->α.Bβ, a] in I,
+		and for every production B-->γ in G,
+		Add the LR(1)item [B-->.γ , b] where b belongs to FIRST(β a)to I)
 	Until no more items to be added;
 }
 

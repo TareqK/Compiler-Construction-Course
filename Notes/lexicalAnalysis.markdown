@@ -176,13 +176,11 @@ Putting all of this together, We can define a language as :
 By this definition, these sets Are *all* languages:
 
 
-**L<sub>1</sub>={a, b, c}**
-
-**L<sub>2</sub>={asdasd, qwe, asd}**
-
-**L<sub>3</sub>={abb}**
-
-
+> L<sub>1</sub>={a, b, c}
+>
+> L<sub>2</sub>={asdasd, qwe, asd}
+>
+> L<sub>3</sub>={abb}
 
 This definition also leads us to the conclusion :
 
@@ -206,9 +204,9 @@ Given that L, M are languages over an alphabet V, then
 
 For Example let L={a,b,c} and M={aa,bb}, then : 
 
-**LM={aaa,abb,baa,bbb,caa,cbb}**
-
-**ML={aaa,aab,aac,bba,bbb,bbc}**
+> LM={aaa,abb,baa,bbb,caa,cbb}
+>
+> ML={aaa,aab,aac,bba,bbb,bbc}
 
 
 Note that :
@@ -257,8 +255,13 @@ Given an alphabet V then :
 > denoting the language {a}
 
 lets say that V  = {a, b, c}, then according to 1, 2, 3, 
-**&empty;**={  },**&lambda;**={&lambda;},**a**={a},**b**={b},**c**={c}, are all 
-regular languages
+> &empty;={  }
+>
+> &lambda;={&lambda;}
+>
+> a={a},b={b},c={c},
+
+are all regular languages
 
 Given R and S are regular languages denoting the regular languages
 L<sub>R</sub> and L<sub>S</sub> respectively, then :
@@ -271,30 +274,30 @@ L<sub>R</sub> and L<sub>S</sub> respectively, then :
 
 say that R={a} and S={b}, then : 
 
-**RS={ab},**
-
-**R|S={a,b},**
-
-**R\*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....**
-
-  **= {&lambda;,a,aa,aaa,....}**
-
-  **= A string that consists of any number of a's**
+> RS={ab},
+>
+> R|S={a,b},
+>
+> R\*= {a}<sup>0</sup > &cup;{a}<sup>1</sup> &cup;....
+>
+>&nbsp;&nbsp;= {&lambda;,a,aa,aaa,....}
+>
+>&nbsp;&nbsp;= A string that consists of any number of a's
 
 Lets say we took (RS)* then
 
-**(RS)\* = {ab}<sup>0</sup > &cup;{ab}<sup>1</sup> &cup;.....**
-
- **= {&lambda;,ab,abab,ababab,abababab,....}**
-
- **= A string that consists of any number of "ab"s**
+>(RS)\* = {ab}<sup>0</sup > &cup;{ab}<sup>1</sup> &cup;.....
+>
+>&nbsp;&nbsp;= {&lambda;,ab,abab,ababab,abababab,....}
+>
+>&nbsp;&nbsp;= A string that consists of any number of "ab"s
  
 
 Lets say we took  (a|b)\* , then : 
 
-**(a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\***
-
-**= ({a,b})\* = A string of a's and b's**
+>(a|b)\* = ({a}|{b})\* = ({a}&cup;{b})\*
+>
+>&nbsp;&nbsp;= ({a,b})\* = A string of a's and b's**
 
 Lets say we took (0|1)\*00, then By the definitions above,  this results in  any binary
 string followed by 00, such as {100,000,1100,0000,...} 
@@ -474,6 +477,7 @@ Lets Say we have this NDFSA :
 Which has this language:
 
 > L(G)=\[\+|\-\]\{
+>
 >	ddddddd,
 >
 >	dddd.ddd,
@@ -524,13 +528,13 @@ This results in this table :
 --- | --- | --- | --- | ---
 S    | A | A | G | B,C,E 
 A    |   |   | G | B,C,E
-**B**	 |   |   |   | B 
+**B**|   |   |   | B 
 C	 |   |   | D | C 
-**D**	 |   |   |   | D 
+**D**|   |   |   | D 
 E	 |   |   | G | E 
 G	 |   |   |   | H 
-**H**	 |   |   |   | H 
-**F**	 |   |   |   |  
+**H**|   |   |   | H 
+**F**|   |   |   |  
 
 ##### Removal Of Non-Determinism
 
@@ -552,16 +556,16 @@ This results in this table :
 --- | --- | --- | --- | ---
 S    	 | A | A | G | B,C,E 
 A    	 |   |   | G | B,C,E
-**B**	 	 |   |   |   | B 
+**B**	 |   |   |   | B 
 C	 	 |   |   | D | C 
-**D**	 	 |   |   |   | D 
+**D**	 |   |   |   | D 
 E	 	 |   |   | G | E 
 G	 	 |   |   |   | H 
-**H**	 	 |   |   |   | H 
-**F**	 	 |   |   |   | 
-**B,C,E**  |   |   |D,G| B,C,E
-**D,G**    |   |   |   | D,H
-**D,H**    |   |   |   | D,H
+**H**	 |   |   |   | H 
+**F**	 |   |   |   | 
+**B,C,E**|   |   |D,G| B,C,E
+**D,G**  |   |   |   | D,H
+**D,H**  |   |   |   | D,H
 
 ##### Removal of Non-Accessible States
 
@@ -574,32 +578,32 @@ G	 	 |   |   |   | H
    This results in this table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
---- | --- | --- | --- | ---
-&#10003;S    	 | A | A | G | B,C,E 
-&#10003;A    	 |   |   | G | B,C,E
-**B**	 	 |   |   |   | B 
-C	 	 |   |   | D | C 
-**D**	 	 |   |   |   | D 
-E	 	 |   |   | G | E 
-&#10003;G	 	 |   |   |   | H 
-&#10003;**H**	 	 |   |   |   | H 
-**F**	 	 |   |   |   | 
-&#10003;**B,C,E**  |   |   |D,G| B,C,E
-&#10003;**D,G**    |   |   |   | D,H
-&#10003;**D,H**    |   |   |   | D,H
+----------------- | --- | --- | --- | ---
+&#10003;S         | A | A | G | B,C,E 
+&#10003;A         |   |   | G | B,C,E
+**B**	          |   |   |   | B 
+C	 	          |   |   | D | C 
+**D**	          |   |   |   | D 
+E	 	          |   |   | G | E 
+&#10003;G         |   |   |   | H 
+&#10003;**H**     |   |   |   | H 
+**F**	 	      |   |   |   | 
+&#10003;**B,C,E** |   |   |D,G| B,C,E
+&#10003;**D,G**   |   |   |   | D,H
+&#10003;**D,H**   |   |   |   | D,H
 
 4. Delete all non-marked states . This results
 in this simplified Table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
---- | --- | --- | --- | ---
-&#10003;S    	 | A | A | G | B,C,E 
-&#10003;A    	 |   |   | G | B,C,E
-&#10003;G	 	 |   |   |   | H 
-&#10003;**H**	 	 |   |   |   | H 
-&#10003;**B,C,E**  |   |   |D,G| B,C,E
-&#10003;**D,G**    |   |   |   | D,H
-&#10003;**D,H**    |   |   |   | D,H
+----------------- | --- | --- | --- | ---
+&#10003;S    	  | A | A | G | B,C,E 
+&#10003;A    	  |   |   | G | B,C,E
+&#10003;G	 	  |   |   |   | H 
+&#10003;**H**	  |   |   |   | H 
+&#10003;**B,C,E** |   |   |D,G| B,C,E
+&#10003;**D,G**   |   |   |   | D,H
+&#10003;**D,H**   |   |   |   | D,H
 
 This is now a Deterministic Machine That accepts the same languages
 as the original NDFSA . For Clarity, Lets
@@ -607,14 +611,14 @@ rename \[B,C,E\] to X, \[D,G\] to Y, \[D,H\] to Z.
 
   
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
---- | --- | --- | --- | ---
-&#10003;S    	 | A | A | G | X
-&#10003;A    	 |   |   | G | X
-&#10003;G	 	 |   |   |   | H 
-&#10003;**H**	 	 |   |   |   | H 
-&#10003;**X**      |   |   | Y | X
-&#10003;**Y**      |   |   |   | Z
-&#10003;**Z**      |   |   |   | Z
+----------------- | --- | --- | --- | ---
+&#10003;S    	  | A | A | G | X
+&#10003;A    	  |   |   | G | X
+&#10003;G	 	  |   |   |   | H 
+&#10003;**H**	  |   |   |   | H 
+&#10003;**X**     |   |   | Y | X
+&#10003;**Y**     |   |   |   | Z
+&#10003;**Z**     |   |   |   | Z
 
 And the graph now looks like this : 
 
@@ -643,13 +647,13 @@ for example, given the following NDFSA, represented by the following transition
 table :
 
 **State** \ <sup>V<sub>T</sub></sup>| a | b | c 
---- | --- | --- | --- 
+-----| --- | --- | --- 
 1    | 2 | 5 |   
 2    | 3 | 4 | 1  
 3	 | 5 | 2 |   
-**4**	 | 6 |   | 1 
+**4**| 6 |   | 1 
 5	 | 1 | 4 | 1  
-**6**	 | 4 |   | 1  
+**6**| 4 |   | 1  
 7	 | 3 | 5 | 3  
 
 
@@ -680,12 +684,12 @@ pair (r,s) such that :
 This results in this feasible-pairs table :
 
 **feasible pairs** \ <sup>V<sub>T</sub></sup>| a | b | c 
---- | --- | --- | --- 
- (1,3) | 2,5 | 5,2 |
- (2,5) | 3,1 | 4,4 | 1,1
+------------- | --- | --- | --- 
+ (1,3)        | 2,5 | 5,2 |
+ (2,5)        | 3,1 | 4,4 | 1,1
 &#10003;(2,7) | 3,3 | 4,5 | 1,3
 &#10003;(5,7) | 1,3 | 4,5 | 1,3
- (4,6) | 6,4 |     | 1,1  
+ (4,6)        | 6,4 |     | 1,1  
 
 We go through the table once more, in case we marked something later 
 on in the table that would effect the pairs in the top of the table.
@@ -701,7 +705,7 @@ We then merge, replacing every 3 with a 1, every 5 with a 2, and every
 6 with a 4, resulting in this state table :
 
 **State** \ <sup>V<sub>T</sub></sup>| a | b | c 
---- | --- | --- | --- 
+---- | --- | --- | --- 
 1    | 2 | 2 |   
 2    | 1 | 4 | 1  
 **4**| 4 |   | 1 
@@ -713,14 +717,14 @@ Lets go back to our example(the FNDSA we were already working on). Last
 time, we reached this state table :
 
 **State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
---- | --- | --- | --- | ---
-&#10003;S    	 | A | A | G | X
-&#10003;A    	 |   |   | G | X
-&#10003;G	 	 |   |   |   | H 
-&#10003;**H**	 	 |   |   |   | H 
-&#10003;**X**      |   |   | Y | X
-&#10003;**Y**      |   |   |   | Z
-&#10003;**Z**      |   |   |   | Z
+----------------- | --- | --- | --- | ---
+&#10003;S    	  | A | A | G | X
+&#10003;A    	  |   |   | G | X
+&#10003;G	 	  |   |   |   | H 
+&#10003;**H**	  |   |   |   | H 
+&#10003;**X**     |   |   | Y | X
+&#10003;**Y**     |   |   |   | Z
+&#10003;**Z**     |   |   |   | Z
 
 Lets quickly apply what we learned on this table.
 
@@ -733,7 +737,7 @@ Lets quickly apply what we learned on this table.
 	Constructing the feasible pairs table :
 
 	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
-	--- | --- | --- | --- | ---
+	---- | --- | --- | --- | ---
 	(H,Y)| | | | H,Z
 	(H,Z)| | | | H,Z
 	(Y,Z)| | | | Z,Z
@@ -742,10 +746,10 @@ Lets quickly apply what we learned on this table.
 2. Marking feasible pairs 
 
 	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
-	--- | --- | --- | --- | ---
-	(H,Y)| | | | H,Z
-	&#10003;(H,Z)| | | | H,Z
-	&#10003;(Y,Z)| | | | Z,Z
+	------------ | --- | --- | --- | ---
+	(H,Y)        |     |     |     | H,Z
+	&#10003;(H,Z)|     |     |     | H,Z
+	&#10003;(Y,Z)|     |     |     | Z,Z
 
 3. Merge and Replace
 
@@ -753,13 +757,12 @@ Lets quickly apply what we learned on this table.
 
 	Resulting in this state table :
 	
-	**State** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
-	--- | --- | --- | --- | ---
-	&#10003;S    	 | A | A | G | X
-	&#10003;A    	 |   |   | G | X
-	&#10003;G	 	 |   |   |   | H 
-	&#10003;**H**	 	 |   |   |   | H 
-	&#10003;**X**      |   |   | H | X
+	--------------| --- | --- | --- | ---
+	&#10003;S     |  A  |  A  |  G  |  X
+	&#10003;A     |     |     |  G  |  X
+	&#10003;G	  |     |     |     |  H 
+	&#10003;**H** |     |     |     |  H 
+	&#10003;**X** |     |     |  H  |  X
 	
 	This is the simplest form of the machine.
 	
@@ -771,6 +774,7 @@ original machine.
 This macchine accepts the language L(G) where :
 
 > L(G)=\[\+|\-\]\{
+>
 >	ddddddd,
 >
 >	dddd.ddd,
@@ -818,58 +822,58 @@ for example, lets say we have the regular expression
 Whch has this transition table
 
 **State** \ <sup>V<sub>T</sub></sup>| L| d |&lambda;
---- | --- | --- | ---
-1    | 2 |   |   
-2    |   |   |3,9   
-3	 |   |   |4,6
-4	 | 5 |   |  
-5	 |   |   | 8   
-6	 |   |7  |  
-7	 |   |   | 8   
-8	 |   |   | 3,9   
-**9**|	 |   |  
+---- | --- | --- | ---
+1    |  2  |     |   
+2    |     |     | 3,9   
+3	 |     |     | 4,6
+4	 |  5  |     |  
+5	 |     |     |  8   
+6	 |     |  7  |  
+7	 |     |     |  8   
+8	 |     |     | 3,9   
+**9**|	   |     |  
 
 Turning this into an DFSA :
 
 1.
 
 **State** \ <sup>V<sub>T</sub></sup>| L| d |&lambda;
---- | --- | --- | ---
-1    | 2 |   |   
-**2**    |  5 |  7 |3,9,8,6   
-**3**	 | 5  | 7  |4,6,8,3,9
-4	 | 5 |   |  
-**5**	 |  5 | 7  | 8,3,9,4,6   
-6	 |   |7  |  
-**7**	 | 5  | 7  | 8,3,9,4,6   
-**8**	 |  5 |  7 | 3,9,8,4,6   
-**9**|	 |   |  
+---- | --- | --- | ---
+1    |  2  |     |   
+**2**|  5  |  7  |3,9,8,6   
+**3**|  5  |  7  |4,6,8,3,9
+4	 |  5  |     |  
+**5**|  5  |  7  |8,3,9,4,6   
+6	 |     |  7  |  
+**7**|  5  |  7  |8,3,9,4,6   
+**8**|  5  |  7  |3,9,8,4,6   
+**9**|	   |     |  
 
 2. 
 
 **State** \ <sup>V<sub>T</sub></sup>| L| d 
---- | --- | --- 
-&#10003;1    | 2 |   |   
-&#10003;**2**    |  5 |  7    
-**3**	 |  5 |7   
-4	 | 5 |   |  
-&#10003;**5**	 |  5 | 7     
-6	 |   |7  |  
-&#10003;**7**	 | 5  | 7     
-8	 |  5 |  7    
-**9**|	 |   |  
+------------ | --- | --- 
+&#10003;1    |  2  |      
+&#10003;**2**|  5  |  7    
+**3**	     |  5  |  7   
+4	         |  5  |     
+&#10003;**5**|  5  |  7     
+6	         |     |  7    
+&#10003;**7**|  5  |  7     
+8	         |  5  |  7    
+**9**        |	   |     
 
 3. 
 
 **State** \ <sup>V<sub>T</sub></sup>| L| d 
---- | --- | --- 
-&#10003;1|2|
-&#10003;**2**|5|7
-&#10003;**5**|5|7
-&#10003;**7**|7|7
+------------ | --- | --- 
+&#10003;1    |  2  | 
+&#10003;**2**|  5  |  7
+&#10003;**5**|  5  |  7
+&#10003;**7**|  7  |  7
 
    **feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
-   --- | --- | --- 
+   ---- | --- | --- 
    (2,5)|(5,5)|(7,7)
    (7,7)|(5,5)|(7,7)
    (5,7)|(5,5)|(7,7)
@@ -877,11 +881,11 @@ Turning this into an DFSA :
 4.
 
 **State** \ <sup>V<sub>T</sub></sup>| L | d 
---- | --- | --- 
-&#10003;1|2| - 
-&#10003;**2**|5|7
-&#10003;**5**|5|7
-&#10003;**7**|5|7
+------------ | --- | --- 
+&#10003;1    |  2  |  - 
+&#10003;**2**|  5  |  7
+&#10003;**5**|  5  |  7
+&#10003;**7**|  5  |  7
 
 programmatically, this results in :
 
