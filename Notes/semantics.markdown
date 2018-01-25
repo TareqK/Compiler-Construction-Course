@@ -56,7 +56,7 @@ Another example :
 ```PASCAL
 
 VAR
-   x:integer;
+  x:integer;
 
 ```
 again, 2 attributes are associated with this name :
@@ -96,7 +96,7 @@ Another example :
 ```Pascal
 
 Var 
-	y:^integer;
+  y:^integer;
 
 ```
 
@@ -128,7 +128,7 @@ In the example :
 ```PASCAL
 
 Var
-	y:^integer
+  y:^integer
 
 ```
 
@@ -229,28 +229,28 @@ are 2 types of declarations:
 
 1. Explicit Declaration:
     - Pascal : 
-		```
-              var
-                x:integer
-                ok,y,Boolean;
-		```       
+	  ```
+       var
+		x:integer
+		ok,y,Boolean;
+	   ```       
     - ALGOL68 : 
        
       ```     
-                 Begin 
-                   Integer X;
-                   Boolean ok;
-                 End
+      Begin 
+        Integer X;
+        Boolean ok;
+      End
       ```          
     - ADA :   
       ```        
-                 Declare
-                   x:integer;
-                   y:boolean;
+      Declare
+        x:integer;
+        y:boolean;
 	  ```
     - C :
       ```           
-                  int n;
+        int n;
       ```           
 2. Implicit Declaration : The variable is declared when it is used. 
 for example, ```int n = 10```.
@@ -547,10 +547,10 @@ which is easier for the compiler to understand(evaluate). This code is called
    Another example :
    
    ```
-		if a
-			x
-		else
-			y
+	if a
+		x
+	else
+		y
    ```
 
 	would become 
@@ -562,14 +562,14 @@ which is easier for the compiler to understand(evaluate). This code is called
 	Or another example :
 	
 	```
-		if a
-			if(c - D)
-				a + c
-			else
-				a * c
+	if a
+		if(c - D)
+			a + c
 		else
-			a + b
-		a
+			a * c
+	else
+		a + b
+	a
 	```
 	becomes
 	
