@@ -757,6 +757,7 @@ Lets quickly apply what we learned on this table.
 
    Resulting in this state table :
 	
+	
    --------------| --- | --- | --- | ---
    &#10003;S     |  A  |  A  |  G  |  X
    &#10003;A     |     |     |  G  |  X
