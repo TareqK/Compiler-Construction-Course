@@ -155,12 +155,18 @@ This happens at **Binding Time**.
 > Binding Time : The time during the translation(compilation) process
 > when the attribute is computed and associated to the name. 
 
-There are 2 kinds of binding times.
+There are 3 kinds of binding times.
 
 1. Static Binding : binding which occurs before execution. We call those
-attributes static attributes.
+attributes static attributes. An example of a language that uses this 
+is FORTRAN.
 
-2. Dynamic Binding : binding which occurs during execution. 
+2. Dynamic Binding : binding which occurs during execution. An example
+of a language that uses this is LISP.
+
+3. Mixed Binding :  A mix of both approaches. Some attributes are bound
+dynamically, while some are bound statically. An example of a language
+that uses this is C.
 
 Examples : 
 
@@ -197,14 +203,16 @@ In short, Binding can be performed at :
 
 - Language implementation time.
 
-- Translation time.
+- Translation time.--> this is lexical scoping-->most languages are lexically scoping.
   - at lexical analysis.
   - at syntax analysis.
   - at code generation.
   - However, this binding is static.
+  - Variables can only be called in the block they are defined in.
 
-- Execution time
+- Execution time.--> languages that use this are usually interpreters and functional languages.
   - This binding is dynamic.
+  - Variables can be called globaly, which might cause issues.
 
 ### Symbol Table 
 
@@ -213,14 +221,33 @@ during the translation process.
 
 ---
 
+### Memory 
+
+Memory is the binding the storage locations to values.
+
+---
+
 ### Environment 
 
 The Environment is the memory allocation part of the execution process. 
 ie, binding names to the storage locations is called Environment. 
 
-### Memory 
+There are three kinds of allocations in the environment.
 
-Memory is the binding the storage locations to values.
+1. Static --> global variables.
+2. Automatic --> local variables(stack).
+3. Dynamic --> pointers.
+
+Generally, in block-structued languages,
+when the process is created, the environment is allocated like this:
+
+![./images/mem_env.png]
+
+This allows room for growing and shrinking. This happens when functions 
+are called, and their variables are allocated while the program is running, 
+and discarded after. Each call is called an **activation**.
+
+---
 
 ### Declarations and Blocks
 
@@ -435,7 +462,7 @@ local variable ```x```. We say we have a **scope hole** in ```B```. That is why
 we differentiate between scope and **visibility**. Only the area where
 the declaration applies. So the scope is the visibility - holes.
 
-## Symbol Table
+### Symbol Table (continued)
 
 All the declarations and binding are established by a structure called 
 the symbol table. In addition, the symbol table must maintain the scope
@@ -488,7 +515,7 @@ END.
 
 ```
 
-# Syntax Directed Translation
+## Syntax Directed Translation
 
 Lexical Structure --> Systematic algorithms exist --> Finite State Automata.
 
@@ -634,3 +661,44 @@ which is easier for the compiler to understand(evaluate). This code is called
    \*        | R1| x | R2
    \+        | y | z | R3
    \+        | R2| R3| R4
+
+## Semantic Rules
+
+Simply put :
+
+> Context Free Grammar + Semantic Rules = Syntax Directed Definitions
+
+A Compiler has to do more than just recognise if a sequence of
+characters forms a valid sentence in the language. It must do
+something useful with the parsed sentence.
+The semantic actions of a parser perform useful operations.
+
+- Error Checking, which includes :
+  - Type mismatch
+  - Undeclared variable
+  - Reserved identifier misuse.
+  - Multiple declaration of variable in a scope.
+  - Accessing an out of scope variable.
+  - Actual and formal parameter mismatch.
+
+- Evaluation in the case of an interpreter.
+
+- Begin the translation process in the case of a compiler.
+
+
+Semantic Rules are actions that are performed when certain productions are 
+found to be correctly derived(or reduced). A simple example would be a calculator that has 
+this simple grammar with the attached semantic rules: 
+
+> E → E + T { E.value = E.value + T.value }
+
+What this says is to add E to T and copy it to E whenever a sentence of the form
+
+> E → E + T 
+
+is derived. 
+
+For a more detailed explanation about semantic rules, look
+[here](https://www.tutorialspoint.com/compiler_design/compiler_design_semantic_analysis.htm).
+
+
