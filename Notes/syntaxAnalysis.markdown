@@ -1105,7 +1105,7 @@ Recursive Descent Parsing is very simple. It works like this :
 	   
        ```
        
-    2.  For X = &alpha;<sub>1</sub>,&alpha;<sub>2</sub>,...,&alpha;<sub>n</sub> :
+    2.  For X --> &alpha;<sub>1</sub>&alpha;<sub>2</sub>,...,&alpha;<sub>n</sub> :
 		
 	    ```
 	    
