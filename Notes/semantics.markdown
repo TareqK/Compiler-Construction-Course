@@ -241,7 +241,7 @@ There are three kinds of allocations in the environment.
 Generally, in block-structued languages,
 when the process is created, the environment is allocated like this:
 
-![./images/mem_env.png]
+![memory environment](./images/mem_env.png)
 
 This allows room for growing and shrinking. This happens when functions 
 are called, and their variables are allocated while the program is running, 
