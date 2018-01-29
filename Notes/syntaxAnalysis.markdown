@@ -1991,8 +1991,8 @@ function CLOSURE(I)//I is a set of LR(1)items
 Where An LR(1) item is an LR(0) item with a **Lookahead Symbol**. For example
 
 [A --> &alpha;.&beta; , a] where a is the lookahead. The lookahead symbol
-"a" has no effect whatsoever on an item [A --> &alpha;.&beta;,a] &beta; &ne; &lambda; (not complete item) However,
-if the item is a complete [A --> &alpha;.,a], this means we reduce by the 
+"a" has no effect whatsoever on an item [A --> &alpha;.&beta;,a], &beta; &ne; &lambda; (not complete item). However,
+if the item is complete, such that [A --> &alpha;.,a], this means we reduce by the 
 production A --> &alpha; on token "a".
 
 For example, Give the grammar :
