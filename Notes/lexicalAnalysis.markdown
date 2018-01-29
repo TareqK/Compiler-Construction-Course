@@ -798,7 +798,9 @@ Which is the same language of our original machine.
 #### Creating a NDFSA From a Regular Expression
 
 1. Decompose the regular expression to its primitive components :
+
    a. for &lambda;, X-<sup>&lambda;</sup>->Y.
+   
    b. for a, X-<sup>a</sup>->Y.
 
 2. Supposed that N<sub>1</sub>, N<sub>2</sub> are transition diagrams 
@@ -882,8 +884,8 @@ Turning this into an DFSA :
    **feasible pairs** \ <sup>V<sub>T</sub></sup>| L| d 
    ---- | --- | --- 
    (2,5)|(5,5)|(7,7)
-   (7,7)|(5,5)|(7,7)
    (5,7)|(5,5)|(7,7)
+   (2,7)|(5,7)|(7,5)
 
 4.
 
@@ -891,8 +893,6 @@ Turning this into an DFSA :
 ------------ | --- | --- 
 &#10003;1    |  2  |  - 
 &#10003;**2**|  5  |  7
-&#10003;**5**|  5  |  7
-&#10003;**7**|  5  |  7
 
 programmatically, this results in :
 
