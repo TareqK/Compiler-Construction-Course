@@ -753,11 +753,11 @@ Lets quickly apply what we learned on this table.
 
 3. Merge and Replace
 
-   H &equiv Y
+   H &equiv; Y
    
-   H &equiv Z
+   H &equiv; Z
    
-   Y &equiv Z
+   Y &equiv; Z
 
    Therefore, H &equiv; Y &equiv; Z ---> merge them to H
 
