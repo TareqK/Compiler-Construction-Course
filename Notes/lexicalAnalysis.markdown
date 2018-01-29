@@ -900,9 +900,9 @@ programmatically, this results in :
 
 getchar(ch);
 case(ch){
-	letter : get-name;
-	digit : get-number
-	< : getchar(ch)
+	letter : get-name();//if it starts with a letter, its a name.
+	digit : get-number();//if it starts with a digit, its a number.
+	...
 	...
 	...
 }
