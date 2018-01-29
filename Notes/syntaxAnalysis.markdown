@@ -1648,9 +1648,9 @@ First, we derive the sentence rightmost.
 
 So our handles would be :
 
-> V  \<--  **SR$**  \<--  S**dN\.N**$  \<--  SdN\.**dN**$  \<-- SdN\.d**&lambda;**$  \<--  Sd**dN**\.d$  \<--  Sdd**&lambda;**\.d$  \<--  **-**dd\.d$
+> V  \<\-\-  **SR\$**  \<\-\-  S**dN\.N**\$  \<\-\-  SdN\.**dN**\$  \<\-\- SdN\.d**&lambda;**\$  \<\-\-  Sd**dN**\.d\$  \<\-\-  Sdd**&lambda;**\.d\$  \<\-\-  **\-**dd\.d\$
 
-But Compilers dont work like this. We already derived the sentence, why would we go 
+But Compilers don't work like this. We already derived the sentence, why would we go 
 back and do it again?
 
 We cannot build a Bottom-Up parser for every Context-Free Grammar. However,
