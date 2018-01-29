@@ -892,6 +892,7 @@ Then
 5. Given the production A --> &alpha;X&beta;, Then :
 
    a. FIRST(&beta;) &sub; FOLLOW(X) if &beta; &ne; &lambda;.
+   
    b. FOLLOW(A) &sub; FOLLOW(X) if &beta; = &lambda;.
 
 Note that the FIRST() and FOLLOW() sets are made of **terminals only**
