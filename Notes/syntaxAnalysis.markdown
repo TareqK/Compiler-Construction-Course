@@ -1860,7 +1860,7 @@ Lets apply this to the grammar above. First we separate
 each grammar symbol production to its own set This results in 4 Item groups:
 
 
-> I<sub>1</sub> : E`-->.E, E-->.E+T 
+>I<sub>1</sub> : E\`-->.E, E-->.E+T 
 >
 >I<sub>2</sub> : E-->.T, T--> .T*F
 >
@@ -1872,9 +1872,9 @@ each grammar symbol production to its own set This results in 4 Item groups:
 
 and take the CLOSURE for all these sets. The resultant is :
 
-> I<sub>0</sub>: E`-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F, F-->.(E), F-->.a <--(CLOSURE(E`-->.E))
+> I<sub>0</sub>: E\`-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F, F-->.(E), F-->.a <--(CLOSURE(E\`-->.E))
 >
-> I<sub>1</sub> : E`-->E., E-->E.+T <-- GOTO(I<sub>0</sub>,E)
+> I<sub>1</sub> : E\`-->E., E-->E.+T <-- GOTO(I<sub>0</sub>,E)
 >
 > I<sub>2</sub> : E-->T., T--> T.*F <-- GOTO(I<sub>0</sub>,T)
 >
