@@ -537,9 +537,9 @@ to the production rule of the grammar. For example, given the production
 
 the semantic action is simply 
 
-> A --> &alpha; \#&Beta;
+> A --> &alpha; \#&beta;
 
-where &Beta; is the semantic action.
+where &beta; is the semantic action.
 
 Take the production
 

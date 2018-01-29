@@ -570,13 +570,13 @@ Given that
 
 > A-->A&alpha;<sub>1</sub>| A&alpha;<sub>2</sub>|A&alpha;<sub>3</sub>|...|A&alpha;<sub>n</sub>
 >
-> A-->&Beta;<sub>1</sub>|&Beta;<sub>2</sub>|&Beta;<sub>3</sub>|...|&Beta;<sub>m</sub>
+> A-->&beta;<sub>1</sub>|&beta;<sub>2</sub>|&beta;<sub>3</sub>|...|&beta;<sub>m</sub>
 
 To do this, we must introduce a new non-terminal, say A\`.
 
 The grammar now becomes :
 
-> A-->&Beta;<sub>1</sub>A\`|&Beta;<sub>2</sub>A\`|&Beta;<sub>3</sub>A\`|...|&Beta;<sub>m</sub>A\`
+> A-->&beta;<sub>1</sub>A\`|&beta;<sub>2</sub>A\`|&beta;<sub>3</sub>A\`|...|&beta;<sub>m</sub>A\`
 
 and
 
@@ -899,18 +899,18 @@ Note that the FIRST() and FOLLOW() sets are made of **terminals only**
 
 By these rules, say we have 
 
-> A -- > &alpha;X&Beta; , X&isin;V<sub>N</sub>
+> A -- > &alpha;X&beta; , X&isin;V<sub>N</sub>
 
 and say we want FOLLOW(X)
 
 Then 
 
-> FIRST(&Beta;) &sub; FOLLOW(X)
+> FIRST(&beta;) &sub; FOLLOW(X)
 
 We say it is a subset because we can have other productions involving 
 X.
 
-Assuming that &Beta; = &lambda;, Things are different. 
+Assuming that &beta; = &lambda;, Things are different. 
 
 Say that we have a production that leads to this derivation is 
 
@@ -1771,7 +1771,7 @@ we start with I<sub>0</sub
 >
 > E` --> &lambda;.E&lambda;
 >
-> A ---> &gamma;.B&Beta;
+> A ---> &gamma;.B&beta;
 >
 
 we add all productions starting with E and add the . at the start
@@ -1783,7 +1783,7 @@ Lets look at  E-->.E+T
 
 >  E-->&lambda;.E+T
 >
->  A ---> &gamma;.B&Beta;
+>  A ---> &gamma;.B&beta;
 
 Therefore, we add all productions starting wtih T to I<sub>0</sub>
 
@@ -1852,7 +1852,7 @@ Input : LR(0) sets of items
 
 Output : SLR(1) parsing table
 
-1. For every item A-->&alpha;.A&Beta; in I<sub>i</sub>, &alpha; &isin; V<sub>T</sub> , and
+1. For every item A-->&alpha;.A&beta; in I<sub>i</sub>, &alpha; &isin; V<sub>T</sub> , and
  GOTO(I<sub>i</sub>,a)=I<sub>j</sub>, then set; then ACTION[i,a]=S<sub>j</sub>(shift and push j on the stack).
  
 2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b]=Reduce by a-->&Alpha; FOR ALL b &isin; FOLLOW(A).
@@ -1939,8 +1939,8 @@ function CLOSURE(I)//I is a set of LR(1)items
 
 Where An LR(1) item is an LR(0) item with a **Lookahead Symbol**. For example
 
-[A --> &alpha;.&Beta; , a] where a is the lookahead. The lookahead symbol
-"a" has no effect whatsoever on an item [A --> &alpha;.&Beta;,a] &Beta; &ne; &lambda; (not complete item) However,
+[A --> &alpha;.&beta; , a] where a is the lookahead. The lookahead symbol
+"a" has no effect whatsoever on an item [A --> &alpha;.&beta;,a] &beta; &ne; &lambda; (not complete item) However,
 if the item is a complete [A --> &alpha;.,a], this means we reduce by the 
 production A --> &alpha; on token "a".
 
