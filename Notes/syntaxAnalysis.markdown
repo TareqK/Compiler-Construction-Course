@@ -786,7 +786,7 @@ only with Extended-BNF notation.
 in these diagrams, A square shape represents a nonterminal and an oval shape
 represents a terminal. Lets take a look at the examples below :
 
-![Syntax Diagrams](https://en.wikipedia.org/wiki/Syntax_diagram#/media/File:Example_syntax_diagram_3.svg)
+![Syntax Diagrams](https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Example_syntax_diagram_3.svg/506px-Example_syntax_diagram_3.svg.png)
 
 ## Parsing Techniques (Continued)
 
