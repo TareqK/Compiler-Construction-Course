@@ -1414,7 +1414,7 @@ then the grammar is LL(1) if :
 
 1. FIRST(&alpha;<sub>i</sub>)&cap;FIRST(&alpha;<sub>j</sub>) = &empty; for all i,j
 
-2. if one of &alpha;<sub>i</sub>  is &lambda;, then FIRST(&alpha;<sub>j</sub> ) &cap; FOLLOW(A) = &empty;.
+2. if one of &alpha;<sub>i</sub>  is &lambda;, then FIRST(&alpha;<sub>j</sub> ) &cap; FOLLOW(A) = &empty; for all j.
 
 For example, Given the grammar :
 
