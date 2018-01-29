@@ -932,7 +932,7 @@ Notes :
 1. &lambda; **may** appear in FIRST() but it doesn't appear in FOLLOW(). We 
 will see this when we define augmented grammars.
 
-2. Generally, we start computing the FIRST() from bottom to top, But follow
+2. Generally, we start computing the FIRST() from bottom to top, But FOLLOW()
 from top to bottom.
 
 3. When we compute FOLLOW(X), we search for X in the right side of 
@@ -987,7 +987,7 @@ Lets compute the FIRST() sets for this grammar :
 > 
 > FIRST(S) = FIRST(AB) = FIRST(FIRST(A).FIRST(B))
 >
-> = FIRST(\{a,&lambda;\},\{b,&lambda;\})
+> = FIRST(\{a,&lambda;\}.\{b,&lambda;\})
 >
 > = FIRST(\{a,&lambda;,b,&lambda;})
 >
@@ -1023,7 +1023,7 @@ Lets take the FIRST() for this grammar :
 
 > FIRST(A) = \{b,c,&lambda;\}
 >
-> FIRST(S) =  FIRST(aAcb)&cup;FIRST(Abc) = \{a,\} &cup \{b,c\}
+> FIRST(S) =  FIRST(aAcb)&cup;FIRST(Abc) = \{a\} &cup; \{b,c\}
 >
 > = \{a,b,c\}
 >
@@ -1096,72 +1096,72 @@ Recursive Descent Parsing is very simple. It works like this :
 	   
 	   If(token == "a"){
 	   
-	   		get-next()
+	   	get-next();
 	   
 	   }
 	   
 	   else{
 	   
-	   	report-error()
+	   	report-error();
 	   
 	   }
 	   
        ```
        
-    2.  For X --> &alpha;<sub>1</sub>&alpha;<sub>2</sub>,...,&alpha;<sub>n</sub> :
+    2.  For X --> A<sub>1</sub>A<sub>2</sub>...A<sub>n</sub> :
 		
 	    ```
 	    
-		code(X):{ 
+		code(X){ 
 		
-		code(α1);
+		code(A1);
 		
-		code(α2);
+		code(A2);
 		...
 		
 		...
 		
 		...
 		
-		code(αn);
+		code(An);
 		}
 		
 		```
 		That is, if a production is made of multiple sub productions in order, 
 		they must be called in order.
 		
-		If FIRST(&alpha;<sub>n</sub>) of the production is non-empty, and 
-		&alpha;<sub>n</sub> &ne; &lambda;, ie, the production is not 
+		If FIRST(A<sub>n</sub>) of the production is non-empty, and 
+		A<sub>n</sub> &ne; &lambda;, ie, the production is not 
 		an empty one, then
 		
 		
 		``` 
-		If(token ∈ FIRST(α1)){
-			code(α1)
+		If(token ∈ FIRST(A1)){
+			code(A1);
 		}
-		 else If(token ∈ FIRST(α2)){
-			code(α2)
+		 else If(token ∈ FIRST(A2)){
+			code(A2);
 		}
 		...
 		
 		...
 		
 		...
-		else If(token ∈ FIRST(αn)){
-			code(αn)
+		else If(token ∈ FIRST(An)){
+			code(An);
 		}
 		else{
 		 report-error();
 		}
 		```
 		
-		Furthermore, the code for x = &alpha;\*, where we can have
+		Furthermore, the code for x = A\*, where we can have
 		zero or more consecutive repetitions of a production, we say
 		
 		```
-		while(token ∈ FIRST(α*)){
+		while(token ∈ FIRST(A*)){
 		
-		 call(α*);
+		 call(A*);
 		
 		 }
 		```
@@ -1409,11 +1409,12 @@ The Formal definition of LL(1) grammars is given by :
 >
 > A --> &alpha;<sub>n</sub>
 >
-> then the grammar is LL(1) if :
->
-> 1. FIRST(&alpha;<sub>i</sub>)&cap;FIRST(&alpha;<sub>g</sub>) = &empty; for all i,j
->
-> 1. if one of &alpha;<sub>i</sub>  is &lambda;,&alpha;<sub>n</sub> = &lambda;, in addition to 1, &forall; i &lt; n
+
+then the grammar is LL(1) if :
+
+1. FIRST(&alpha;<sub>i</sub>)&cap;FIRST(&alpha;<sub>j</sub>) = &empty; for all i,j
+
+2. if one of &alpha;<sub>i</sub>  is &lambda;,&alpha;<sub>n</sub> = &lambda;, in addition to 1, &forall; i &lt; n
 
 For example, Given the grammar :
 
@@ -1647,8 +1648,7 @@ First, we derive the sentence rightmost.
 
 So our handles would be :
 
-> V <-- **SR$** <-- S**dN.N**$<--
-> SdN.**dN**$ <-- SdN.d**&lambda;**$ <-- Sd**dN**.d$ <-- Sdd**&lambda;**.d$ <-- **-**dd.d$
+> V  <--  **SR$**  <--  S**dN.N**$  <--  SdN.**dN**$  <-- SdN.d**&lambda;**$  <--  Sd**dN**.d$  <--  Sdd**&lambda;**.d$  <--  **-**dd.d$
 
 But Compilers dont work like this. We already derived the sentence, why would we go 
 back and do it again?
@@ -1763,7 +1763,7 @@ This grammar is not LL(1) because
 
 We will need to build the LR(0) sets of items.
 
-we start with I<sub>0</sub
+we start with I<sub>0</sub>
 
 > I<sub>0</sub>: E` --> .E
 >
@@ -1853,9 +1853,9 @@ Input : LR(0) sets of items
 Output : SLR(1) parsing table
 
 1. For every item A-->&alpha;.A&beta; in I<sub>i</sub>, &alpha; &isin; V<sub>T</sub> , and
- GOTO(I<sub>i</sub>,a)=I<sub>j</sub>, then set; then ACTION[i,a]=S<sub>j</sub>(shift and push j on the stack).
+ GOTO(I<sub>i</sub>,a)=I<sub>j</sub>, then ACTION[i,a] = S<sub>j</sub>(shift and push j on the stack).
  
-2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b]=Reduce by a-->&Alpha; FOR ALL b &isin; FOLLOW(A).
+2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b] = Reduce by a-->&Alpha; FOR ALL b &isin; FOLLOW(A).
 
 3. For S` --> S. in I<sub>i</sub>, ACTION[i,$] = Accept.
 
