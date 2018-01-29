@@ -1910,7 +1910,7 @@ Output : SLR(1) parsing table
 
 3. For S` --> S. in I<sub>i</sub>, ACTION[i,$] = Accept.
 
-4. For all A &isin; V<sub>N</sub>, if GOTO(I<sub>i</sub>,A) = I<sub>j</sub> then set, GOTO[i,A] = j.
+4. For all A &isin; V<sub>N</sub>, if GOTO(I<sub>i</sub>,A) = I<sub>j</sub> then set GOTO[i,A] = j.
 
 5. All remaining entries are error entries.
 
