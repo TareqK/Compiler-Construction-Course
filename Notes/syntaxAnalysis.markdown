@@ -318,10 +318,10 @@ by definition that the left side of the production contains at least one
 nonterminal from V<sub>s</sub>. This grammar is not practical and we cannot
 work with it. 
 
-2. Context-Sensitive Grammars : For each production &alpha; --> &Beta;,
-|&alpha;| &le; |&Beta;|, ie , the **length of alpha(&alpha;)** is less than or equal to 
-the **length of Beta(&Beta;)**. This means that in this class of grammar, there are no
-&lambda; productions in the form A --> &lambda, since |&lambda;| = 0 and A &ge; 1.
+2. Context-Sensitive Grammars : For each production &alpha; --> &beta;,
+|&alpha;| &le; |&beta;|, ie , the **length of alpha(&alpha;)** is less than or equal to 
+the **length of Beta(&beta;)**. This means that in this class of grammar, there are no
+&lambda; productions in the form A --> &lambda;, since |&lambda;| = 0 and A &ge; 1.
 
    They Say that Fortran has a context-sensitive grammar.
    
@@ -473,7 +473,7 @@ Take the sentence :
 
 Lets draw the derivation tree
 
-![aaa](./images/aaa..PNG)
+![aaa](./images/left.PNG)
 
 
 Due to the fact that we have 2 trees that give the same result, we can 
@@ -490,7 +490,7 @@ be re-written as :
 
 Now, Take the sentence ```a + a * a```
 and find the derivation tree now. 
-![left](./images/left.PNG)
+![left](./images/eft1.PNG)
 
 There is only 1 possible derivation tree now. This solves the associativity
 issue of the grammar before with the ```+``` and ```*``` operations.
@@ -501,7 +501,8 @@ But lets say we have the sentence :
 
 Lets try to find the derivation tree and any alternative trees. 
 
-![eft1](./images/etf1.PNG)
+![eft1](./images/aaa..PNG)
+![aaa2](./images/aaa2.PNG)
 
 We can see here that there is more than 1 derivation tree, and the 
 language is still ambiguous.
@@ -782,8 +783,10 @@ We can also express this grammar as:
 Another way to express languages are **Syntax Diagrams**. These are used
 only with Extended-BNF notation.
 
-A square shape represents a nonterminal and an oval shape
-represents a terminal.
+in these diagrams, A square shape represents a nonterminal and an oval shape
+represents a terminal. Lets take a look at the examples below :
+
+![Syntax Diagrams](https://en.wikipedia.org/wiki/Syntax_diagram#/media/File:Example_syntax_diagram_3.svg)
 
 ## Parsing Techniques (Continued)
 
@@ -852,8 +855,6 @@ then
 
 That is to say, **&lambda; appears in the FIRST() function**.
 
-Lets take an example of this.
-
 ### The FOLLOW() Function
 
 We define the FOLLOW() function for **only** nonterminals. That is 
@@ -863,7 +864,7 @@ to say
 
 Given 
 
-> S --\*--> uA&beta; , u&isin;V<sub>T</sub>\*, A&isin;V<sub>N</sub>, &beta;&isin;V\*
+> S --\*--> uA&beta; , u&isin;V<sub>T</sub>, A&isin;V<sub>N</sub>, &beta;&isin;V\*
 
 then
 
@@ -889,8 +890,9 @@ Then
 3. FIRST(a&alpha;)= {a}.
 4. FIRST(XY) = FIRST(FIRST(X).FIRST(Y)) **OR** FIRST(X.FIRST(Y)) **OR** FIRST(FIRST(X).Y).
 5. Given the production A --> &alpha;X&beta;, Then :
-	a. FIRST(&beta;) &sub; FOLLOW(X) if &beta; &ne; &lambda;.
-	b. FOLLOW(A) &sub; FOLLOW(X) if &beta; = &lambda;.
+
+   a. FIRST(&beta;) &sub; FOLLOW(X) if &beta; &ne; &lambda;.
+   b. FOLLOW(A) &sub; FOLLOW(X) if &beta; = &lambda;.
 
 Note that the FIRST() and FOLLOW() sets are made of **terminals only**
 
