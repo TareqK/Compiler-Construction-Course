@@ -1410,6 +1410,9 @@ The Formal definition of LL(1) grammars is given by :
 > A --> &alpha;<sub>n</sub>
 >
 
+or alternatively 
+
+> A --> &alpha;<sub>1</sub> | &alpha;<sub>2</sub> | &alpha;<sub>3</sub> | ... | &alpha;<sub>n</sub>
 then the grammar is LL(1) if :
 
 1. FIRST(&alpha;<sub>i</sub>)&cap;FIRST(&alpha;<sub>j</sub>) = &empty; for all i,j
@@ -1432,10 +1435,13 @@ For example, Given the grammar :
 
 let us see if it is LL(1)
 
-- FIRST(a)&cap;FIRST(bbD) = &empty;
-- FIRST(a)&cap;FOLLOW(B) = &empty;
-- FIRST(b)&cap;FOLLOW\(C\) = &empty;
-- FIRST\(c\)&cap;FOLLOW(D) = &empty;
+> FIRST(a)&cap;FIRST(bbD) = &empty;
+>
+>FIRST(a)&cap;FOLLOW(B) = &empty;
+>
+> FIRST(b)&cap;FOLLOW\(C\) = &empty;
+>
+> FIRST\(c\)&cap;FOLLOW(D) = &empty;
 
 Then this grammar is LL(1).
 
@@ -1447,13 +1453,13 @@ Given another Grammar :
 >
 > A --> abS | &lambda;
 
-- FIRST(aAa)&cap;FOLLOW(S) = {a}&cap;{$,a} = {a} &ne; &empty;
+> FIRST(aAa)&cap;FOLLOW(S) = {a}&cap;{$,a} = {a} &ne; &empty;
 
-This grammer is **not** LL(1).
+This grammar is **not** LL(1).
 
 ---
 
-Lets assume that we have a grammer that is LL(1). How do we build the LL(1) parsing table?
+Lets assume that we have a grammar that is LL(1). How do we build the LL(1) parsing table?
 
 ##### LL(1) Parsing Table Building Algorithm
 
@@ -1602,7 +1608,7 @@ S  | 2 | 5 |   |   |
 E  |   |   | 3 |   | 4   
 C  |   |   |   | 6 |
 
-and this works because the natural behavior of the else-part is to follow
+and this works because the natural behaviour of the else-part is to follow
 the nearest if statement.
 
 ---
@@ -1676,7 +1682,7 @@ SLR parsing, and LR parsing in general, is a tabular parsing method.
 
 All LL(1) grammars are a subset of SLR grammars. 
 
-All LR parsers contains :
+All LR parses contains :
 
 1. A parsing table.
 
@@ -1763,6 +1769,48 @@ This grammar is not LL(1) because
 
 We will need to build the LR(0) sets of items.
 
+Lets pre-compute all the LR(0) items for this grammar:
+
+> E` --> .E
+>
+> E` --> E. -->complete item
+>
+> E --> .E+T
+>
+> E --> E.+T
+>
+> E --> E+.T
+>
+> E --> E+T. --> complete item
+>
+> E --> .T
+>
+> E --> T. --> complete item
+>
+> T --> .T*F
+>
+> T --> T.*F
+>
+> T --> T*.F
+>
+> T --> T*F. --> complete item
+>
+> T --> .F
+>
+> T --> F. --> complete item
+>
+> F --> .(E)
+>
+> F --> (.E)
+>
+> F --> (E.)
+>
+> F --> (E). --> complete item
+>
+> F --> .a
+>
+> F --> a. --> complete item   
+
 we start with I<sub>0</sub>
 
 > I<sub>0</sub>: E` --> .E
@@ -1777,7 +1825,7 @@ we start with I<sub>0</sub>
 we add all productions starting with E and add the . at the start
 therefore :
 
->I<sub>0</sub>:{E1-->.E, E-->.E+T, E-->.T}
+>I<sub>0</sub>:{E`-->.E, E-->.E+T, E-->.T}
 
 Lets look at  E-->.E+T
 
@@ -1785,9 +1833,9 @@ Lets look at  E-->.E+T
 >
 >  A ---> &gamma;.B&beta;
 
-Therefore, we add all productions starting wtih T to I<sub>0</sub>
+Therefore, we add all productions starting with T to I<sub>0</sub>
 
-> I<sub>0</sub>:{E1-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F}
+> I<sub>0</sub>:{E`-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F}
 >
 
 we iterate again, and the resultant set is:
@@ -1808,10 +1856,11 @@ function GOTO(I,X)//I=set of items,X=Grammar symbol
 
 ```
 
-Lets apply this to the grammar above. First we seperate 
+Lets apply this to the grammar above. First we separate 
 each grammar symbol production to its own set This results in 4 Item groups:
 
-> I<sub>1</sub> : E-->.E, E-->.E+T
+
+> I<sub>1</sub> : E`-->.E, E-->.E+T 
 >
 >I<sub>2</sub> : E-->.T, T--> .T*F
 >
@@ -1823,27 +1872,29 @@ each grammar symbol production to its own set This results in 4 Item groups:
 
 and take the CLOSURE for all these sets. The resultant is :
 
-> I<sub>1</sub> : E-->E., E-->E.+T
+> I<sub>0</sub>: E`-->.E, E-->.E+T, E-->.T, T--> .T*F, T-->.F, F-->.(E), F-->.a <--(CLOSURE(E`-->.E))
 >
-> I<sub>2</sub> : E-->T., T--> T.*F
+> I<sub>1</sub> : E`-->E., E-->E.+T <-- GOTO(I<sub>0</sub>,E)
 >
-> I<sub>3</sub> : T-->F.
+> I<sub>2</sub> : E-->T., T--> T.*F <-- GOTO(I<sub>0</sub>,T)
 >
-> I<sub>4</sub> : F-->(.E), E --> .E+T,E-->.T,E-->.T*F,T-->.F,F-->.(E),F-->.a
+> I<sub>3</sub> : T-->F. <-- GOTO(I<sub>0</sub>,F)
 >
-> I<sub>5</sub> : F-->.a
+> I<sub>4</sub> : F-->(.E), E --> .E+T,E-->.T,E-->.T*F,T-->.F,F-->.(E),F-->.a <-- GOTO(I<sub>0</sub>,\()
 >
-> I<sub>6</sub> : E-->E+.T,E-->.T*F,T-->.F,F-->.(E),F-->.a
+> I<sub>5</sub> : F-->a. <-- GOTO(I<sub>0</sub>,a)
 >
-> I<sub>7</sub> : E-->T*.F,F-->.(E),F-->.a
+> I<sub>6</sub> : E-->E+.T,E-->.T*F,T-->.F,F-->.(E),F-->.a <-- GOTO(I<sub>1</sub>,+)
 >
-> I<sub>8</sub> : F-->(E.),E-->E.+T
+> I<sub>7</sub> : E-->T*.F,F-->.(E),F-->.a  <-- GOTO(I<sub>2</sub>,*)
 >
-> I<sub>9</sub> : E --> E+T. , T --> T.*F
+> I<sub>8</sub> : F-->(E.),E-->E.+T  <-- GOTO(I<sub>4</sub>,E) // GOTO with T and F wouldn't result in a new item set.
 >
-> I<sub>10</sub> : T --> T*F.
+> I<sub>9</sub> : E --> E+T. , T --> T.*F  <-- GOTO(I<sub>6</sub>,T)
 >
-> I<sub>11</sub> : F --> (E).
+> I<sub>10</sub> : T --> T*F.  <-- GOTO(I<sub>7</sub>,F)
+>
+> I<sub>11</sub> : F --> (E).  <-- GOTO(I<sub>1</sub>,\))
 
 
 ##### Constructing the SLR table
@@ -1852,14 +1903,14 @@ Input : LR(0) sets of items
 
 Output : SLR(1) parsing table
 
-1. For every item A-->&alpha;.A&beta; in I<sub>i</sub>, &alpha; &isin; V<sub>T</sub> , and
+1. For every item A-->&alpha;.a&beta; in I<sub>i</sub>, a &isin; V<sub>t</sub>, and
  GOTO(I<sub>i</sub>,a)=I<sub>j</sub>, then ACTION[i,a] = S<sub>j</sub>(shift and push j on the stack).
  
 2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b] = Reduce by a-->&Alpha; FOR ALL b &isin; FOLLOW(A).
 
 3. For S` --> S. in I<sub>i</sub>, ACTION[i,$] = Accept.
 
-4. If GOTO(I<sub>i</sub>,A) = I<sub>j</sub> then set, GOTO(i,A) = j.
+4. For all A &isin; V<sub>N</sub>, if GOTO(I<sub>i</sub>,A) = I<sub>j</sub> then set, GOTO[i,A] = j.
 
 5. All remaining entries are error entries.
 
