@@ -748,12 +748,18 @@ Lets quickly apply what we learned on this table.
 	**feasible pairs** \ <sup>V<sub>T</sub></sup>| \+| \-| . | d
 	------------ | --- | --- | --- | ---
 	(H,Y)        |     |     |     | H,Z
-	&#10003;(H,Z)|     |     |     | H,Z
-	&#10003;(Y,Z)|     |     |     | Z,Z
+	(H,Z)        |     |     |     | H,Z
+	(Y,Z)        |     |     |     | Z,Z
 
 3. Merge and Replace
 
-   H &equiv; Y &equiv; Z---> H
+   H &equiv Y
+   
+   H &equiv Z
+   
+   Y &equiv Z
+
+   Therefore, H &equiv; Y &equiv; Z ---> merge them to H
 
    Resulting in this state table :
 	
