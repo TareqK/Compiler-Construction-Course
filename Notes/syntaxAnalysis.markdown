@@ -1906,7 +1906,7 @@ Output : SLR(1) parsing table
 1. For every item A-->&alpha;.a&beta; in I<sub>i</sub>, a &isin; V<sub>t</sub>, and
  GOTO(I<sub>i</sub>,a)=I<sub>j</sub>, then ACTION[i,a] = S<sub>j</sub>(shift and push j on the stack).
  
-2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b] = Reduce by a-->&Alpha; FOR ALL b &isin; FOLLOW(A).
+2. For item A-->&alpha;.(complete item) in I<sub>i</sub>, ACTION[i,b] = Reduce by a-->&Alpha; &forall; b &isin; FOLLOW(A).
 
 3. For S` --> S. in I<sub>i</sub>, ACTION[i,$] = Accept.
 
