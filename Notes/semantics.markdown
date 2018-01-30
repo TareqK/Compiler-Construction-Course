@@ -574,10 +574,12 @@ which is easier for the compiler to understand(evaluate). This code is called
    Another example :
    
    ```
+   
 	if a
 		x
 	else
 		y
+		
    ```
 
 	would become 
@@ -589,6 +591,7 @@ which is easier for the compiler to understand(evaluate). This code is called
 	Or another example :
 	
 	```
+	
 	if a
 		if(c - D)
 			a + c
@@ -597,7 +600,9 @@ which is easier for the compiler to understand(evaluate). This code is called
 	else
 		a + b
 	a
+	
 	```
+	
 	becomes
 	
 	```  a c D - a c + a c * ? a b + ? ```
